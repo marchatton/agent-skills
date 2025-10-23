@@ -13,21 +13,21 @@
 
 ## 0) Engineering Principles
 
-* **TDD**: write a failing test for bugs/new behavior, then implement to green.
-* **KISS**: prefer simple, boring solutions over clever ones.
-* **YAGNI**: ship only what the current requirement needs.
-* **DRY**: extract shared logic into `packages/lib` or shared components; favor codemods for dedup.
+- **TDD**: write a failing test for bugs/new behavior, then implement to green.
+- **KISS**: prefer simple, boring solutions over clever ones.
+- **YAGNI**: ship only what the current requirement needs.
+- **DRY**: extract shared logic into `packages/lib` or shared components; favor codemods for dedup.
 
 ## 1) Project Profile & Non-negotiables
 
-* **Monorepo:** pnpm workspaces (`apps/*`, `packages/*`)
-* **App:** Next.js (App Router)
-* **UI:** Tailwind + shadcn/ui + Radix; icons via `lucide-react`
-* **State:** Server-first; client state sparingly (Zustand when needed)
-* **Forms:** React Hook Form + Zod
-* **Testing:** Vitest + Testing Library + MSW; **chrome-devtools MCP** for smoke (not Playwright MCP)
-* **Scanning:** **ast-grep** (scan/refactor signals only), **knip**, **jscpd**
-* **Git hooks:** **Husky** + lint-staged
+- **Monorepo:** pnpm workspaces (`apps/*`, `packages/*`)
+- **App:** Next.js (App Router)
+- **UI:** Tailwind + shadcn/ui + Radix; icons via `lucide-react`
+- **State:** Server-first; client state sparingly (Zustand when needed)
+- **Forms:** React Hook Form + Zod
+- **Testing:** Vitest + Testing Library + MSW; **chrome-devtools MCP** for smoke (not Playwright MCP)
+- **Scanning:** **ast-grep** (scan/refactor signals only), **knip**, **jscpd**
+- **Git hooks:** **Husky** + lint-staged
 
 ---
 
@@ -60,35 +60,35 @@ apps/web/src/
       webhooks/      # verify signatures
   client/            # FRONTEND ONLY (components, hooks, stores)
   server/            # BACKEND ONLY (db, services, validators)
-  middleware/        # rateLimit -> cors -> sanitize -> auth -> logger
+  middleware/        # rateLimit → cors → sanitize → auth → logger
 ```
 
 **CRITICAL RULES**
 
-* **NEVER** import `server/` into `client/`.
-* **ALWAYS** validate at boundaries (client->API->DB) via Zod.
-* **NEVER** leak internal errors to clients; map to safe messages.
-* Client-visible envs **MUST** use `NEXT_PUBLIC_` prefix.
-* Use Next's `server-only` / `client-only` modules to enforce boundaries (import in files at risk).
+- **NEVER** import `server/` into `client/`.
+- **ALWAYS** validate at boundaries (client→API→DB) via Zod.
+- **NEVER** leak internal errors to clients; map to safe messages.
+- Client-visible envs **MUST** use `NEXT_PUBLIC_` prefix.
+- Use Next's `server-only` / `client-only` modules to enforce boundaries (import in files at risk).
 
 ---
 
-## 3) Do / Don't (Repo-specific)
+## 3) Do / Don’t (Repo-specific)
 
 **Do**
 
-* Use **pnpm** (workspace filters `-F`).
-* Keep diffs **small & atomic**; one concern per PR.
-* Centralize API in `/lib/api/*` (+ Zod, typed errors). Server actions for mutations with **idempotency keys**.
-* Reflect UI state in **URL** (filters/tabs/pagination) - prefer `nuqs`.
-* Use design tokens/Tailwind; avoid hard-coded colors/sizes.
-* Add MSW mocks for new network code; bug -> failing test -> fix -> green.
+- Use **pnpm** (workspace filters `-F`).
+- Keep diffs **small & atomic**; one concern per PR.
+- Centralize API in `/lib/api/*` (+ Zod, typed errors). Server actions for mutations with **idempotency keys**.
+- Reflect UI state in **URL** (filters/tabs/pagination) — prefer `nuqs`.
+- Use design tokens/Tailwind; avoid hard‑coded colors/sizes.
+- Add MSW mocks for new network code; bug → failing test → fix → green.
 
-**Don't**
+**Don’t**
 
-* Add heavy deps without approval (charting/date/CSS-in-JS).
-* Fetch in client components or write data in `useEffect`.
-* Bypass hooks/CI; commit failing type/lint/tests.
+- Add heavy deps without approval (charting/date/CSS‑in‑JS).
+- Fetch in client components or write data in `useEffect`.
+- Bypass hooks/CI; commit failing type/lint/tests.
 
 ---
 
@@ -128,7 +128,7 @@ pnpm -F web build                    # explicit only
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "typecheck:file": "tsc --noEmit",
+    "typecheck:file": "tsc --project tsconfig.json --noEmit",
     "lint": "eslint .",
     "format:write": "prettier -w .",
     "test": "vitest run",
@@ -146,20 +146,20 @@ pnpm -F web build                    # explicit only
 
 ## 5) Git & Hooks (concise)
 
-* **Conventional Commits:** `feat(scope): ...`, `fix`, `chore`, `refactor`, `docs`, `test`.
-* **Husky**
+- **Conventional Commits:** `feat(scope): ...`, `fix`, `chore`, `refactor`, `docs`, `test`.
+- **Husky**
 
-  * `pre-commit`: `lint-staged` **then** `pnpm -F web scan`
-  * `pre-push`: `pnpm -r typecheck && pnpm -r test`
-  * `commit-msg`: lightweight regex guard (see appendix)
+  - `pre-commit`: `lint-staged` **then** `pnpm -F web scan`
+  - `pre-push`: `pnpm -r typecheck && pnpm -r test && pnpm -r lint && pnpm -F web dupes`
+  - `commit-msg`: lightweight regex guard (see appendix)
 
 ---
 
 ## 6) Lint/Format/Scan
 
-* **ESLint** flat config: typescript-eslint, jsx-a11y, tailwindcss, import/order
-* **Prettier** (+ Tailwind class sorter)
-* **ast-grep** rules (minimal):
+- **ESLint** flat config: typescript-eslint, jsx-a11y, tailwindcss, import/order
+- **Prettier** (+ Tailwind class sorter)
+- **ast-grep** rules (minimal):
 
 ```yaml
 # scripts/ast-grep.yml
@@ -170,8 +170,14 @@ rules:
     language: tsx
     pattern: fetch($A)
     constraints:
-      any:
-        - inside: { kind: StringLiteral, regex: "^\s*['\"]use client['\"]" }
+      all:
+        - inside:
+            kind: Program
+            has:
+              kind: ExpressionStatement
+              has:
+                kind: StringLiteral
+                text: '"use client"'
   - id: no-console-log
     message: "Use a logger or remove console.log"
     severity: warning
@@ -179,16 +185,16 @@ rules:
     pattern: console.log($$$)
 ```
 
-* **knip** for dead code; **jscpd** for duplication during refactors.
+- **knip** for dead code; **jscpd** for duplication during refactors.
 
 ---
 
 ## 7) Testing (minimal but effective)
 
-* **Per feature/commit:** Add/update tests covering new/changed paths (prefer component tests for UI; MSW for network).
-* **Unit/Component:** Vitest + Testing Library; **MSW** for HTTP.
-* **Smoke (programmatic UI):** **chrome-devtools MCP** (navigate/fill/assert); keep < 90s.
-* **tmux loop (watch):**
+- **Per feature/commit:** Add/update tests covering new/changed paths (prefer component tests for UI; MSW for network).
+- **Unit/Component:** Vitest + Testing Library; **MSW** for HTTP.
+- **Smoke (programmatic UI):** **chrome-devtools MCP** (navigate/fill/assert); keep < 90s.
+- **tmux loop (watch):**
 
 ```bash
 tmux new-session -d -s test 'pnpm -F web test:browser --watch'
@@ -197,30 +203,30 @@ tmux attach -t test
 
 > One-liner variant: `tmux new -s test 'pnpm -F web test:browser --watch'`
 
-* **Rule:** Bug -> failing test -> fix -> green.
+- **Rule:** Bug → failing test → fix → green.
 
 ---
 
 ## 8) Data, Errors, Caching
 
-* **Server actions** for mutations; include **idempotency keys**; optimistic UI with rollback.
-* **Errors:** Zod-validated shapes mapped to user messages; on submit focus first invalid field.
-* **Caching:** `revalidate` where safe; tag invalidation on mutation.
+- **Server actions** for mutations; include **idempotency keys**; optimistic UI with rollback.
+- **Errors:** Zod-validated shapes mapped to user messages; on submit focus first invalid field.
+- **Caching:** `revalidate` where safe; tag invalidation on mutation.
 
 ---
 
 ## 8a) Modern React (minimize `useEffect`)
 
-**Default:** Avoid `useEffect` for data fetching, derived state, prop->state sync, or URL sync.
+**Default:** Avoid `useEffect` for data fetching, derived state, prop→state sync, or URL sync.
 Prefer:
 
-* **Server Components** + async loaders; pass data via props.
-* **Server Actions** for mutations; pending UI via `useFormStatus` / `useActionState` (if available).
-* **URL state** with `nuqs` (not effects).
-* **Suspense** for async UI boundaries; stream where appropriate.
-* **Memoization** only when profiling shows need (React DevTools/React Scan). Don't pre-optimize with `useMemo/useCallback`.
+- **Server Components** + async loaders; pass data via props.
+- **Server Actions** for mutations; pending UI via `useFormStatus` / `useActionState` (if available).
+- **URL state** with `nuqs` (not effects).
+- **Suspense** for async UI boundaries; stream where appropriate.
+- **Memoization** only when profiling shows need (React DevTools/React Scan). Don’t pre-optimize with `useMemo/useCallback`.
 
-**Legit `useEffect` cases:** imperative escapes only - event listeners, focus management, observers (Resize/Intersection), 3rd-party widgets, analytics pings. Always cleanup.
+**Legit `useEffect` cases:** imperative escapes only — event listeners, focus management, observers (Resize/Intersection), 3rd‑party widgets, analytics pings. Always cleanup.
 
 **If React Compiler is enabled:** Keep components pure; remove unnecessary memoization; avoid stale closures; trust the compiler for rerender optimization.
 
@@ -228,10 +234,10 @@ Prefer:
 
 ## 8b) Bleeding-edge toggles (opt-in)
 
-* **React Compiler**: enable when available; keep components pure; remove unnecessary memo; let compiler optimize.
-* **`server-only` / `client-only`**: import to assert boundary misuse early.
-* **Suspense/Streaming**: prefer async RSC + `<Suspense>` boundaries for slow sections.
-* **Tag-based revalidation**: use fetch/cache tags + invalidate on mutations where helpful.
+- **React Compiler**: enable when available; keep components pure; remove unnecessary memo; let compiler optimize.
+- **`server-only` / `client-only`**: import to assert boundary misuse early.
+- **Suspense/Streaming**: prefer async RSC + `<Suspense>` boundaries for slow sections.
+- **Tag-based revalidation**: use fetch/cache tags + invalidate on mutations where helpful.
 
 ---
 
@@ -248,19 +254,19 @@ Prefer:
 
 ## 10) Performance (budgets)
 
-* Mutations **P95 < 500 ms**; profile with CPU/network throttling.
-* Prevent CLS: explicit image sizes/reserved space; preload only above-fold.
-* Virtualize large lists (e.g., `virtua`); track & minimize re-renders.
+- Mutations **P95 < 500 ms**; profile with CPU/network throttling.
+- Prevent CLS: explicit image sizes/reserved space; preload only above-fold.
+- Virtualize large lists (e.g., `virtua`); track & minimize re-renders.
 
 ---
 
 ## 11) Security Essentials
 
-* Secrets via env (Vercel). **Never** commit/log secrets; `NEXT_PUBLIC_` only for client.
-* Sanitize any HTML (DOMPurify); prefer React escaping; set CSP where possible.
-* Middleware order: **rateLimit -> cors -> sanitize -> auth -> logger**.
-* SSR/edge guards; secure cookies; CSRF for cross-origin posts.
-* **NEVER** expose internal error details to clients.
+- Secrets via env (Vercel). **Never** commit/log secrets; `NEXT_PUBLIC_` only for client.
+- Sanitize any HTML (DOMPurify); prefer React escaping; set CSP where possible.
+- Middleware order: **rateLimit → cors → sanitize → auth → logger**.
+- SSR/edge guards; secure cookies; CSRF for cross-origin posts.
+- **NEVER** expose internal error details to clients.
 
 **Minimal middleware skeleton**
 
@@ -308,7 +314,7 @@ jobs:
       - run: pnpm -F web scan && pnpm -F web dupes
 ```
 
-* PR -> Vercel preview; all checks green -> merge to `main` -> production.
+- PR → Vercel preview; all checks green → merge to `main` → production.
 
 **Auto-fix PR Issues (opt-in, concise)**
 
@@ -347,30 +353,30 @@ jobs:
 
 ### PR
 
-* [ ] Conventional Commit title
-* [ ] **Tests written/updated for each feature/commit**
-* [ ] Typecheck / Lint / Unit tests **green**
-* [ ] Smoke (chrome-devtools MCP) **passes** if UI affected
-* [ ] A11y spot-check (keyboard, focus rings, labels)
-* [ ] Screenshots/video for UI changes
-* [ ] `/docs` updated (specs/tracking) if behavior or API changed
+- [ ] Conventional Commit title
+- [ ] **Tests written/updated for each feature/commit**
+- [ ] Typecheck / Lint / Unit tests **green**
+- [ ] Smoke (chrome-devtools MCP) **passes** if UI affected
+- [ ] A11y spot-check (keyboard, focus rings, labels)
+- [ ] Screenshots/video for UI changes
+- [ ] `/docs` updated (specs/tracking) if behavior or API changed
 
 ### Security Review (every PR)
 
-* [ ] No secrets in code/logs (`NEXT_PUBLIC_` only on client)
-* [ ] Input validation at all boundaries (Zod)
-* [ ] No internal error details leaked to clients
-* [ ] Rate limiting on public endpoints
-* [ ] Webhook signatures verified (where applicable)
+- [ ] No secrets in code/logs (`NEXT_PUBLIC_` only on client)
+- [ ] Input validation at all boundaries (Zod)
+- [ ] No internal error details leaked to clients
+- [ ] Rate limiting on public endpoints
+- [ ] Webhook signatures verified (where applicable)
 
 ### Human Review Required
 
-* AuthN/AuthZ changes
-* DB migrations
-* Payments & billing
-* Security middleware modifications
-* External service integrations
-* Anything touching PII
+- AuthN/AuthZ changes
+- DB migrations
+- Payments & billing
+- Security middleware modifications
+- External service integrations
+- Anything touching PII
 
 ## Appendix - Drop-in Config (concise)
 
@@ -407,16 +413,12 @@ pnpm exec lint-staged && pnpm -F web scan
 
 **`.husky/pre-push`**
 
-````sh
-#!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
-
-pnpm -r typecheck && pnpm -r test
 ```sh
 #!/usr/bin/env sh
 . "$(dirname "$0")/_/husky.sh"
+
 pnpm -r typecheck && pnpm -r test && pnpm -r lint && pnpm -F web dupes
-````
+```
 
 **`.husky/commit-msg`** (light Conventional-Commit guard)
 
@@ -440,8 +442,14 @@ rules:
     language: tsx
     pattern: fetch($A)
     constraints:
-      any:
-        - inside: { kind: StringLiteral, regex: "^\s*['\"]use client['\"]" }
+      all:
+        - inside:
+            kind: Program
+            has:
+              kind: ExpressionStatement
+              has:
+                kind: StringLiteral
+                text: '"use client"'
   - id: no-console-log
     message: Use a logger or remove console.log
     severity: warning
