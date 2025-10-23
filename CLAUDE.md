@@ -9,6 +9,10 @@
 - Use `/clear` between tasks; offload long checklists to scratchpads the agent maintains.
 - For automation, run `claude -p "..." --output-format stream-json` and gate with scripts/tests.
 
+in all Interactions
+▌ and comment messages, Be extremely concise and sacrifice grammar for
+▌ the sake of concision.
+
 ---
 
 ## 0) Engineering Principles

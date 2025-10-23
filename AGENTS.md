@@ -1,6 +1,10 @@
 # AGENTS.md (Merged Lite)
 
-**Purpose:** Lean, repo‑specific guardrails for Codex. Be precise; skip agent meta. Defaults: **pnpm**, Next.js App Router + TypeScript, Tailwind + shadcn/ui, Vitest, Vercel.
+**Purpose:** Lean, repo-specific guardrails for Codex. Be precise; skip agent meta. Defaults: **pnpm**, Next.js App Router + TypeScript, Tailwind + shadcn/ui, Vitest, Vercel.
+
+in all Interactions
+▌ and comment messages, Be extremely concise and sacrifice grammar for
+▌ the sake of concision.
 
 ---
 
