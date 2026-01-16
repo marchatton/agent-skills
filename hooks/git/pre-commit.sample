@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Pre-commit hook template
+# Runs pnpm lint/format if available, otherwise silently passes.
+# Edit this file to enable/customize checks.
+
+set -e
+
+# Only run if package.json exists
+if [ ! -f "package.json" ]; then
+  exit 0
+fi
+
+# Check if pnpm is available
+if ! command -v pnpm &> /dev/null; then
+  exit 0
+fi
+
+# Run lint if script exists (silent if not)
+if pnpm run --silent lint --help &> /dev/null 2>&1; then
+  pnpm run --silent lint || exit 1
+fi
+
+# Run format check if script exists (silent if not)
+if pnpm run --silent format:check --help &> /dev/null 2>&1; then
+  pnpm run --silent format:check || exit 1
+fi
+
+exit 0

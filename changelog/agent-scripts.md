@@ -8,6 +8,26 @@ Rules
 - Move items to Sync (include) or Ignore with a short rationale.
 - Keep lists sorted by path for quick diffing.
 
+## Ported (2026-01-16)
+
+The following items were ported to canonical locations:
+
+Commands (→ commands/)
+- docs/slash-commands/handoff.md → commands/c-handoff.md
+- docs/slash-commands/pickup.md → commands/c-pickup.md
+- docs/slash-commands/landpr.md → commands/c-landpr.md
+
+Scripts (→ scripts/)
+- scripts/committer → scripts/committer
+
+Skills (→ skills/)
+- skills/frontend-design/ → skills/work/frontend-design/
+- skills/markdown-converter/ → skills/utilities/markdown-converter/
+- skills/nano-banana-pro/ → skills/utilities/nano-banana-pro/
+- skills/openai-image-gen/ → skills/utilities/openai-image-gen/
+- skills/oracle/ → skills/utilities/oracle/
+- skills/video-transcript-downloader/ → skills/utilities/video-transcript-downloader/
+
 ## Fork (one-off)
 
 - inspiration/agent-scripts/AGENTS.MD - one-off fork to `agents/` for baseline guardrails

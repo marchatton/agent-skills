@@ -8,6 +8,26 @@ Rules
 - Move items to Fork or Sync or Ignore with a short rationale.
 - Keep lists sorted by path for quick diffing.
 
+## Ported (2026-01-16)
+
+The following items were ported to canonical locations:
+
+Commands (→ commands/)
+- workflows/plan.md → commands/wf-plan.md
+- workflows/work.md → commands/wf-work.md
+- workflows/review.md → commands/wf-review.md
+- workflows/compound.md → commands/wf-compound.md
+
+Skills (→ skills/)
+- skills/agent-browser/ → skills/utilities/agent-browser/
+- skills/agent-native-architecture/ → skills/review/agent-native-architecture/
+- skills/compound-docs/ → skills/compound/compound-docs/
+- skills/create-agent-skills/ → skills/utilities/create-agent-skills/
+- skills/every-style-editor/ → skills/utilities/every-style-editor/
+- skills/file-todos/ → skills/utilities/file-todos/
+- skills/gemini-imagegen/ → skills/utilities/gemini-imagegen/
+- skills/skill-creator/ → skills/utilities/skill-creator/
+
 ## Fork (one-off)
 
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/CLAUDE.md - upstream config; one-off fork for agents.md structure
@@ -47,7 +67,6 @@ Skills
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/every-style-editor/ - Every copy style
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/file-todos/ - file-based todos
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/gemini-imagegen/ - image gen
-- inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/git-worktree/ - worktree ops
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/skill-creator/ - skill scaffolding
 
 ## Ignore
@@ -103,7 +122,8 @@ Agents (language-specific)
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/agents/workflow/lint.md - Ruby/ERB lint
 
 Skills (excluded)
-- inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/frontend-design/ - UI build
+- inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/frontend-design/ - UI build (using agent-scripts version instead)
+- inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/git-worktree/ - worktree ops (avoid worktrees by default)
 - inspiration/compound-engineering-plugin/plugins/compound-engineering/skills/rclone/ - file transfer
 
 Skills (language-specific)

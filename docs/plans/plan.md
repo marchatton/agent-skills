@@ -16,7 +16,7 @@ This repo will contain:
 - **guardrails** (`AGENTS.md`)
 - **cheatsheet** (`cheatsheet.md`)
 
-We will also mirror upstream inspirations into `inspiration/` (Compound Engineering + agent-skills/agent-scripts) and track what we keep vs fork vs ignore under `changelog/`. The scope is to **port over everything from those repos** and then make it fit together under the constraints below.
+We will also mirror upstream inspirations into `inspiration/` (Compound Engineering + agent-skills/agent-scripts) and track what we keep vs fork vs ignore under `changelog/`. The scope is to **triage 100% of items from those repos; port only items that can be made compliant quickly; keep the rest in `inspiration/` and mark Ignore with rationale**.
 
 ## Explore is product strategy and experimentation
 Explore is where we:
@@ -176,52 +176,51 @@ Claude-only features must be tagged `CLAUDE_ONLY`.
 - `wf-explore`, `wf-shape`, `wf-plan`, `wf-work`, `wf-review`, `wf-release`, `wf-compound`
 - `c-handoff`, `c-pickup`, `c-landpr`
 
+**Note:** `wf-explore`, `wf-shape`, and `wf-release` are **net-new** (not ported from upstream). v1 scope:
+- `wf-explore`: produce 1-page opportunity brief + experiment list (no deep tooling)
+- `wf-shape`: produce PRD/spec + journey + architecture sketch
+- `wf-release`: produce release checklist + comms snippet (no video automation)
+
 `scripts/verify.sh` must assert these filenames exist in `commands/`.
 
+## Workflow artifact contract (canonical paths for target repos)
+
+These paths are conventions for **target repos** that use the templates (not this templates repo itself). Commands document these paths in their outputs.
+
+| Artifact | Path | Created by |
+|----------|------|------------|
+| **Plan** | `docs/plans/<type>-<slug>.md` | `wf-plan` |
+| **Todos** | `docs/todos/{id}-{status}-{priority}-{desc}.md` | `wf-review` (file-todos skill) |
+| **Solution doc** | `docs/solutions/<category>/<slug>.md` | `wf-compound` |
+
+### Plan file naming
+- Use conventional commit prefix + descriptive slug
+- Examples: `docs/plans/feat-user-auth.md`, `docs/plans/fix-cart-race.md`, `docs/plans/refactor-api-client.md`
+
+### Todo file naming
+- `{id}-{status}-{priority}-{description}.md`
+- **ID format**: sequential numeric (`001`, `002`, ...) for single-lane; timestamp-based (`20260116-153012`) for parallel lanes to avoid collisions
+- Status: `pending` → `ready` → `complete`
+- Priority: `p1` (critical), `p2` (important), `p3` (nice-to-have)
+- Example: `001-pending-p1-path-traversal.md` or `20260116-153012-pending-p1-path-traversal.md`
+
+### Solution doc categories
+Auto-detected from problem type:
+- `build-errors/`, `test-failures/`, `runtime-errors/`, `performance-issues/`
+- `database-issues/`, `security-issues/`, `ui-bugs/`, `integration-issues/`, `logic-errors/`
+
 ## Avoiding context rot: default to handoff + rehydrate (not fork)
-We do NOT make “forking threads” the default parallelism pattern.
+We do NOT make "forking threads" the default parallelism pattern.
 
 Default pattern:
-1) Generate a **pack** file (context bundle) for the task.
-2) Run one or more lanes as fresh sessions that read the pack.
-3) Each lane writes output artefacts to files.
-4) Merge.
+1) The **plan file** serves as the context bundle (no separate pack file).
+2) Run one or more review lanes as fresh sessions reading the plan.
+3) Each lane writes todos to `todos/`.
+4) Main session synthesizes and continues.
 
-This gives scoped context without relying on runner sub-agents.
-
-### Pack file standard
-Path example: `docs/packs/<slug>.md` or `reviews/<slug>/pack.md`
-
-Pack MUST include:
-- Objective (1–3 bullets)
-- Scope boundaries (what not to do)
-- Branch/PR info (if any)
-- Changed files list (or command to generate it)
-- Acceptance criteria (copy from plan)
-- Verification commands
-- Any key links / references
-
-Lane outputs MUST be written to stable paths:
-- `reviews/<slug>/security.md`
-- `reviews/<slug>/performance.md`
-- `reviews/<slug>/correctness.md`
-- `reviews/<slug>/dx.md`
-- `reviews/<slug>/ux.md`
-- `reviews/<slug>/summary.md` (merged)
-
-### “Parallel lanes” in practice (Codex and Claude)
-We support two practical ways:
-
-A) Multiple sessions (default)
-- Open 2–4 new sessions (terminal tabs is fine).
-- Run `c-pickup` with the pack path.
-- Run the lane command (or lane skill) and write output to its file.
-- Main session runs the merge step.
-
-B) Codex Cloud (optional accelerator, not required)
-- Use Codex cloud tasks to run lanes in parallel.
-- Apply lane outputs back locally.
-(Keep this optional and documented, but do not make it a dependency for the workflow.)
+For parallel lanes in practice:
+- **Multiple sessions (default)**: Open 2–4 terminal tabs, run `c-pickup` with plan path, run lane, write todos.
+- **Codex Cloud (optional)**: Use cloud tasks for parallel execution (not required).
 
 ## Compounding: does it follow the plugin?
 Yes in philosophy and outcome:
@@ -230,7 +229,7 @@ Yes in philosophy and outcome:
 - make future work easier
 
 We will port the plugin’s compounding concepts, but implement them with:
-- pack-driven context
+- plan file as context bundle
 - lane outputs as files
 - optional parallel execution
 - no mandatory sub-agents
@@ -251,6 +250,11 @@ We will port the plugin’s compounding concepts, but implement them with:
   - Skills (grouped by category) with 1-line purpose
   - Hooks (git shared + Claude-only) with 1-line purpose
   - Common verification commands
+
+**Lintable structure (required for `verify.sh`):**
+- Must contain headings: `## Commands`, `## Skills`, `## Hooks`
+- Under `## Commands`: one bullet per `commands/*.md` filename
+- Under `## Skills`: one bullet per `skills/<cat>/<skill>/` path
 
 ### 3) Docs
 - `docs/plans/plan.md` (this file)
@@ -277,7 +281,6 @@ Unlike a minimal “v1 set”, the scope here is:
   - no worktrees default
   - skill format constraints
   - commands naming and installation
-  - tagging (CLAUDE_ONLY, STACK_SPECIFIC, OPTIONAL)
 
 This includes:
 - all upstream skills that are useful
@@ -309,7 +312,7 @@ A coding agent should be able to implement this PRD and validate:
 - `changelog/compound-engineering-plugin.md` and `changelog/agent-scripts.md` are updated to reflect reality after porting, with clear Fork/Sync/Ignore/Unclassified decisions.
 - `scripts/verify.sh` passes and prints the manual smoke steps.
 - Manual smoke:
-  - run `wf-plan` in Codex and confirm it creates the expected output files (plan, pack, review artefacts, solution doc).
+  - run `wf-plan` in Codex and confirm it creates a plan file in `docs/plans/`.
 
 ## Tasks and sub tasks (detailed implementation plan)
 
@@ -442,12 +445,20 @@ Destination:
 - skill folder names: lowercase, digits, hyphens, verb-led where possible.
 - framework skills: prefix with framework (`react-`, `next-`, `cloudflare-`).
 
-4.3 Tag stack-specific content
-- Use consistent inline tags in content:
-  - `STACK_SPECIFIC: rails`
-  - `STACK_SPECIFIC: ios`
-  - `OPTIONAL: worktrees`
-  - `CLAUDE_ONLY: ...`
+4.3 Attribution for ported content
+After the YAML frontmatter (which contains only `name` and `description`), include attribution:
+
+```markdown
+---
+name: skill-name
+description: This skill should be used when...
+---
+
+> **Attribution:** Ported from [compound-engineering](https://github.com/kieranklaassen/compound-engineering-plugin) by Kieran Klaassen.
+
+# Skill Title
+...
+```
 
 4.4 Deduplicate command names
 - If both repos define the same command, pick one canonical file.
@@ -467,11 +478,12 @@ Destination:
 - Install `hooks/git/*` into `.git/hooks/` and chmod +x.
 - Print what was installed.
 
-### 6) Hooks (shared and Claude-only)
+### 6) Hooks (ultra-minimal, template-based)
 6.1 Shared git hooks in `hooks/git/`
-- `pre-commit.sample` (pnpm lint/format if present)
-- `pre-push.sample` (pnpm test if present)
-- Must degrade gracefully if scripts don’t exist (print guidance, don’t brick repos).
+- Ship as **templates only**: `pre-commit.sample`, `pre-push.sample`
+- Install script copies to `.git/hooks/` but prints: "edit to enable checks"
+- Hooks run `pnpm -s <script>` **only if** `package.json` exists **and** script exists; otherwise silent (no output)
+- Never brick repos or produce noisy errors
 
 6.2 Claude-only hooks (optional)
 - Keep under `hooks/claude-only/`
