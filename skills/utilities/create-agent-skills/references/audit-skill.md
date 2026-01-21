@@ -37,7 +37,7 @@ cat ~/.claude/skills/{skill-name}/SKILL.md
 
 # Check for workflows and references
 ls ~/.claude/skills/{skill-name}/
-ls ~/.claude/skills/{skill-name}/workflows/ 2>/dev/null
+ls ~/.claude/skills/{skill-name}/references/ 2>/dev/null
 ls ~/.claude/skills/{skill-name}/references/ 2>/dev/null
 ```
 

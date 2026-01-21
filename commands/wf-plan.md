@@ -27,14 +27,16 @@ Do not proceed until you have a clear feature description from the user.
 ### 1. Repository Research & Context Gathering
 
 <thinking>
-First, I need to understand the project's conventions and existing patterns, leveraging all available resources and use paralel subagents to do this.
+First, understand the project's conventions and existing patterns using direct repo research.
 </thinking>
 
-Run these three agents in parallel at the same time:
+**Research checklist:**
 
-- Task repo-research-analyst(feature_description)
-- Task best-practices-researcher(feature_description)
-- Task framework-docs-researcher(feature_description)
+- [ ] Read `AGENTS.md` and any referenced docs for conventions
+- [ ] Scan `docs/` for related plans and solutions; note parallels
+- [ ] Use `rg` to find similar features, error messages, or modules
+- [ ] Identify relevant tests, migrations, or APIs
+- [ ] Capture external docs or design links mentioned by the user
 
 **Reference Collection:**
 
@@ -69,17 +71,13 @@ Think like a product manager - what would make this issue clear and actionable? 
 - [ ] Gather supporting materials (error logs, screenshots, design mockups)
 - [ ] Prepare code examples or reproduction steps if applicable, name the mock filenames in the lists
 
-### 3. SpecFlow Analysis
+### 3. Spec Gap Analysis
 
-After planning the issue structure, run SpecFlow Analyzer to validate and refine the feature specification:
+After planning the issue structure, perform a quick spec gap pass:
 
-- Task spec-flow-analyzer(feature_description, research_findings)
-
-**SpecFlow Analyzer Output:**
-
-- [ ] Review SpecFlow analysis results
-- [ ] Incorporate any identified gaps or edge cases into the issue
-- [ ] Update acceptance criteria based on SpecFlow findings
+- [ ] Identify missing edge cases, error states, and non-happy paths
+- [ ] Confirm data models, permissions, and rollout constraints
+- [ ] Add acceptance criteria for tests and observability
 
 ### 4. Choose Implementation Detail Level
 
@@ -376,38 +374,36 @@ end
 **Filename:** Use the kebab-case filename from Step 2 Title & Categorization.
 
 ```
-plans/<type>-<descriptive-name>.md
+docs/plans/<type>-<descriptive-name>.md
 ```
 
 Examples:
-- ✅ `plans/feat-user-authentication-flow.md`
-- ✅ `plans/fix-checkout-race-condition.md`
-- ✅ `plans/refactor-api-client-extraction.md`
-- ❌ `plans/plan-1.md` (not descriptive)
-- ❌ `plans/new-feature.md` (too vague)
-- ❌ `plans/feat: user auth.md` (invalid characters)
+- ✅ `docs/plans/feat-user-authentication-flow.md`
+- ✅ `docs/plans/fix-checkout-race-condition.md`
+- ✅ `docs/plans/refactor-api-client-extraction.md`
+- ❌ `docs/plans/plan-1.md` (not descriptive)
+- ❌ `docs/plans/new-feature.md` (too vague)
+- ❌ `docs/plans/feat: user auth.md` (invalid characters)
 
 ## Post-Generation Options
 
-After writing the plan file, use the **AskUserQuestion tool** to present these options:
+After writing the plan file, ask the user to choose next steps and wait for a response:
 
-**Question:** "Plan ready at `plans/<issue_title>.md`. What would you like to do next?"
+**Question:** "Plan ready at `docs/plans/<issue_title>.md`. What would you like to do next?"
 
 **Options:**
 1. **Open plan in editor** - Open the plan file for review
-2. **Run `/deepen-plan`** - Enhance each section with parallel research agents (best practices, performance, UI)
+2. **Run `/deepen-plan`** - Enhance each section with additional research (best practices, performance, UI)
 3. **Run `/plan_review`** - Get feedback from reviewers (DHH, Kieran, Simplicity)
 4. **Start `/wf-work`** - Begin implementing this plan locally
-5. **Start `/wf-work` on remote** - Begin implementing in Claude Code on the web (use `&` to run in background)
-6. **Create Issue** - Create issue in project tracker (GitHub/Linear)
-7. **Simplify** - Reduce detail level
+5. **Create Issue** - Create issue in project tracker (GitHub/Linear)
+6. **Simplify** - Reduce detail level
 
 Based on selection:
-- **Open plan in editor** → Run `open plans/<issue_title>.md` to open the file in the user's default editor
+- **Open plan in editor** → Run `open docs/plans/<issue_title>.md` to open the file in the user's default editor
 - **`/deepen-plan`** → Call the /deepen-plan command with the plan file path to enhance with research
 - **`/plan_review`** → Call the /plan_review command with the plan file path
 - **`/wf-work`** → Call the /wf-work command with the plan file path
-- **`/wf-work` on remote** → Run `/wf-work plans/<issue_title>.md &` to start work in background for Claude Code web
 - **Create Issue** → See "Issue Creation" section below
 - **Simplify** → Ask "What should I simplify?" then regenerate simpler version
 - **Other** (automatically provided) → Accept free text for rework or specific changes
@@ -428,13 +424,13 @@ When user selects "Create Issue", detect their project tracker from AGENTS.md:
    ```bash
    # Extract title from plan filename (kebab-case to Title Case)
    # Read plan content for body
-   gh issue create --title "feat: [Plan Title]" --body-file plans/<issue_title>.md
+   gh issue create --title "feat: [Plan Title]" --body-file docs/plans/<issue_title>.md
    ```
 
 3. **If Linear:**
    ```bash
    # Use linear CLI if available, or provide instructions
-   # linear issue create --title "[Plan Title]" --description "$(cat plans/<issue_title>.md)"
+   # linear issue create --title "[Plan Title]" --description "$(cat docs/plans/<issue_title>.md)"
    ```
 
 4. **If no tracker configured:**

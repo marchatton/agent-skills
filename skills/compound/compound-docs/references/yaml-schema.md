@@ -1,6 +1,6 @@
 # YAML Frontmatter Schema
 
-**See `.claude/skills/codify-docs/schema.yaml` for the complete schema specification.**
+**See `references/schema.yaml` for the complete schema specification.**
 
 ## Required Fields
 

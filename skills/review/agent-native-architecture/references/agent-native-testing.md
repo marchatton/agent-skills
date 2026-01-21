@@ -457,23 +457,23 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup
-        run: npm install
+        run: pnpm install
 
       - name: Run Parity Tests
-        run: npm run test:parity
+        run: pnpm run test:parity
 
       - name: Run Capability Tests
-        run: npm run test:capabilities
+        run: pnpm run test:capabilities
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Check System Prompt Completeness
-        run: npm run test:system-prompt
+        run: pnpm run test:system-prompt
 
       - name: Verify Capability Map
         run: |
           # Ensure capability map is up to date
-          npm run generate:capability-map
+          pnpm run generate:capability-map
           git diff --exit-code capability-map.ts
 ```
 

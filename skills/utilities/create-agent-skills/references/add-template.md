@@ -36,7 +36,7 @@ Gather requirements:
 
 ## Step 5: Write Template File
 
-Create `templates/{template-name}.md` with:
+Create `assets/{template-name}.md` with:
 - Clear section markers
 - `{{PLACEHOLDER}}` syntax for variable content
 - Brief inline guidance where helpful
@@ -48,7 +48,7 @@ Find the workflow that produces this output. Add:
 ```xml
 <process>
 ...
-N. Read `templates/{template-name}.md`
+N. Read `assets/{template-name}.md`
 N+1. Copy template structure
 N+2. Fill each placeholder based on gathered context
 ...
@@ -66,7 +66,7 @@ Invoke the skill workflow and verify:
 
 <success_criteria>
 Template is complete when:
-- [ ] templates/ directory exists
+- [ ] assets/ directory exists
 - [ ] Template file has clear structure with placeholders
 - [ ] At least one workflow references the template
 - [ ] Workflow instructions explain when/how to use template

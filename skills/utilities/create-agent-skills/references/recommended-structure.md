@@ -6,11 +6,9 @@ The optimal structure for complex skills separates routing, workflows, and knowl
 ```
 skill-name/
 ├── SKILL.md              # Router + essential principles (unavoidable)
-├── workflows/            # Step-by-step procedures (how)
-│   ├── workflow-a.md
-│   ├── workflow-b.md
-│   └── ...
-└── references/           # Domain knowledge (what)
+└── references/           # Workflows (how) + knowledge (what)
+    ├── workflow-a.md
+    ├── workflow-b.md
     ├── reference-a.md
     ├── reference-b.md
     └── ...
@@ -73,9 +71,9 @@ What would you like to do?
 <routing>
 | Response | Workflow |
 |----------|----------|
-| 1, "keyword", "keyword" | `workflows/option-a.md` |
-| 2, "keyword", "keyword" | `workflows/option-b.md` |
-| 3, "keyword", "keyword" | `workflows/option-c.md` |
+| 1, "keyword", "keyword" | `references/option-a.md` |
+| 2, "keyword", "keyword" | `references/option-b.md` |
+| 3, "keyword", "keyword" | `references/option-c.md` |
 | 4, other | Clarify, then select |
 
 **After reading the workflow, follow it exactly.**
@@ -156,7 +154,7 @@ Put unavoidable content in SKILL.md:
 - Intake question
 - Routing logic
 
-Put workflow-specific content in workflows/:
+Put workflow-specific content in references/:
 - Step-by-step procedures
 - Required references for that workflow
 - Success criteria for that workflow

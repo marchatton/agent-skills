@@ -215,7 +215,7 @@ We do NOT make "forking threads" the default parallelism pattern.
 Default pattern:
 1) The **plan file** serves as the context bundle (no separate pack file).
 2) Run one or more review lanes as fresh sessions reading the plan.
-3) Each lane writes todos to `todos/`.
+3) Each lane writes todos to `docs/todos/`.
 4) Main session synthesizes and continues.
 
 For parallel lanes in practice:
@@ -532,3 +532,8 @@ Checks:
 - `scripts/init_skill.py` and `scripts/package_skill.py` are referenced in `AGENTS.md`. Keep as TODO notes only for now, do not block porting.
 - Worktrees are avoided by default. If an upstream item relies on worktrees, port it as OPTIONAL or rewrite it.
 - Explore is part of the workflow, but we will not prioritise deep exploration tooling until the rest of the loop feels solid.
+
+## Claude later (deferred)
+- Re-add Claude invocation examples and `.claude/commands` install docs; update cheatsheet.
+- Restore Claude-only flows: Task/subagents, AskUserQuestion, optional worktrees, figma-design-sync, imgup.
+- Tag CLAUDE_ONLY sections across commands/skills; isolate in references where needed.

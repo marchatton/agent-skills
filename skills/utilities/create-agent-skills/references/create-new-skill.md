@@ -65,9 +65,8 @@ If research requested:
 ```
 skill-name/
 ├── SKILL.md (router + principles)
-├── workflows/ (procedures - FOLLOW)
-├── references/ (knowledge - READ)
-├── templates/ (output structures - COPY + FILL)
+├── references/ (procedures + knowledge)
+├── assets/ (output structures - COPY + FILL)
 └── scripts/ (reusable code - EXECUTE)
 ```
 
@@ -77,7 +76,7 @@ Factors favoring router pattern:
 - Essential principles that must not be skipped
 - Skill likely to grow over time
 
-**Consider templates/ when:**
+**Consider assets/ when:**
 - Skill produces consistent output structures (plans, specs, reports)
 - Structure matters more than creative generation
 

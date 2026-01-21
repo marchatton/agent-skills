@@ -25,9 +25,8 @@ Scripts live in `scripts/` within the skill directory:
 ```
 skill-name/
 ├── SKILL.md
-├── workflows/
 ├── references/
-├── templates/
+├── assets/
 └── scripts/
     ├── deploy.sh
     ├── setup.py

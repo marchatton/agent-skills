@@ -232,18 +232,18 @@ What would you like to do?
 6. Ship/release
 7. Something else
 
-**Then read the matching workflow from `workflows/` and follow it.**
+**Then read the matching workflow from `references/` and follow it.**
 </intake>
 
 <routing>
 | Response | Workflow |
 |----------|----------|
-| 1, "new", "create", "build", "start" | `workflows/build-new-{thing}.md` |
-| 2, "broken", "fix", "debug", "crash", "bug" | `workflows/debug-{thing}.md` |
-| 3, "add", "feature", "implement", "change" | `workflows/add-feature.md` |
-| 4, "test", "tests", "TDD", "coverage" | `workflows/write-tests.md` |
-| 5, "slow", "optimize", "performance", "fast" | `workflows/optimize-performance.md` |
-| 6, "ship", "release", "deploy", "publish" | `workflows/ship-{thing}.md` |
+| 1, "new", "create", "build", "start" | `references/build-new-{thing}.md` |
+| 2, "broken", "fix", "debug", "crash", "bug" | `references/debug-{thing}.md` |
+| 3, "add", "feature", "implement", "change" | `references/add-feature.md` |
+| 4, "test", "tests", "TDD", "coverage" | `references/write-tests.md` |
+| 5, "slow", "optimize", "performance", "fast" | `references/optimize-performance.md` |
+| 6, "ship", "release", "deploy", "publish" | `references/ship-{thing}.md` |
 | 7, other | Clarify, then select workflow or references |
 </routing>
 
@@ -285,7 +285,7 @@ All in `references/`:
 <workflows_index>
 ## Workflows
 
-All in `workflows/`:
+All in `references/`:
 
 | File | Purpose |
 |------|---------|
@@ -513,7 +513,7 @@ ls -R ~/.claude/skills/expertise/{domain-name}
 
 ## Step 11: Document in create-plans
 
-Update `~/.claude/skills/create-plans/SKILL.md` to reference this new domain:
+Update the create-plans skill SKILL.md to reference this new domain:
 
 Add to the domain inference table:
 ```markdown

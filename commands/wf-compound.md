@@ -8,11 +8,11 @@ argument-hint: "[optional: brief context about the fix]"
 
 # /wf-compound
 
-Coordinate multiple subagents working in parallel to document a recently solved problem.
+Document a recently solved problem using the compound-docs skill.
 
 ## Purpose
 
-Captures problem solutions while context is fresh, creating structured documentation in `docs/solutions/` with YAML frontmatter for searchability and future reference. Uses parallel subagents for maximum efficiency.
+Captures problem solutions while context is fresh, creating structured documentation in `docs/solutions/` with YAML frontmatter for searchability and future reference.
 
 **Why "compound"?** Each documented solution compounds your team's knowledge. The first time you solve a problem takes research. Document it, and the next occurrence takes minutes. Knowledge compounds.
 
@@ -23,53 +23,13 @@ Captures problem solutions while context is fresh, creating structured documenta
 /wf-compound [brief context]    # Provide additional context hint
 ```
 
-## Execution Strategy: Parallel Subagents
+## Execution Strategy (Single Pass)
 
-This command launches multiple specialized subagents IN PARALLEL to maximize efficiency:
-
-### 1. **Context Analyzer** (Parallel)
-   - Extracts conversation history
-   - Identifies problem type, component, symptoms
-   - Validates against CORA schema
-   - Returns: YAML frontmatter skeleton
-
-### 2. **Solution Extractor** (Parallel)
-   - Analyzes all investigation steps
-   - Identifies root cause
-   - Extracts working solution with code examples
-   - Returns: Solution content block
-
-### 3. **Related Docs Finder** (Parallel)
-   - Searches `docs/solutions/` for related documentation
-   - Identifies cross-references and links
-   - Finds related GitHub issues
-   - Returns: Links and relationships
-
-### 4. **Prevention Strategist** (Parallel)
-   - Develops prevention strategies
-   - Creates best practices guidance
-   - Generates test cases if applicable
-   - Returns: Prevention/testing content
-
-### 5. **Category Classifier** (Parallel)
-   - Determines optimal `docs/solutions/` category
-   - Validates category against schema
-   - Suggests filename based on slug
-   - Returns: Final path and filename
-
-### 6. **Documentation Writer** (Parallel)
-   - Assembles complete markdown file
-   - Validates YAML frontmatter
-   - Formats content for readability
-   - Creates the file in correct location
-
-### 7. **Optional: Specialized Agent Invocation** (Post-Documentation)
-   Based on problem type detected, automatically invoke applicable agents:
-   - **performance_issue** → `performance-oracle`
-   - **security_issue** → `security-sentinel`
-   - **database_issue** → `data-integrity-guardian`
-   - **test_failure** → `cora-test-reviewer`
-   - Any code-heavy issue → `kieran-rails-reviewer` + `code-simplicity-reviewer`
+1. Confirm the problem is solved, verified, and non-trivial
+2. Gather context: module, symptom, root cause, solution, prevention
+3. Check `docs/solutions/` for related docs and decide whether to link or create new
+4. Use the `compound-docs` skill to validate schema and write the doc
+5. Present the post-capture decision menu from `compound-docs`
 
 ## What It Captures
 
@@ -115,21 +75,7 @@ This command launches multiple specialized subagents IN PARALLEL to maximize eff
 ## Success Output
 
 ```
-✓ Parallel documentation generation complete
-
-Primary Subagent Results:
-  ✓ Context Analyzer: Identified performance_issue in brief_system
-  ✓ Solution Extractor: Extracted 3 code fixes
-  ✓ Related Docs Finder: Found 2 related issues
-  ✓ Prevention Strategist: Generated test cases
-  ✓ Category Classifier: docs/solutions/performance-issues/
-  ✓ Documentation Writer: Created complete markdown
-
-Specialized Agent Reviews (Auto-Triggered):
-  ✓ performance-oracle: Validated query optimization approach
-  ✓ kieran-rails-reviewer: Code examples meet Rails standards
-  ✓ code-simplicity-reviewer: Solution is appropriately minimal
-  ✓ every-style-editor: Documentation style verified
+✓ Documentation captured
 
 File created:
 - docs/solutions/performance-issues/n-plus-one-brief-generation.md
@@ -173,30 +119,6 @@ Build → Test → Find Issue → Research → Improve → Document → Validate
 ## Routes To
 
 `compound-docs` skill
-
-## Applicable Specialized Agents
-
-Based on problem type, these agents can enhance documentation:
-
-### Code Quality & Review
-- **kieran-rails-reviewer**: Reviews code examples for Rails best practices
-- **code-simplicity-reviewer**: Ensures solution code is minimal and clear
-- **pattern-recognition-specialist**: Identifies anti-patterns or repeating issues
-
-### Specific Domain Experts
-- **performance-oracle**: Analyzes performance_issue category solutions
-- **security-sentinel**: Reviews security_issue solutions for vulnerabilities
-- **cora-test-reviewer**: Creates test cases for prevention strategies
-- **data-integrity-guardian**: Reviews database_issue migrations and queries
-
-### Enhancement & Documentation
-- **best-practices-researcher**: Enriches solution with industry best practices
-- **every-style-editor**: Reviews documentation style and clarity
-- **framework-docs-researcher**: Links to Rails/gem documentation references
-
-### When to Invoke
-- **Auto-triggered** (optional): Agents can run post-documentation for enhancement
-- **Manual trigger**: User can invoke agents after /wf-compound completes for deeper review
 
 ## Related Commands
 

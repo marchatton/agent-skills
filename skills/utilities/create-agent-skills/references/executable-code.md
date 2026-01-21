@@ -137,7 +137,7 @@ RETRIES = 5   # Why 5?
 <package_dependencies>
 <runtime_constraints>
 Skills run in code execution environment with platform-specific limitations:
-- **claude.ai**: Can install packages from npm and PyPI
+- **claude.ai**: Can install packages with pnpm and PyPI
 - **Anthropic API**: No network access and no runtime package installation
 </runtime_constraints>
 

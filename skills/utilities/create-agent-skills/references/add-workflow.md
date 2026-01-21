@@ -22,12 +22,12 @@ Present numbered list, ask: "Which skill needs a new workflow?"
 Read the skill:
 ```bash
 cat ~/.claude/skills/{skill-name}/SKILL.md
-ls ~/.claude/skills/{skill-name}/workflows/ 2>/dev/null
+ls ~/.claude/skills/{skill-name}/references/ 2>/dev/null
 ```
 
 Determine:
 - **Simple skill?** → May need to upgrade to router pattern first
-- **Already has workflows/?** → Good, can add directly
+- **Already has references/?** → Good, can add directly
 - **What workflows exist?** → Avoid duplication
 
 Report current structure to user.
@@ -41,19 +41,19 @@ Ask using AskUserQuestion or direct question:
 
 ## Step 4: Upgrade to Router Pattern (if needed)
 
-**If skill is currently simple (no workflows/):**
+**If skill is currently simple (no references/):**
 
 Ask: "This skill needs to be upgraded to the router pattern first. Should I restructure it?"
 
 If yes:
-1. Create workflows/ directory
-2. Move existing process content to workflows/main.md
+1. Create references/ directory
+2. Move existing process content to references/main.md
 3. Rewrite SKILL.md as router with intake + routing
 4. Verify structure works before proceeding
 
 ## Step 5: Create the Workflow File
 
-Create `workflows/{workflow-name}.md`:
+Create `references/{workflow-name}.md`:
 
 ```markdown
 # Workflow: {Workflow Name}

@@ -18,7 +18,7 @@ Transcript behavior:
 ## Setup
 
 ```bash
-cd ~/Projects/agent-scripts/skills/video-transcript-downloader && npm ci
+cd ~/Projects/agent-scripts/skills/video-transcript-downloader && pnpm install
 ```
 
 ## Transcript (default: clean paragraph)

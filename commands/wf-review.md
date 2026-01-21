@@ -1,6 +1,6 @@
 ---
 name: wf-review
-description: Perform exhaustive code reviews using multi-agent analysis, ultra-thinking, and worktrees
+description: Perform exhaustive code reviews with structured analysis and todo capture
 argument-hint: "[PR number, GitHub URL, branch name, or latest]"
 ---
 
@@ -8,7 +8,7 @@ argument-hint: "[PR number, GitHub URL, branch name, or latest]"
 
 # Review Command
 
-<command_purpose> Perform exhaustive code reviews using multi-agent analysis, ultra-thinking, and Git worktrees for deep local inspection. </command_purpose>
+<command_purpose> Perform exhaustive code reviews with structured analysis, clear findings, and actionable todo capture. </command_purpose>
 
 ## Introduction
 
@@ -19,7 +19,6 @@ argument-hint: "[PR number, GitHub URL, branch name, or latest]"
 <requirements>
 - Git repository with GitHub CLI (`gh`) installed and authenticated
 - Clean main/master branch
-- Proper permissions to create worktrees and access the repository
 - For document reviews: Path to a markdown file or document
 </requirements>
 
@@ -40,61 +39,42 @@ First, I need to determine the review target type and set up the code for analys
 - [ ] Determine review type: PR number (numeric), GitHub URL, file path (.md), or empty (current branch)
 - [ ] Check current git branch
 - [ ] If ALREADY on the PR branch → proceed with analysis on current branch
-- [ ] **OPTIONAL:** If DIFFERENT branch → offer to use worktree: "Use git-worktree skill for isolated review" or manually checkout
+- [ ] If DIFFERENT branch → checkout the PR branch (via `gh pr checkout` or `git checkout`)
 - [ ] Fetch PR metadata using `gh pr view --json` for title, body, files, linked issues
 - [ ] Set up language-specific analysis tools
 - [ ] Prepare security scanning environment
 - [ ] Make sure we are on the branch we are reviewing. Use gh pr checkout to switch to the branch or manually checkout the branch.
 
-Ensure that the code is ready for analysis (either in worktree or on current branch). ONLY then proceed to the next step.
+Ensure that the code is ready for analysis on the target branch. ONLY then proceed to the next step.
 
 </task_list>
 
-#### Parallel Agents to review the PR:
+#### Review Lenses (run sequentially)
 
-<parallel_tasks>
+Apply each lens and capture findings with file/line references:
 
-Run ALL or most of these agents at the same time:
+- Correctness & edge cases
+- Security & data safety
+- Performance & scalability
+- Architecture & maintainability
+- Testing & observability
+- UX/DX (errors, logs, supportability)
 
-1. Task kieran-rails-reviewer(PR content)
-2. Task dhh-rails-reviewer(PR title)
-3. If turbo is used: Task rails-turbo-expert(PR content)
-4. Task git-history-analyzer(PR content)
-5. Task dependency-detective(PR content)
-6. Task pattern-recognition-specialist(PR content)
-7. Task architecture-strategist(PR content)
-8. Task code-philosopher(PR content)
-9. Task security-sentinel(PR content)
-10. Task performance-oracle(PR content)
-11. Task devops-harmony-analyst(PR content)
-12. Task data-integrity-guardian(PR content)
-13. Task agent-native-reviewer(PR content) - Verify new features are agent-accessible
-
-</parallel_tasks>
-
-#### Conditional Agents (Run if applicable):
-
-<conditional_agents>
-
-These agents are run ONLY when the PR matches specific criteria. Check the PR files list to determine if they apply:
+#### Conditional Checks (when applicable)
 
 **If PR contains database migrations (db/migrate/*.rb files) or data backfills:**
 
-14. Task data-migration-expert(PR content) - Validates ID mappings match production, checks for swapped values, verifies rollback safety
-15. Task deployment-verification-agent(PR content) - Creates Go/No-Go deployment checklist with SQL verification queries
+- Validate ID/enum mappings match production reality (prevents swapped values)
+- Check for orphaned associations and backfill safety
+- Confirm dual-write and rollback strategy if needed
+- Provide pre/post-deploy SQL verification queries
 
-**When to run migration agents:**
+**When to run migration checks:**
 - PR includes files matching `db/migrate/*.rb`
 - PR modifies columns that store IDs, enums, or mappings
 - PR includes data backfill scripts or rake tasks
 - PR changes how data is read/written (e.g., changing from FK to string column)
 - PR title/body mentions: migration, backfill, data transformation, ID mapping
-
-**What these agents check:**
-- `data-migration-expert`: Verifies hard-coded mappings match production reality (prevents swapped IDs), checks for orphaned associations, validates dual-write patterns
-- `deployment-verification-agent`: Produces executable pre/post-deploy checklists with SQL queries, rollback procedures, and monitoring plans
-
-</conditional_agents>
 
 ### 4. Ultra-Thinking Deep Dive Phases
 
@@ -193,11 +173,11 @@ Complete system context map with component interactions
 
 ### 4. Simplification and Minimalism Review
 
-Run the Task code-simplicity-reviewer() to see if we can simplify the code.
+Do a simplicity pass to identify unnecessary complexity and potential reductions.
 
 ### 5. Findings Synthesis and Todo Creation Using file-todos Skill
 
-<critical_requirement> ALL findings MUST be stored in the todos/ directory using the file-todos skill. Create todo files immediately after synthesis - do NOT present findings for user approval first. Use the skill for structured todo management. </critical_requirement>
+<critical_requirement> ALL findings MUST be stored in the docs/todos/ directory using the file-todos skill. Create todo files immediately after synthesis - do NOT present findings for user approval first. Use the skill for structured todo management. </critical_requirement>
 
 #### Step 1: Synthesize All Findings
 
@@ -208,7 +188,7 @@ Remove duplicates, prioritize by severity and impact.
 
 <synthesis_tasks>
 
-- [ ] Collect findings from all parallel agents
+- [ ] Collect findings from all review lenses and tools
 - [ ] Categorize by type: security, performance, architecture, quality, etc.
 - [ ] Assign severity levels: 🔴 CRITICAL (P1), 🟡 IMPORTANT (P2), 🔵 NICE-TO-HAVE (P3)
 - [ ] Remove duplicate or overlapping findings
@@ -218,35 +198,13 @@ Remove duplicates, prioritize by severity and impact.
 
 #### Step 2: Create Todo Files Using file-todos Skill
 
-<critical_instruction> Use the file-todos skill to create todo files for ALL findings immediately. Do NOT present findings one-by-one asking for user approval. Create all todo files in parallel using the skill, then summarize results to user. </critical_instruction>
+<critical_instruction> Use the file-todos skill to create todo files for ALL findings immediately. Do NOT present findings one-by-one asking for user approval. Create all todo files in one pass using the skill, then summarize results to user. </critical_instruction>
 
-**Implementation Options:**
+**Implementation Approach:**
 
-**Option A: Direct File Creation (Fast)**
-
-- Create todo files directly using Write tool
-- All findings in parallel for speed
-- Use standard template from `skills/file-todos/assets/todo-template.md`
+- Create todo files directly using the template
+- Batch all findings in one pass (no per-finding approvals)
 - Follow naming convention: `{issue_id}-pending-{priority}-{description}.md`
-
-**Option B: Sub-Agents in Parallel (Recommended for Scale)** For large PRs with 15+ findings, use sub-agents to create finding files in parallel:
-
-```bash
-# Launch multiple finding-creator agents in parallel
-Task() - Create todos for first finding
-Task() - Create todos for second finding
-Task() - Create todos for third finding
-etc. for each finding.
-```
-
-Sub-agents can:
-
-- Process multiple findings simultaneously
-- Write detailed todo files with all sections filled
-- Organize findings by severity
-- Create comprehensive Proposed Solutions
-- Add acceptance criteria and work logs
-- Complete much faster than sequential processing
 
 **Execution Strategy:**
 
@@ -261,12 +219,12 @@ Sub-agents can:
 
    The skill provides:
 
-   - Template location: `skills/file-todos/assets/todo-template.md`
+   - Template location: `skills/utilities/file-todos/assets/todo-template.md`
    - Naming convention: `{issue_id}-{status}-{priority}-{description}.md`
    - YAML frontmatter structure: status, priority, issue_id, tags, dependencies
    - All required sections: Problem Statement, Findings, Solutions, etc.
 
-3. Create todo files in parallel:
+3. Create todo files for each finding:
 
    ```bash
    {next_id}-pending-{priority}-{description}.md
@@ -281,7 +239,7 @@ Sub-agents can:
    004-pending-p3-unused-parameter.md
    ```
 
-5. Follow template structure from file-todos skill: `skills/file-todos/assets/todo-template.md`
+5. Follow template structure from file-todos skill: `skills/utilities/file-todos/assets/todo-template.md`
 
 **Todo File Structure (from template):**
 
@@ -289,7 +247,7 @@ Each todo must include:
 
 - **YAML frontmatter**: status, priority, issue_id, tags, dependencies
 - **Problem Statement**: What's broken/missing, why it matters
-- **Findings**: Discoveries from agents with evidence/location
+- **Findings**: Discoveries with evidence/location
 - **Proposed Solutions**: 2-3 options, each with pros/cons/effort/risk
 - **Recommended Action**: (Filled during triage, leave blank initially)
 - **Technical Details**: Affected files, components, database changes
@@ -354,14 +312,13 @@ After creating all todo files, present comprehensive summary:
 
 - `005-pending-p3-{finding}.md` - {description}
 
-### Review Agents Used:
+### Review Lenses Applied:
 
-- kieran-rails-reviewer
-- security-sentinel
-- performance-oracle
-- architecture-strategist
-- agent-native-reviewer
-- [other agents]
+- correctness
+- security
+- performance
+- architecture
+- testing/observability
 
 ### Next Steps:
 
@@ -373,7 +330,7 @@ After creating all todo files, present comprehensive summary:
 
 2. **Triage All Todos**:
    ```bash
-   ls todos/*-pending-*.md  # View all pending todos
+   ls docs/todos/*-pending-*.md  # View all pending todos
    /triage                  # Use slash command for interactive triage
    ```
 ````
@@ -387,7 +344,7 @@ After creating all todo files, present comprehensive summary:
 4. **Track Progress**:
    - Rename file when status changes: pending → ready → complete
    - Update Work Log as you work
-   - Commit todos: `git add todos/ && git commit -m "refactor: add code review findings"`
+   - Commit todos: `git add docs/todos/ && git commit -m "refactor: add code review findings"`
 
 ### Severity Breakdown:
 
@@ -457,43 +414,32 @@ After presenting the Summary Report, offer appropriate testing based on project 
 
 #### If User Accepts Web Testing:
 
-Spawn a subagent to run browser tests (preserves main context):
+Run browser tests using available tooling (`/test-browser` if present, otherwise agent-browser/Playwright):
 
-```
-Task general-purpose("Run /test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing.")
-```
-
-The subagent will:
 1. Identify pages affected by the PR
-2. Navigate to each page and capture snapshots (using Playwright MCP or agent-browser CLI)
+2. Navigate each page and capture snapshots
 3. Check for console errors
 4. Test critical interactions
 5. Pause for human verification on OAuth/email/payment flows
 6. Create P1 todos for any failures
 7. Fix and retry until all tests pass
 
-**Standalone:** `/test-browser [PR number]`
+**Standalone (if available):** `/test-browser [PR number]`
 
 #### If User Accepts iOS Testing:
 
-Spawn a subagent to run Xcode tests (preserves main context):
+Run Xcode simulator tests using available tooling (`/xcode-test` if present, otherwise xcodebuild):
 
-```
-Task general-purpose("Run /xcode-test for scheme [name]. Build for simulator, install, launch, take screenshots, check for crashes.")
-```
+1. Discover project and schemes
+2. Build for iOS Simulator
+3. Install and launch app
+4. Take screenshots of key screens
+5. Capture console logs for errors
+6. Pause for human verification (Sign in with Apple, push, IAP)
+7. Create P1 todos for any failures
+8. Fix and retry until all tests pass
 
-The subagent will:
-1. Verify XcodeBuildMCP is installed
-2. Discover project and schemes
-3. Build for iOS Simulator
-4. Install and launch app
-5. Take screenshots of key screens
-6. Capture console logs for errors
-7. Pause for human verification (Sign in with Apple, push, IAP)
-8. Create P1 todos for any failures
-9. Fix and retry until all tests pass
-
-**Standalone:** `/xcode-test [scheme]`
+**Standalone (if available):** `/xcode-test [scheme]`
 
 ### Important: P1 Findings Block Merge
 

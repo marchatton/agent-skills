@@ -74,7 +74,7 @@ tool("self_deploy", async () => {
   runGit("merge origin/main --no-edit");
 
   // Build and verify
-  runCommand("npm run build");
+  runCommand("pnpm run build");
 
   // Only then restart
   scheduleRestart();
@@ -85,7 +85,7 @@ tool("self_deploy", async () => {
 ```typescript
 // Don't restart unless build passes
 try {
-  runCommand("npm run build", { timeout: 120000 });
+  runCommand("pnpm run build", { timeout: 120000 });
 } catch (error) {
   // Rollback the merge
   runGit("merge --abort");

@@ -23,7 +23,7 @@ cat ~/.claude/skills/{skill-name}/SKILL.md
 ls ~/.claude/skills/{skill-name}/
 ```
 
-**Already a router?** (has workflows/ and intake question)
+**Already a router?** (has references/ and intake question)
 → Tell user it's already using router pattern, offer to add workflows instead
 
 **Simple skill that should stay simple?** (under 200 lines, single workflow)
@@ -73,7 +73,7 @@ mkdir -p ~/.claude/skills/{skill-name}/references
 
 For each identified workflow:
 
-1. Create `workflows/{workflow-name}.md`
+1. Create `references/{workflow-name}.md`
 2. Add required_reading section (references it needs)
 3. Add process section (steps from original skill)
 4. Add success_criteria section
@@ -114,8 +114,8 @@ What would you like to do?
 <routing>
 | Response | Workflow |
 |----------|----------|
-| 1, "keywords" | `workflows/workflow-a.md` |
-| 2, "keywords" | `workflows/workflow-b.md` |
+| 1, "keywords" | `references/workflow-a.md` |
+| 2, "keywords" | `references/workflow-b.md` |
 </routing>
 
 <reference_index>
@@ -151,7 +151,7 @@ Report any issues.
 
 <success_criteria>
 Upgrade is complete when:
-- [ ] workflows/ directory created with workflow files
+- [ ] references/ directory created with workflow files
 - [ ] references/ directory created (if needed)
 - [ ] SKILL.md rewritten as router
 - [ ] Essential principles inline in SKILL.md

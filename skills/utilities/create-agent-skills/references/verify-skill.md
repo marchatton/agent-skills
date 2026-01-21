@@ -22,10 +22,10 @@ Present numbered list, ask: "Which skill should I verify for accuracy?"
 
 ## Step 2: Read and Categorize
 
-Read the entire skill (SKILL.md + workflows/ + references/):
+Read the entire skill (SKILL.md + references/ + references/):
 ```bash
 cat ~/.claude/skills/{skill-name}/SKILL.md
-cat ~/.claude/skills/{skill-name}/workflows/*.md 2>/dev/null
+cat ~/.claude/skills/{skill-name}/references/*.md 2>/dev/null
 cat ~/.claude/skills/{skill-name}/references/*.md 2>/dev/null
 ```
 
@@ -46,7 +46,7 @@ Report: "This skill is primarily [type]-based. I'll verify using [method]."
 Scan skill content and extract:
 
 **CLI Tools mentioned:**
-- Tool names (xcodebuild, swift, npm, etc.)
+- Tool names (xcodebuild, swift, pnpm, etc.)
 - Specific flags/options documented
 - Expected output patterns
 

@@ -135,7 +135,7 @@ Add explanation when:
 Don't add explanation for:
 - Common programming concepts (loops, functions, imports)
 - Standard library usage (reading files, making HTTP requests)
-- Well-known tools (git, npm, pip)
+- Well-known tools (git, pnpm, pip)
 - Obvious next steps
 </when_to_elaborate>
 </conciseness_principle>

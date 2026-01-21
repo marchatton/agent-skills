@@ -37,26 +37,11 @@ This command takes a work document (plan, specification, or todo file) and execu
    git checkout main && git pull origin main
    git checkout -b feature-branch-name
    ```
-
-   **OPTIONAL: Parallel work with worktree**
-   ```bash
-   # Ask user first: "Work in parallel with worktree or on current branch?"
-   # If worktree:
-   skill: git-worktree
-   # The skill will create a new branch from main in an isolated worktree
-   ```
-
-   **Use worktree if:**
-   - You want to work on multiple features simultaneously
-   - You want to keep main clean while experimenting
-   - You plan to switch between branches frequently
-
-   **Use live branch if:**
-   - You're working on a single feature
-   - You prefer staying in the main repository
+   - Confirm the target branch and repo state before making changes
+   - Avoid extra working directories by default; use a single working copy unless the user requests otherwise
 
 3. **Create Todo List**
-   - Use TodoWrite to break plan into actionable tasks
+   - Create a task checklist in the response
    - Include dependencies between tasks
    - Prioritize based on what needs to be done first
    - Include testing and quality check tasks
@@ -70,7 +55,7 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    ```
    while (tasks remain):
-     - Mark task as in_progress in TodoWrite
+     - Mark task as in_progress in the checklist
      - Read any referenced files from the plan
      - Look for similar patterns in codebase
      - Implement following existing conventions
@@ -94,12 +79,12 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix failures immediately
    - Add new tests for new functionality
 
-4. **Figma Design Sync** (if applicable)
+4. **Figma Design Review** (if applicable)
 
    For UI work with Figma designs:
 
    - Implement components following design specs
-   - Use figma-design-sync agent iteratively to compare
+   - Compare key screens against the design (spacing, typography, colors, states)
    - Fix visual differences identified
    - Repeat until implementation matches design
 
@@ -124,7 +109,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    # Run linting (per AGENTS.md)
    ```
 
-2. **Consider Reviewer Agents** (Optional)
+2. **Optional Reviewer Pass** (Optional)
 
    Use for complex, risky, or large changes:
 
@@ -133,17 +118,10 @@ This command takes a work document (plan, specification, or todo file) and execu
    - **performance-oracle**: Check for performance issues
    - **security-sentinel**: Scan for security vulnerabilities
 
-   Run reviewers in parallel with Task tool:
-
-   ```
-   Task(code-simplicity-reviewer): "Review changes for simplicity"
-   Task(kieran-rails-reviewer): "Check Rails conventions"
-   ```
-
    Present findings to user and address critical issues.
 
 3. **Final Validation**
-   - All TodoWrite tasks marked completed
+   - All checklist tasks marked completed
    - All tests pass
    - Linting passes
    - Code follows existing patterns
@@ -164,10 +142,6 @@ This command takes a work document (plan, specification, or todo file) and execu
    feat(scope): description of what and why
 
    Brief explanation if needed.
-
-   🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-   Co-Authored-By: Claude <noreply@anthropic.com>
    EOF
    )"
    ```
@@ -189,13 +163,9 @@ This command takes a work document (plan, specification, or todo file) and execu
    ```
    See the `agent-browser` skill for detailed usage.
 
-   **Step 3: Upload using imgup skill**
-   ```bash
-   skill: imgup
-   # Then upload each screenshot:
-   imgup -h pixhost screenshot.png  # pixhost works without API key
-   # Alternative hosts: catbox, imagebin, beeimg
-   ```
+   **Step 3: Upload screenshots**
+   - Use your team's preferred host or attachment flow
+   - If no upload tool is available, provide local file paths and ask how to share
 
    **What to capture:**
    - **New screens**: Screenshot of the new UI
@@ -226,8 +196,6 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    ## Figma Design
    [Link if applicable]
-
-   🤖 Generated with [Claude Code](https://claude.com/claude-code)
    EOF
    )"
    ```

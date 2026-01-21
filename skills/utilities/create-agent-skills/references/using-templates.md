@@ -20,14 +20,13 @@ Common template types:
 </when_to_use>
 
 <template_structure>
-Templates live in `templates/` within the skill directory:
+Templates live in `assets/` within the skill directory:
 
 ```
 skill-name/
 ├── SKILL.md
-├── workflows/
 ├── references/
-└── templates/
+└── assets/
     ├── plan-template.md
     ├── spec-template.md
     └── report-template.md
@@ -87,7 +86,7 @@ Workflows reference templates like this:
 <process>
 ## Step 3: Generate Plan
 
-1. Read `templates/plan-template.md`
+1. Read `assets/plan-template.md`
 2. Copy the template structure
 3. Fill each placeholder based on gathered requirements
 4. Review for completeness

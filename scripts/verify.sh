@@ -15,6 +15,19 @@ pass() { echo "  ✓ $1"; }
 fail() { echo "  ✗ $1"; ((errors++)) || true; }
 warn() { echo "  ⚠ $1"; ((warnings++)) || true; }
 
+extract_section() {
+  local heading="$1"
+  awk -v heading="$heading" '
+    $0 == heading { in_section=1; next }
+    /^## / { in_section=0 }
+    in_section { print }
+  ' cheatsheet.md
+}
+
+extract_bullets() {
+  sed -n 's/^- *`\([^`]*\)`.*/\1/p'
+}
+
 echo "=== Templates Repo Verification ==="
 echo ""
 
@@ -74,6 +87,31 @@ cmd_count=$(ls -1 commands/*.md 2>/dev/null | wc -l | tr -d ' ')
 echo "  Total commands: $cmd_count"
 echo ""
 
+# 3b. Command content checks (Codex-friendly)
+echo "## Command Content Checks"
+claude_only_patterns=(
+  "Task\\("
+  "AskUserQuestion"
+  "figma-design-sync"
+  "\\bimgup\\b"
+  "\\bsubagent\\b"
+  "\\bworktree\\b"
+)
+for pattern in "${claude_only_patterns[@]}"; do
+  if rg -n --pcre2 "$pattern" commands >/dev/null; then
+    fail "Claude-only construct found in commands: $pattern"
+  else
+    pass "No Claude-only construct: $pattern"
+  fi
+done
+
+if rg -n "Placeholder stub|TODO: Implement" commands >/dev/null; then
+  fail "Command stubs detected (placeholder/TODO)"
+else
+  pass "No command stubs detected"
+fi
+echo ""
+
 # 4. Cheatsheet exists and has required sections
 echo "## Cheatsheet"
 if [ -f "cheatsheet.md" ]; then
@@ -85,8 +123,104 @@ if [ -f "cheatsheet.md" ]; then
       fail "Missing $section section"
     fi
   done
+
+  cmd_expected=$(ls -1 commands/*.md 2>/dev/null | xargs -n1 basename | sed 's/\.md$//' | sort)
+  cmd_actual=$(extract_section "## Commands" | extract_bullets | sort -u)
+  if [ -z "$cmd_actual" ]; then
+    fail "Commands section missing bullet list"
+  else
+    cmd_missing=$(comm -23 <(printf '%s\n' "$cmd_expected") <(printf '%s\n' "$cmd_actual") || true)
+    cmd_extra=$(comm -13 <(printf '%s\n' "$cmd_expected") <(printf '%s\n' "$cmd_actual") || true)
+    if [ -n "$cmd_missing" ]; then
+      fail "Commands missing from cheatsheet: $(echo "$cmd_missing" | tr '\n' ' ')"
+    fi
+    if [ -n "$cmd_extra" ]; then
+      warn "Commands extra in cheatsheet: $(echo "$cmd_extra" | tr '\n' ' ')"
+    fi
+  fi
+
+  skill_expected=$(find skills -mindepth 2 -maxdepth 2 -type d | sort | sed 's:/*$::')
+  skill_actual=$(extract_section "## Skills" | extract_bullets | sed 's:/*$::' | sort -u)
+  if [ -z "$skill_actual" ]; then
+    fail "Skills section missing bullet list"
+  else
+    skill_missing=$(comm -23 <(printf '%s\n' "$skill_expected") <(printf '%s\n' "$skill_actual") || true)
+    skill_extra=$(comm -13 <(printf '%s\n' "$skill_expected") <(printf '%s\n' "$skill_actual") || true)
+    if [ -n "$skill_missing" ]; then
+      fail "Skills missing from cheatsheet: $(echo "$skill_missing" | tr '\n' ' ')"
+    fi
+    if [ -n "$skill_extra" ]; then
+      warn "Skills extra in cheatsheet: $(echo "$skill_extra" | tr '\n' ' ')"
+    fi
+  fi
+
+  hook_expected=$(ls -1 hooks/git/*.sample 2>/dev/null | sed 's:/*$::' | sort)
+  hook_actual=$(extract_section "## Hooks" | extract_bullets | sed 's:/*$::' | sort -u)
+  if [ -z "$hook_actual" ]; then
+    fail "Hooks section missing bullet list"
+  else
+    hook_missing=$(comm -23 <(printf '%s\n' "$hook_expected") <(printf '%s\n' "$hook_actual") || true)
+    hook_extra=$(comm -13 <(printf '%s\n' "$hook_expected") <(printf '%s\n' "$hook_actual") || true)
+    if [ -n "$hook_missing" ]; then
+      fail "Hooks missing from cheatsheet: $(echo "$hook_missing" | tr '\n' ' ')"
+    fi
+    if [ -n "$hook_extra" ]; then
+      warn "Hooks extra in cheatsheet: $(echo "$hook_extra" | tr '\n' ' ')"
+    fi
+  fi
 else
   fail "cheatsheet.md missing"
+fi
+echo ""
+
+# 5. Path and pnpm checks
+echo "## Path and Package Checks"
+if rg -n --pcre2 "(?<!docs/)plans/" commands skills >/dev/null; then
+  fail "Found non-docs plan paths in commands/skills"
+else
+  pass "Plans paths use docs/plans/"
+fi
+
+if rg -n --pcre2 "(?<!docs/)(?<!file-)todos/" commands skills >/dev/null; then
+  fail "Found non-docs todo paths in commands/skills"
+else
+  pass "Todos paths use docs/todos/"
+fi
+
+if rg -n "skills/file-todos" commands skills >/dev/null; then
+  fail "Found deprecated skills/file-todos path"
+else
+  pass "No deprecated skills/file-todos path"
+fi
+
+if rg -n "\\bnpm\\b" commands skills >/dev/null; then
+  fail "Found npm usage in commands/skills (pnpm-only)"
+else
+  pass "No npm usage in commands/skills"
+fi
+echo ""
+
+# 6. Skill packaging checks
+echo "## Skill Packaging Checks"
+long_skills=$(find skills -name SKILL.md -maxdepth 4 -print0 | xargs -0 wc -l | awk '$2 != "total" && $1 > 500 {print $2 ":" $1}')
+if [ -n "$long_skills" ]; then
+  fail "SKILL.md over 500 lines: $(echo "$long_skills" | tr '\n' ' ')"
+else
+  pass "All SKILL.md files under 500 lines"
+fi
+
+name_mismatches=0
+for skill_dir in skills/*/*/; do
+  [ -d "$skill_dir" ] || continue
+  folder_name=$(basename "$skill_dir")
+  skill_name=$(awk 'NR==1 && /^---$/{start=1; next} start && /^name:/{print $2; exit} start && /^---$/{exit}' "$skill_dir/SKILL.md" || true)
+  if [ -n "$skill_name" ] && [ "$skill_name" != "$folder_name" ]; then
+    fail "Skill name mismatch: $folder_name vs $skill_name"
+    name_mismatches=$((name_mismatches+1))
+  fi
+done
+if [ "$name_mismatches" -eq 0 ]; then
+  pass "All skill names match folder names"
 fi
 echo ""
 
@@ -131,7 +265,7 @@ if [ $errors -eq 0 ]; then
   echo "   → Confirm plan file created in docs/plans/"
   echo ""
   echo "3. Test review artefact flow:"
-  echo "   → Create plan → run review lane → check todos/"
+  echo "   → Create plan → run review lane → check docs/todos/"
   echo ""
   exit 0
 else

@@ -66,11 +66,10 @@ skill-name/
 ```
 skill-name/
 ├── SKILL.md (router)
-├── workflows/
+├── references/
 │   ├── workflow-a.md
 │   └── workflow-b.md
-└── references/
-    └── shared-knowledge.md
+│   └── shared-knowledge.md
 ```
 
 ## Step 6: Identify Essential Principles
