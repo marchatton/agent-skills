@@ -99,7 +99,7 @@ for base, dirs, files in os.walk(skills_root, followlinks=True):
         errors += 1
         continue
 
-    extra = [k for k in keys.keys() if k not in {"name", "description"}]
+    extra = [k for k in keys.keys() if k not in {"name", "description", "license"}]
     if extra:
         print(f"Extra frontmatter keys in {path}: {', '.join(extra)}")
         errors += 1

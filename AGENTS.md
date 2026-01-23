@@ -47,7 +47,7 @@ Repo also contains:
 
 ## Skill rules (strict)
 
-* `SKILL.md` required. Frontmatter: **name + description only**.
+* `SKILL.md` required. Frontmatter: **name + description only** (optional `license` allowed).
 * Description = trigger/when-to-use. Body = imperative how-to. Examples > prose.
 * Keep `<500 lines`. Use `scripts/`, `assets/`, `references/` (link references once).
 * No extra per-skill docs (README/CHANGELOG). Move essentials to `references/` or drop.
