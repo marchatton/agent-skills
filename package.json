@@ -1,0 +1,11 @@
+{
+  "name": "templates",
+  "private": true,
+  "scripts": {
+    "lint": "bash scripts/lint.sh",
+    "typecheck": "bash scripts/typecheck.sh",
+    "test": "bash scripts/test.sh",
+    "build": "bash scripts/build.sh",
+    "verify": "bash scripts/verify.sh"
+  }
+}

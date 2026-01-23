@@ -1,0 +1,38 @@
+{
+  "agent-scripts": {
+    "sync": [
+      { "src": "docs/slash-commands/handoff.md", "dst": "commands/handoff.md" },
+      { "src": "docs/slash-commands/pickup.md", "dst": "commands/pickup.md" },
+      { "src": "docs/slash-commands/landpr.md", "dst": "commands/landpr.md" },
+      { "src": "skills/frontend-design", "dst": "skills/utilities/frontend-design" },
+      { "src": "skills/markdown-converter", "dst": "skills/utilities/markdown-converter" },
+      { "src": "skills/nano-banana-pro", "dst": "skills/utilities/nano-banana-pro" },
+      { "src": "skills/openai-image-gen", "dst": "skills/utilities/openai-image-gen" },
+      { "src": "skills/video-transcript-downloader", "dst": "skills/utilities/video-transcript-downloader" }
+    ]
+  },
+  "compound-engineering-plugin": {
+    "sync": [
+      { "src": "plugins/compound-engineering/commands/triage.md", "dst": "commands/triage.md" },
+      { "src": "plugins/compound-engineering/commands/plan_review.md", "dst": "commands/plan-review.md" },
+      { "src": "plugins/compound-engineering/commands/deepen-plan.md", "dst": "commands/deepen-plan.md" },
+      { "src": "plugins/compound-engineering/commands/report-bug.md", "dst": "commands/report-bug.md" },
+      { "src": "plugins/compound-engineering/commands/reproduce-bug.md", "dst": "commands/reproduce-bug.md" },
+      { "src": "plugins/compound-engineering/commands/resolve_parallel.md", "dst": "commands/resolve-parallel.md" },
+      { "src": "plugins/compound-engineering/commands/resolve_pr_parallel.md", "dst": "commands/resolve-pr-parallel.md" },
+      { "src": "plugins/compound-engineering/commands/resolve_todo_parallel.md", "dst": "commands/resolve-todo-parallel.md" },
+      { "src": "plugins/compound-engineering/commands/agent-native-audit.md", "dst": "commands/agent-native-audit.md" },
+      { "src": "plugins/compound-engineering/commands/changelog.md", "dst": "commands/changelog.md" },
+      { "src": "plugins/compound-engineering/commands/generate_command.md", "dst": "commands/generate-command.md" },
+      { "src": "plugins/compound-engineering/commands/create-agent-skill.md", "dst": "commands/create-agent-skill.md" },
+      { "src": "plugins/compound-engineering/commands/heal-skill.md", "dst": "commands/heal-skill.md" },
+      { "src": "plugins/compound-engineering/commands/test-browser.md", "dst": "commands/test-browser.md" },
+      { "src": "plugins/compound-engineering/skills/agent-browser", "dst": "skills/utilities/agent-browser" },
+      { "src": "plugins/compound-engineering/skills/create-agent-skills", "dst": "skills/utilities/create-agent-skills" },
+      { "src": "plugins/compound-engineering/skills/every-style-editor", "dst": "skills/utilities/every-style-editor" },
+      { "src": "plugins/compound-engineering/skills/file-todos", "dst": "skills/utilities/file-todos" },
+      { "src": "plugins/compound-engineering/skills/gemini-imagegen", "dst": "skills/utilities/gemini-imagegen" },
+      { "src": "plugins/compound-engineering/skills/skill-creator", "dst": "skills/utilities/skill-creator" }
+    ]
+  }
+}

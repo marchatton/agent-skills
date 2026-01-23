@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Optional template. Add commit message checks here if needed.
+exit 0

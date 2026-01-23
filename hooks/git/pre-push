@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ ! -f package.json ]; then
+  exit 0
+fi
+
+has_script() {
+  local script_name="$1"
+  if command -v node >/dev/null 2>&1; then
+    node -e "const pkg=require('./package.json'); process.exit(pkg.scripts && pkg.scripts['${script_name}'] ? 0 : 1)" 2>/dev/null
+    return $?
+  fi
+  if command -v rg >/dev/null 2>&1; then
+    rg -q '"'"${script_name}"'"\s*:' package.json
+    return $?
+  fi
+  grep -q '"'"${script_name}"'"\s*:' package.json
+}
+
+if has_script "test"; then
+  pnpm -s test
+fi

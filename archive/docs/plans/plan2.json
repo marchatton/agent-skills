@@ -2,19 +2,168 @@
   "project": "Canonical Templates Repo",
   "branchName": "ralph/canonical-templates-repo",
   "description": "Canonical templates repo for LLM-assisted product engineering with verify-first workflow and vendor syncing.",
+  "referenceDoc": "archive/docs/plans/plan2.md",
+  "owner": "Marc",
+  "status": "Draft (ready for implementation)",
+  "primaryRunner": "Codex",
+  "packageManagerRule": "pnpm",
+  "canonicalManager": "dotagents",
+  "focusStories": [
+    "US-001",
+    "US-002",
+    "US-003"
+  ],
+  "changeLog": [
+    {
+      "timestamp": "2026-01-23T16:03:21Z",
+      "summary": "Align plan2.json with plan2.md, expand vendor mappings, and mark top 3 stories.",
+      "changes": [
+        "Added metadata fields and reference doc.",
+        "Marked focus stories (US-001, US-002, US-003).",
+        "Expanded guardrails acceptance criteria.",
+        "Detailed vendor mapping requirements."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T16:09:57Z",
+      "summary": "Implement top-3 stories: guardrails + core templates + learnings templates.",
+      "changes": [
+        "Updated root AGENTS.md with platform note and source-of-truth guidance.",
+        "Added .agents/AGENTS.md mirror.",
+        "Created docs/templates core and learnings templates."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T16:24:51Z",
+      "summary": "Add root typecheck script and validate top-3 stories.",
+      "changes": [
+        "Added package.json with typecheck script.",
+        "Added scripts/typecheck.sh to verify required files.",
+        "pnpm typecheck passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T16:28:46Z",
+      "summary": "Add pnpm verify scaffolding and JSON PRD schema.",
+      "changes": [
+        "Added lint/test/build/verify scripts and package.json entries.",
+        "Created docs/templates/json-prd.schema.json.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T16:29:17Z",
+      "summary": "Expand typecheck coverage for JSON PRD schema.",
+      "changes": [
+        "Added docs/templates/json-prd.schema.json to scripts/typecheck.sh.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T16:39:52Z",
+      "summary": "Complete US-005 through US-014 and run verification.",
+      "changes": [
+        "Added Oracle and Ralph guides.",
+        "Scaffolded .agents structure and Ralph defaults.",
+        "Defined vendor mappings and vendor update/sync/refresh scripts.",
+        "Implemented cheatsheet generator and repo verification script.",
+        "Added wf-explore and wf-shape runbooks.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T17:17:16Z",
+      "summary": "Complete US-015 through US-024 and run verification.",
+      "changes": [
+        "Added wf-develop, wf-review, wf-release, wf-ralph, verify, compound, and oracle runbooks.",
+        "Added Oracle wrapper script and Oracle skill.",
+        "Created Explore, Shape, Develop, and Review skills.",
+        "Refreshed cheatsheet and typecheck coverage.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T17:37:10Z",
+      "summary": "Complete US-025 through US-030 and run verification.",
+      "changes": [
+        "Added Release and Compound skills, plus utility skills (create-cli, docs-list, trash).",
+        "Added git hook templates and install script.",
+        "Added Codex skills copy fallback script.",
+        "Refreshed cheatsheet and typecheck coverage.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T17:38:18Z",
+      "summary": "Document Codex skills copy usage and re-verify.",
+      "changes": [
+        "Added usage notes to scripts/install_codex_skills_copy.sh.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T17:45:26Z",
+      "summary": "Add ask-questions-if-underspecified skill and re-verify.",
+      "changes": [
+        "Added utilities/ask-questions-if-underspecified skill (verbatim content).",
+        "Refreshed cheatsheet and typecheck coverage.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T17:47:19Z",
+      "summary": "Run vendor sync and repo verification.",
+      "changes": [
+        "Linked vendor commands and skills into .agents via vendor_sync.",
+        "scripts/verify_repo.sh passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T18:17:00Z",
+      "summary": "Refresh cheatsheet and verify after vendor sync.",
+      "changes": [
+        "cheatsheet.md updated.",
+        "pnpm verify passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T18:52:59Z",
+      "summary": "Run agents_refresh end-to-end.",
+      "changes": [
+        "vendor_update pulled latest inspiration repos.",
+        "vendor_sync linked enabled items into .agents.",
+        "cheatsheet regenerated and verify_repo passed."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T19:16:15Z",
+      "summary": "Add canonical /handoff prompt mirror.",
+      "changes": [
+        "Replaced vendor symlink with local .agents/commands/handoff.md content."
+      ]
+    },
+    {
+      "timestamp": "2026-01-23T19:21:51Z",
+      "summary": "Restore /handoff to vendor sync.",
+      "changes": [
+        "Removed local handoff file and re-linked vendor handoff via vendor_sync."
+      ]
+    }
+  ],
   "userStories": [
     {
       "id": "US-001",
       "title": "Add canonical guardrails",
       "description": "As a maintainer, I want AGENTS.md guardrails in the repo root and .agents so that all clients follow the same rules.",
       "acceptanceCriteria": [
-        "Root AGENTS.md includes taxonomy, pnpm rule, no subagents, skill constraints, verify-first, and compounding rules",
+        "Root AGENTS.md includes taxonomy, command naming (wf-* + short utilities, no c-), pnpm rule, no roles/modes, no subagents, skill constraints, verify-first, and compounding rules",
+        "Root AGENTS.md documents dotagents as canonical, .agents as source of truth, and macOS/Linux/WSL requirement",
         ".agents/AGENTS.md exists and mirrors the canonical guardrails",
         "Typecheck passes"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Top-3 focus. Implemented; pnpm typecheck passed."
     },
     {
       "id": "US-002",
@@ -26,8 +175,8 @@
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Top-3 focus. Implemented; pnpm typecheck passed."
     },
     {
       "id": "US-003",
@@ -39,8 +188,8 @@
         "Typecheck passes"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Top-3 focus. Implemented; pnpm typecheck passed."
     },
     {
       "id": "US-004",
@@ -52,8 +201,8 @@
         "Typecheck passes"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-005",
@@ -65,8 +214,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-006",
@@ -79,8 +228,8 @@
         "Typecheck passes"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-007",
@@ -92,8 +241,8 @@
         "Typecheck passes"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-008",
@@ -101,12 +250,12 @@
       "description": "As a maintainer, I want explicit vendor mappings so that synced commands and skills are deterministic.",
       "acceptanceCriteria": [
         ".agents/vendors.json exists",
-        "Mappings include agent-scripts and compound-engineering-plugin sync entries (including agent-browser and skill-creator)",
+        "Mappings cover full command + skill inventory from agent-scripts and compound-engineering-plugin",
         "Typecheck passes"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed. Required sync items: agent-scripts commands (handoff, pickup, landpr); agent-scripts skills (frontend-design, markdown-converter, nano-banana-pro, openai-image-gen, video-transcript-downloader); compound-engineering-plugin commands (triage, plan-review, deepen-plan, report-bug, reproduce-bug, resolve-parallel, resolve-pr-parallel, resolve-todo-parallel, agent-native-audit, changelog, generate-command, create-agent-skill, heal-skill, test-browser); compound-engineering-plugin skills (agent-browser, create-agent-skills, every-style-editor, file-todos, gemini-imagegen, skill-creator). Exclude vendor oracle."
     },
     {
       "id": "US-009",
@@ -119,8 +268,8 @@
         "Tests pass"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-010",
@@ -133,8 +282,8 @@
         "Tests pass"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-011",
@@ -147,8 +296,8 @@
         "Tests pass"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-012",
@@ -161,8 +310,8 @@
         "Tests pass"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-013",
@@ -175,8 +324,8 @@
         "Tests pass"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-014",
@@ -188,8 +337,8 @@
         "Typecheck passes"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-015",
@@ -201,8 +350,8 @@
         "Typecheck passes"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-016",
@@ -214,8 +363,8 @@
         "Typecheck passes"
       ],
       "priority": 16,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-017",
@@ -227,8 +376,8 @@
         "Typecheck passes"
       ],
       "priority": 17,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-018",
@@ -242,8 +391,8 @@
         "Tests pass"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-019",
@@ -256,8 +405,8 @@
         "Typecheck passes"
       ],
       "priority": 19,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-020",
@@ -269,8 +418,8 @@
         "Typecheck passes"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-021",
@@ -282,8 +431,8 @@
         "Typecheck passes"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-022",
@@ -295,8 +444,8 @@
         "Typecheck passes"
       ],
       "priority": 22,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-023",
@@ -308,8 +457,8 @@
         "Typecheck passes"
       ],
       "priority": 23,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-024",
@@ -321,8 +470,8 @@
         "Typecheck passes"
       ],
       "priority": 24,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-025",
@@ -334,8 +483,8 @@
         "Typecheck passes"
       ],
       "priority": 25,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-026",
@@ -347,8 +496,8 @@
         "Typecheck passes"
       ],
       "priority": 26,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-027",
@@ -360,8 +509,8 @@
         "Typecheck passes"
       ],
       "priority": 27,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-028",
@@ -373,8 +522,8 @@
         "Typecheck passes"
       ],
       "priority": 28,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-029",
@@ -387,8 +536,8 @@
         "Tests pass"
       ],
       "priority": 29,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     },
     {
       "id": "US-030",
@@ -401,8 +550,8 @@
         "Tests pass"
       ],
       "priority": 30,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented; pnpm verify passed."
     }
   ]
 }

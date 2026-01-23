@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Optional template. Add post-merge reminders here if needed.
+exit 0
