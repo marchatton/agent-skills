@@ -20,8 +20,8 @@ Wrapper around native `/review` (Claude/Codex) with verification, optional fix l
 1. Define the work slug and gather context.
 2. Run native `/review` command (Claude/Codex) to capture review findings.
 3. Run `pnpm verify` in the target repo.
-4. **If verify fails**, ask: "Run review-loop to fix bugs? (y/n)"
-   - **Yes**: Run `review-loop` skill with default 10 iterations until clean or max reached.
+4. **If verify fails**, ask: "Fix failures now? (y/n)"
+   - **Yes**: Ask max iterations (default 10). Loop: pick top failure, fix, re-run targeted check, then re-run `pnpm verify` until clean or max reached.
    - **No**: Continue to summary with failures noted.
 5. Optionally run `test-browser` (wraps `agent-browser`) and record results.
 6. Write review summary and GO/NO-GO.
