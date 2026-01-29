@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Append a structured learning entry to `docs/learnings.md` in the project repo.
+Append a structured learning entry to `docs/LEARNINGS.md` in the project repo.
 
 ## Inputs
 
@@ -15,11 +15,11 @@ Append a structured learning entry to `docs/learnings.md` in the project repo.
 
 ## Outputs
 
-- Updated `docs/learnings.md` (append-only).
+- Updated `docs/LEARNINGS.md` (append-only).
 
 ## Steps
 
-1. Open the project repo `docs/learnings.md`.
+1. Open the project repo `docs/LEARNINGS.md`.
 2. Add a new entry under the matching stage heading.
 3. Include required fields and verification evidence if code-touching.
 4. Keep history append-only.
@@ -33,7 +33,3 @@ Append a structured learning entry to `docs/learnings.md` in the project repo.
 - GO if entry is complete and appended under correct stage.
 - NO-GO if required fields are missing.
 
-## Usage
-
-- Codex: `/prompts:compound`
-- Claude: `/compound`

@@ -12,16 +12,17 @@ Define the opportunity and next experiment before shaping.
 
 ## Outputs
 
-- `docs/explore/<slug>/opportunity-solution-tree.md`
-- Optional: `docs/explore/<slug>/customer-segmentation.md`
-- Optional: `docs/explore/<slug>/positioning.md`
-- Optional: `docs/explore/<slug>/roadmap.md`
+- `docs/00-strategy/<slug>_opportunity-solution-tree.md`
+- Optional: `docs/00-strategy/<slug>_customer-segmentation.md`
+- Optional: `docs/00-strategy/<slug>_positioning.md`
+- Optional: `docs/00-strategy/<slug>_roadmap.md`
+- Optional: `docs/00-strategy/<slug>_pricing-packaging.md`
 
 ## Steps
 
-1. Define the work slug and create the output folder in the project repo.
+1. Define the work slug (prefer `0001_<short>` for ordering).
 2. Run skill `opportunity-solution-tree` to capture problems, opportunities, and experiments.
-3. Add optional segmentation/positioning/roadmap docs if needed.
+3. Add optional segmentation/positioning/roadmap/pricing docs if needed.
 4. Summarize the next experiment and expected learning.
 
 ## Verification
@@ -32,8 +33,3 @@ Define the opportunity and next experiment before shaping.
 
 - GO if the opportunity is scoped and the next bet is clear.
 - NO-GO if it is a list without a testable next step.
-
-## Usage
-
-- Codex: `/prompts:wf-explore <slug>`
-- Claude: `/wf-explore <slug>`

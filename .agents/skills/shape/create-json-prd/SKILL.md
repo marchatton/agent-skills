@@ -7,13 +7,13 @@ description: Use when converting a PRD into the canonical JSON PRD for tooling; 
 
 ## Inputs
 
-- Required: `docs/shape/<slug>/prd.md`.
+- Required: `docs/05-prds/<slug>.md`.
 - Optional: breadboard, spike plan, deepen plan.
 
 ## Outputs
 
 - `.agents/tasks/prd-<slug>.json`.
-- Optional: `docs/shape/<slug>/prd.json`.
+- Optional: `docs/05-prds/<slug>.json`.
 
 ## Steps
 

@@ -13,7 +13,7 @@ description: Use when mapping the core user/system flow for a feature or change.
 
 ## Outputs
 
-- `docs/shape/<slug>/breadboard.md`.
+- `docs/05-prds/<slug>_breadboard.md`.
 
 ## Steps
 

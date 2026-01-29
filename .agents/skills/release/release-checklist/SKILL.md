@@ -13,7 +13,7 @@ description: Use when preparing a release checklist with rollout, rollback, and 
 
 ## Outputs
 
-- `docs/release/<slug>/release.md`.
+- `docs/09-release/release-notes/<slug>_release.md`.
 
 ## Steps
 

@@ -12,12 +12,12 @@ Wrapper around native `/review` (Claude/Codex) with verification, optional fix l
 
 ## Outputs
 
-- `docs/review/<slug>/review.md`
-- Optional: `docs/review/<slug>/browser-qa.md`
+- `docs/06-delivery/<slug>_review.md`
+- Optional: `docs/06-delivery/<slug>_browser-qa.md`
 
 ## Steps
 
-1. Define the work slug and gather context.
+1. Define the work slug (prefer `0001_<short>` for ordering) and gather context.
 2. Run native `/review` command (Claude/Codex) to capture review findings.
 3. Run `pnpm verify` in the target repo.
 4. **If verify fails**, ask: "Fix failures now? (y/n)"
@@ -35,8 +35,3 @@ Wrapper around native `/review` (Claude/Codex) with verification, optional fix l
 
 - GO if verify is green and no high-risk gaps remain.
 - NO-GO if correctness, rollout, or security risks are unresolved.
-
-## Usage
-
-- Codex: `/prompts:wf-review <slug>`
-- Claude: `/wf-review <slug>`

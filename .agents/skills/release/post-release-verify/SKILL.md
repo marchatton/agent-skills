@@ -13,7 +13,7 @@ description: Use when verifying post-release behavior and monitoring signals.
 
 ## Outputs
 
-- `docs/release/<slug>/post-release.md`.
+- `docs/09-release/release-notes/<slug>_post-release.md`.
 
 ## Steps
 

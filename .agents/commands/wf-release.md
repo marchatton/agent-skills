@@ -12,14 +12,14 @@ Ship changes with a release checklist, changelog, and post-release verification.
 
 ## Outputs
 
-- `docs/release/<slug>/release.md`
-- `docs/release/<slug>/changelog.md`
-- Optional: `docs/release/<slug>/post-release.md`
-- Optional: appended entry in `docs/learnings.md` via `compound`
+- `docs/09-release/release-notes/<slug>_release.md`
+- `docs/09-release/release-notes/<slug>_changelog.md`
+- Optional: `docs/09-release/release-notes/<slug>_post-release.md`
+- Optional: appended entry in `docs/LEARNINGS.md` via `compound`
 
 ## Steps
 
-1. Define the work slug and gather release context.
+1. Define the work slug (prefer `0001_<short>` for ordering) and gather release context.
 2. Run skill `release-checklist` and capture rollout, rollback, monitors.
 3. Draft changelog via `changelog-draft`.
 4. Run `pnpm verify` in the target repo.
@@ -34,8 +34,3 @@ Ship changes with a release checklist, changelog, and post-release verification.
 
 - GO if verify is green, rollback plan exists, and monitors listed.
 - NO-GO otherwise.
-
-## Usage
-
-- Codex: `/prompts:wf-release <slug>`
-- Claude: `/wf-release <slug>`

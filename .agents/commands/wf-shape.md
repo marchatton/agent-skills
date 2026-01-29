@@ -12,16 +12,16 @@ Produce a PRD and optional supporting artefacts that are ready for implementatio
 
 ## Outputs
 
-- `docs/shape/<slug>/prd.md`
-- Optional: `docs/shape/<slug>/breadboard.md`
-- Optional: `docs/shape/<slug>/spike-plan.md`
-- Optional: `docs/shape/<slug>/plan.md`
-- Optional: `docs/shape/<slug>/prd.json`
+- `docs/05-prds/<slug>.md`
+- Optional: `docs/05-prds/<slug>_breadboard.md`
+- Optional: `docs/05-prds/<slug>_spike-plan.md`
+- Optional: `docs/05-prds/<slug>_plan.md`
+- Optional: `docs/05-prds/<slug>.json`
 - Required for tooling: `.agents/tasks/prd-<slug>.json`
 
 ## Steps
 
-1. Define the work slug and create the output folder in the project repo.
+1. Define the work slug (prefer `0001_<short>` for ordering).
 2. Run skill `create-prd` and fill acceptance criteria + verification plan.
 3. Add breadboard and spike plan if needed.
 4. Run `deepen-plan` when sequencing is complex.
@@ -35,8 +35,3 @@ Produce a PRD and optional supporting artefacts that are ready for implementatio
 
 - GO if success criteria and verification plan are explicit.
 - NO-GO if success criteria or verification plan is missing.
-
-## Usage
-
-- Codex: `/prompts:wf-shape <slug>`
-- Claude: `/wf-shape <slug>`

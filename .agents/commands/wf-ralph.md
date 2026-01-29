@@ -13,11 +13,11 @@ Run a continuous coding loop with Ralph and finish with verification.
 
 - `.agents/tasks/prd-<slug>.json`
 - `.ralph/` state and logs
-- Optional: `docs/dev/<slug>/ralph-log.md`
+- Optional: `docs/06-delivery/<slug>_ralph-log.md`
 
 ## Steps
 
-1. Ensure `.agents/tasks/prd-<slug>.json` exists.
+1. Ensure `.agents/tasks/prd-<slug>.json` exists (prefer `0001_<short>` slug).
 2. Ask for iteration count (default 10).
 3. Loop `ralph build 1` for N iterations.
 4. Run `verify` and record GO/NO-GO.
@@ -30,8 +30,3 @@ Run a continuous coding loop with Ralph and finish with verification.
 
 - GO if verify is green and acceptance criteria are met.
 - NO-GO if any verification fails.
-
-## Usage
-
-- Codex: `/prompts:wf-ralph <slug>`
-- Claude: `/wf-ralph <slug>`

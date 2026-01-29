@@ -13,14 +13,14 @@ Implement changes with a verification-first loop.
 ## Outputs
 
 - Code changes.
-- `docs/dev/<slug>/dev-log.md` (what changed + how verified + GO/NO-GO).
+- `docs/06-delivery/<slug>_dev-log.md` (what changed + how verified + GO/NO-GO).
 
 ## Steps
 
-1. Define the work slug and open the target repo.
+1. Define the work slug (prefer `0001_<short>` for ordering) and open the target repo.
 2. Implement changes with tight, verifiable increments.
 3. Run pnpm ladder (lint/typecheck/test/build/verify).
-4. Write `docs/dev/<slug>/dev-log.md` with summary, verification, and GO/NO-GO.
+4. Write `docs/06-delivery/<slug>_dev-log.md` with summary, verification, and GO/NO-GO.
 
 ## Verification
 
@@ -34,8 +34,3 @@ Implement changes with a verification-first loop.
 
 - GO if ladder is green and acceptance criteria met.
 - NO-GO if any command fails or behavior cannot be demonstrated.
-
-## Usage
-
-- Codex: `/prompts:wf-develop <slug>`
-- Claude: `/wf-develop <slug>`

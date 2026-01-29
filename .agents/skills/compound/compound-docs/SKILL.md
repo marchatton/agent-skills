@@ -1,6 +1,6 @@
 ---
 name: compound-docs
-description: Use when appending structured learnings to a project repo's docs/learnings.md.
+description: Use when appending structured learnings to a project repo's docs/LEARNINGS.md.
 ---
 
 # Compound Docs
@@ -14,11 +14,11 @@ description: Use when appending structured learnings to a project repo's docs/le
 
 ## Outputs
 
-- Appended entry in project `docs/learnings.md`.
+- Appended entry in project `docs/LEARNINGS.md`.
 
 ## Steps
 
-1. Open project `docs/learnings.md`.
+1. Open project `docs/LEARNINGS.md`.
 2. Append a new entry under the correct stage.
 3. Include required fields and links.
 

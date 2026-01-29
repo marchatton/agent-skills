@@ -13,7 +13,7 @@ description: Use when sequencing work, dependencies, and cut lines need a deeper
 
 ## Outputs
 
-- `docs/shape/<slug>/plan.md`.
+- `docs/05-prds/<slug>_plan.md`.
 
 ## Steps
 

@@ -13,7 +13,7 @@ description: Use when drafting release notes or a changelog entry for a release.
 
 ## Outputs
 
-- `docs/release/<slug>/changelog.md`.
+- `docs/09-release/release-notes/<slug>_changelog.md`.
 
 ## Steps
 

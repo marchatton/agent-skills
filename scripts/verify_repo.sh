@@ -122,6 +122,7 @@ fi
 echo "Manual smoke steps:"
 echo "- ./scripts/vendor_update.sh"
 echo "- ./scripts/vendor_sync.sh"
+echo "- ./scripts/npx_skills_refresh.sh"
 echo "- node --experimental-strip-types ./scripts/generate_cheatsheet.ts"
 echo "- ./scripts/verify_repo.sh"
 

@@ -13,7 +13,7 @@ description: Use when a timeboxed spike is needed to answer risks or unknowns.
 
 ## Outputs
 
-- `docs/shape/<slug>/spike-plan.md`.
+- `docs/05-prds/<slug>_spike-plan.md`.
 
 ## Steps
 

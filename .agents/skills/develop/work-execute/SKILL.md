@@ -14,7 +14,7 @@ description: Use when implementing planned work with a tight verify-first loop.
 ## Outputs
 
 - Code changes.
-- `docs/dev/<slug>/dev-log.md`.
+- `docs/06-delivery/<slug>_dev-log.md`.
 
 ## Steps
 

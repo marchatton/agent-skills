@@ -511,7 +511,7 @@ We support iannuttall/ralph as the canonical “Ralph loop”.
 
 Ralph design facts we align with:
 
-* state persists in `.ralph/`
+* state persists in `.ralph/`   
 * PRD JSON default output lives under `.agents/tasks/`
 * templates can be installed into `.agents/ralph/`
 * one iteration is `ralph build 1`

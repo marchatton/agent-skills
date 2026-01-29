@@ -13,7 +13,7 @@ description: Use when shaping work into a PRD with acceptance criteria and verif
 
 ## Outputs
 
-- `docs/shape/<slug>/prd.md`.
+- `docs/05-prds/<slug>.md`.
 
 ## Steps
 

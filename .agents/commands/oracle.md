@@ -27,7 +27,3 @@ Run the Oracle CLI as latest via the wrapper script.
 - GO if Oracle ran successfully.
 - NO-GO if Oracle fails or Node version is unsupported.
 
-## Usage
-
-- Codex: `/prompts:oracle -- <args>`
-- Claude: `/oracle <args>`

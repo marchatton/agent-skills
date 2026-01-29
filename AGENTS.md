@@ -1,69 +1,27 @@
 # AGENTS.md
 Make skills concise + specific. Sacrifice grammar for concision.
 
-## Purpose (WHY)
-Guardrails for skills/commands/hooks across Codex/Claude/Gemini (primary: Codex). Model-agnostic.
-This repo is the canonical source of product-engineering skills, commands, hooks, templates. Other repos consume, not rewrite.
+## Scope and guidelines
+- This repo is the canonical source for agent skills/commands/hooks and repo scaffolds consumed by downstream projects.
 
-## Repo map (WHAT)
-Canonical surface: `.agents/` (source of truth, everything runnable).
-Sync/link mechanism: `iannuttall/dotagents` links `.agents/` into runners/clients and across machines.
-Platform: macOS/Linux/WSL only (shell scripts not native Windows).
+## Guidelines
+- Changes here propagate into many repos. Prefer small changes, avoid breaking downstream scaffolds, and call out any intentional breakage in the PR.
+- If a workflow is repeatable, prefer adding/updating a skill/command rather than growing AGENTS.
+- Avoid brittle file-path assertions in prose. Describe stable concepts and search if unsure.
 
-Structure:
-- `.agents/skills/<category>/<skill>/SKILL.md`
-- `.agents/commands/<command>.md`
-- `.agents/hooks/` optional (examples only in v1)
-- `inspiration/<vendor>/` mirrors + `changelog/<vendor>.md` (Sync/Fork/Ignore/Unclassified)
-- `scripts/` (refresh/generate/verify, wrappers)
-- `docs/templates/` (templates used by skills/commands)
+## Template structure
+- Canonical repo of skills/commands/hooks lives under .agents
+- Canonical docs folder structure `docs/REPO-STRUCTURE.md`
+- Canonical document templates `docs/templates`
+- Target-repo AGENTS.md templates live in `docs/agentsmd/`.
+- For commands, skills, agent files etc; `AGENTS.md` is the source of truth. Agentic tool specific files (e.g. `CLAUDE.md`) should be symlinked via `iannuttal/dotagents` — don’t fork instructions per agentic tool (e.g. Claude, Amp).
+- Canonical workflows live under `.agents/commands` (`wf-*`); keep AGENTS references in sync
 
-## How to work (HOW)
-Principles: KISS, YAGNI, DRY. Prefer simple workflows + verification, not clever automation.
-No roles/modes in v1. No sub-agent dependency. Use `multi-agent-routing` if needed (sub-agents if supported, else parallel/serial sessions).
-Commands are runbooks. Skills are reusable blocks.
+## Tooling
+- Package manager: default pnpm 
 
-Code-touching work must include verification + GO/NO-GO:
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm test`
-- `pnpm build`
-- `pnpm verify`
-Output: GO or NO-GO + the evidence (what ran, what failed, links/paths if relevant).
+## When unclear
+Use `ask-questions-if-underspecified` before making template changes that affect multiple repos.
 
-When creating/updating skills: follow `skill-creator` (reference implementation).
-
-## Skill rules (strict)
-- `SKILL.md` required.
-- Frontmatter: `name` + `description` only (optional `license`).
-- Description = trigger/when-to-use. Body = imperative how-to. Examples > prose.
-- Keep <500 lines. Avoid repetition via `scripts/`, `assets/`, `references/` (link refs once).
-- No extra per-skill docs (README/CHANGELOG). Move essentials to `references/` or drop.
-- Every skill includes **Verify**. If code-touching: pnpm ladder + GO/NO-GO.
-
-Special utility skill: `ask-questions-if-underspecified`
-- Must exist exactly as defined.
-- Never auto-run. Only when explicitly invoked.
-
-## Command rules (runbooks)
-- File: `.agents/commands/<name>.md`
-- Must include: purpose, inputs, outputs, steps (which skills), verification + GO/NO-GO, usage examples.
-- Workflow commands (keep these names): `wf-explore`, `wf-shape`, `wf-develop`, `wf-review`, `wf-release`, `wf-ralph`
-- Utility commands: short names eg `verify`, `landpr`, `handoff`, `pickup`, `compound`
-
-## Naming + taxonomy (invariants)
-- Skill name: lowercase/digits/hyphens, <64 chars, verb-noun. Folder matches name.
-- Single-level categories only. No deep nesting.
-- Framework-specific: encode in folder name (react-, next-, cloudflare-).
-
-Skills must live under exactly:
-- `explore/` `shape/` `develop/` `review/` `release/` `compound/` `utilities/`
-
-## Progressive disclosure (read when relevant)
-Keep AGENTS.md universal. Put detail in docs and only read on demand:
-- `agent_docs/compounding.md` (learnings flow, templates, when `wf-release` runs `compound`)
-- `agent_docs/ralph.md` (continuous coding loop, PRD json, iterations, verify + GO/NO-GO)
-- `agent_docs/vendors.md` (vendor mirrors, changelog decisions, update/sync scripts, “latest” CLI wrappers)
-- `agent_docs/hooks.md` (git hook templates + rules, CI expectations)
-- `agent_docs/creation_workflow.md` (the v1 creation steps, examples-first, verify-first)
-- `agent_docs/attribution.md` (how to credit upstream + methodology inspiration)
+## Onboarding new repos
+- Use onboarding script to copy templates into target repo structure.
