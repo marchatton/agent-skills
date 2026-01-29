@@ -1,0 +1,572 @@
+{
+  "version": 1,
+  "canonicalRepo": "marchatton/templates",
+  "localRoot": "~/templates",
+  "generatedAt": "2026-01-29",
+  "tiers": [
+    "core",
+    "leaf",
+    "deprecated"
+  ],
+  "entries": {
+    "skills": [
+      {
+        "name": "agent-browser",
+        "tier": "core",
+        "purpose": "Browser automation using Vercel's agent-browser CLI",
+        "useWhen": "you need to interact with web pages, fill forms, take screenshots, or scrape data. Alternative to Playwright MCP - uses Bash commands with ref-based element selection. Triggers on \"browse website\", \"fill form\", \"click button\", \"take screenshot\", \"scrape page\", \"web automation\"",
+        "outputs": [],
+        "ownerModule": "agent-browser",
+        "location": ".agents/skills/utilities/agent-browser/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "agent-native-architecture",
+        "tier": "leaf",
+        "purpose": "reviewing architecture for agent-native workflows, risks, and verification needs",
+        "useWhen": "reviewing architecture for agent-native workflows, risks, and verification needs",
+        "outputs": [
+          "Architecture review notes."
+        ],
+        "ownerModule": "agent-native-architecture",
+        "location": ".agents/skills/review/agent-native-architecture/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "agentation",
+        "tier": "leaf",
+        "purpose": "Add Agentation visual feedback toolbar to Next.js (App Router or Pages Router)",
+        "useWhen": "installing/configuring agentation or adding dev-only <Agentation />",
+        "outputs": [],
+        "ownerModule": "agentation",
+        "location": ".agents/skills/review/agentation/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "ask-questions-if-underspecified",
+        "tier": "core",
+        "purpose": "Clarify requirements before implementing. Do not use automatically, only when invoked explicitly",
+        "useWhen": "",
+        "outputs": [],
+        "ownerModule": "ask-questions-if-underspecified",
+        "location": ".agents/skills/utilities/ask-questions-if-underspecified/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "breadboard",
+        "tier": "leaf",
+        "purpose": "mapping the core user/system flow for a feature or change",
+        "useWhen": "mapping the core user/system flow for a feature or change",
+        "outputs": [
+          "`docs/05-prds/<slug>_breadboard.md`."
+        ],
+        "ownerModule": "breadboard",
+        "location": ".agents/skills/shape/breadboard/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "browser-qa",
+        "tier": "leaf",
+        "purpose": "running browser QA checks for user flows and visual regressions",
+        "useWhen": "running browser QA checks for user flows and visual regressions",
+        "outputs": [
+          "Browser QA notes.",
+          "Screenshots or recordings (optional)."
+        ],
+        "ownerModule": "browser-qa",
+        "location": ".agents/skills/review/browser-qa/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "changelog-draft",
+        "tier": "leaf",
+        "purpose": "drafting release notes or a changelog entry for a release",
+        "useWhen": "drafting release notes or a changelog entry for a release",
+        "outputs": [
+          "`docs/09-release/release-notes/<slug>_changelog.md`."
+        ],
+        "ownerModule": "changelog-draft",
+        "location": ".agents/skills/release/changelog-draft/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "compound-docs",
+        "tier": "leaf",
+        "purpose": "appending structured learnings to a project repo's docs/LEARNINGS.md",
+        "useWhen": "appending structured learnings to a project repo's docs/LEARNINGS.md",
+        "outputs": [
+          "Appended entry in project `docs/LEARNINGS.md`."
+        ],
+        "ownerModule": "compound-docs",
+        "location": ".agents/skills/compound/compound-docs/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "create-cli",
+        "tier": "leaf",
+        "purpose": "creating a new CLI project scaffold with pnpm and basic structure",
+        "useWhen": "creating a new CLI project scaffold with pnpm and basic structure",
+        "outputs": [
+          "New CLI scaffold with README and entrypoint."
+        ],
+        "ownerModule": "create-cli",
+        "location": ".agents/skills/utilities/create-cli/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "create-json-prd",
+        "tier": "leaf",
+        "purpose": "converting a PRD into the canonical JSON PRD for tooling; requires a PRD and may include breadboard/spike/plan inputs",
+        "useWhen": "converting a PRD into the canonical JSON PRD for tooling; requires a PRD and may include breadboard/spike/plan inputs",
+        "outputs": [
+          "`.agents/tasks/prd-<slug>.json`.",
+          "Optional: `docs/05-prds/<slug>.json`."
+        ],
+        "ownerModule": "create-json-prd",
+        "location": ".agents/skills/shape/create-json-prd/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "create-prd",
+        "tier": "leaf",
+        "purpose": "shaping work into a PRD with acceptance criteria and verification plan",
+        "useWhen": "shaping work into a PRD with acceptance criteria and verification plan",
+        "outputs": [
+          "`docs/05-prds/<slug>.md`."
+        ],
+        "ownerModule": "create-prd",
+        "location": ".agents/skills/shape/create-prd/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "creating-agent-skills",
+        "tier": "leaf",
+        "purpose": "Expert guidance for creating, writing, and refining Claude Code Skills",
+        "useWhen": "working with SKILL.md files, authoring new skills, improving existing skills, or understanding skill structure and best practices",
+        "outputs": [],
+        "ownerModule": "create-agent-skills",
+        "location": ".agents/skills/utilities/create-agent-skills/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "customer-segmentation",
+        "tier": "leaf",
+        "purpose": "defining customer segments and targeting criteria during Explore",
+        "useWhen": "defining customer segments and targeting criteria during Explore",
+        "outputs": [
+          "Segment list with defining traits.",
+          "Primary target segment and rationale."
+        ],
+        "ownerModule": "customer-segmentation",
+        "location": ".agents/skills/explore/customer-segmentation/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "deepen-plan",
+        "tier": "leaf",
+        "purpose": "sequencing work, dependencies, and cut lines need a deeper plan",
+        "useWhen": "sequencing work, dependencies, and cut lines need a deeper plan",
+        "outputs": [
+          "`docs/05-prds/<slug>_plan.md`."
+        ],
+        "ownerModule": "deepen-plan",
+        "location": ".agents/skills/shape/deepen-plan/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "docs-list",
+        "tier": "core",
+        "purpose": "listing or summarizing docs files in a repo",
+        "useWhen": "listing or summarizing docs files in a repo",
+        "outputs": [
+          "List of docs with short summaries."
+        ],
+        "ownerModule": "docs-list",
+        "location": ".agents/skills/utilities/docs-list/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "every-style-editor",
+        "tier": "leaf",
+        "purpose": "This skill",
+        "useWhen": "reviewing or editing copy to ensure adherence to Every's style guide. It provides a systematic line-by-line review process for grammar, punctuation, mechanics, and style guide compliance",
+        "outputs": [],
+        "ownerModule": "every-style-editor",
+        "location": ".agents/skills/utilities/every-style-editor/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "file-todos",
+        "tier": "leaf",
+        "purpose": "This skill",
+        "useWhen": "managing the file-based todo tracking system in the todos/ directory. It provides workflows for creating todos, managing status and dependencies, conducting triage, and integrating with slash commands and code review processes",
+        "outputs": [],
+        "ownerModule": "file-todos",
+        "location": ".agents/skills/utilities/file-todos/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "frontend-design",
+        "tier": "leaf",
+        "purpose": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics",
+        "useWhen": "",
+        "outputs": [],
+        "ownerModule": "frontend-design",
+        "location": ".agents/skills/utilities/frontend-design/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "gemini-imagegen",
+        "tier": "leaf",
+        "purpose": "This skill",
+        "useWhen": "generating and editing images using the Gemini API (Nano Banana Pro). It applies when creating images from text prompts, editing existing images, applying style transfers, generating logos with text, creating stickers, product mockups, or any image generation/manipulation task. Supports text-to-image, image editing, multi-turn refinement, and composition from multiple reference images",
+        "outputs": [],
+        "ownerModule": "gemini-imagegen",
+        "location": ".agents/skills/utilities/gemini-imagegen/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "markdown-converter",
+        "tier": "leaf",
+        "purpose": "Convert documents and files to Markdown using markitdown",
+        "useWhen": "converting PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx, .xls), HTML, CSV, JSON, XML, images (with EXIF/OCR), audio (with transcription), ZIP archives, YouTube URLs, or EPubs to Markdown format for LLM processing or text analysis",
+        "outputs": [],
+        "ownerModule": "markdown-converter",
+        "location": ".agents/skills/utilities/markdown-converter/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "modular-skills-architect",
+        "tier": "core",
+        "purpose": "Map and refactor an agent context ecosystem: skills, commands/workflows, hooks, agent files, AGENTS.md templates, and docs. Output system map, module/dependency design, Register updates, and a concrete split/consolidate/rename/delete plan",
+        "useWhen": "inherited messy skills/commands/workflows/AGENTS/docs and nobody can explain fit; combining sources and need to consolidate + rationalise, keep it simple; skills overlap, routing surprises, outputs inconsistent, glue logic in wrong place; need concrete refactor plan (split/consolidate/rename/delete), not theory",
+        "outputs": [
+          ".agents/register.json",
+          "system map + refactor plan (report)",
+          "dependency map (a -> b edges + mermaid diagram)"
+        ],
+        "ownerModule": "modular-skills-architect",
+        "location": ".agents/skills/utilities/modular-skills-architect/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "multi-agent-routing",
+        "tier": "core",
+        "purpose": "Route multi-agent work: choose sub-agents if supported, else parallel/serial sessions",
+        "useWhen": "splitting tasks across multiple agents and client capability varies",
+        "outputs": [
+          "Routing plan (sub-agents vs sessions; parallel vs serial).",
+          "Labeled outputs per slice."
+        ],
+        "ownerModule": "multi-agent-routing",
+        "location": ".agents/skills/utilities/multi-agent-routing/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "nano-banana-pro",
+        "tier": "leaf",
+        "purpose": "Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use --input-image",
+        "useWhen": "",
+        "outputs": [
+          "Saves PNG to current directory (or specified path if filename includes directory)",
+          "Script outputs the full path to the generated image",
+          "**Do not read the image back** - just inform the user of the saved path"
+        ],
+        "ownerModule": "nano-banana-pro",
+        "location": ".agents/skills/utilities/nano-banana-pro/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "openai-image-gen",
+        "tier": "leaf",
+        "purpose": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery",
+        "useWhen": "",
+        "outputs": [
+          "`*.png` images",
+          "`prompts.json` (prompt \u2194 file mapping)",
+          "`index.html` (thumbnail gallery)"
+        ],
+        "ownerModule": "openai-image-gen",
+        "location": ".agents/skills/utilities/openai-image-gen/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "opportunity-solution-tree",
+        "tier": "leaf",
+        "purpose": "selecting a product opportunity and defining the next experiment; produce an opportunity-solution tree",
+        "useWhen": "selecting a product opportunity and defining the next experiment; produce an opportunity-solution tree",
+        "outputs": [
+          "Opportunity-solution tree (outline or diagram).",
+          "Next experiment definition."
+        ],
+        "ownerModule": "opportunity-solution-tree",
+        "location": ".agents/skills/explore/opportunity-solution-tree/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "oracle",
+        "tier": "core",
+        "purpose": "running Oracle CLI workflows; wraps the latest Oracle CLI with Node 22+ checks",
+        "useWhen": "running Oracle CLI workflows; wraps the latest Oracle CLI with Node 22+ checks",
+        "outputs": [
+          "Oracle CLI output."
+        ],
+        "ownerModule": "oracle",
+        "location": ".agents/skills/utilities/oracle/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "positioning",
+        "tier": "leaf",
+        "purpose": "defining product positioning, differentiation, and messaging in Explore",
+        "useWhen": "defining product positioning, differentiation, and messaging in Explore",
+        "outputs": [
+          "Positioning statement.",
+          "Differentiation bullets."
+        ],
+        "ownerModule": "positioning",
+        "location": ".agents/skills/explore/positioning/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "post-release-verify",
+        "tier": "leaf",
+        "purpose": "verifying post-release behavior and monitoring signals",
+        "useWhen": "verifying post-release behavior and monitoring signals",
+        "outputs": [
+          "`docs/09-release/release-notes/<slug>_post-release.md`."
+        ],
+        "ownerModule": "post-release-verify",
+        "location": ".agents/skills/release/post-release-verify/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "pr-review",
+        "tier": "leaf",
+        "purpose": "reviewing a PR for correctness, risk, and verification evidence",
+        "useWhen": "reviewing a PR for correctness, risk, and verification evidence",
+        "outputs": [
+          "Review notes and decision."
+        ],
+        "ownerModule": "pr-review",
+        "location": ".agents/skills/review/pr-review/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "prd-review",
+        "tier": "leaf",
+        "purpose": "reviewing a PRD for clarity, scope, and verification readiness",
+        "useWhen": "reviewing a PRD for clarity, scope, and verification readiness",
+        "outputs": [
+          "Review notes and gaps list."
+        ],
+        "ownerModule": "prd-review",
+        "location": ".agents/skills/shape/prd-review/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "pricing-packaging",
+        "tier": "leaf",
+        "purpose": "exploring pricing and packaging options for a product or feature",
+        "useWhen": "exploring pricing and packaging options for a product or feature",
+        "outputs": [
+          "Candidate pricing/packaging options.",
+          "Recommended option with risks."
+        ],
+        "ownerModule": "pricing-packaging",
+        "location": ".agents/skills/explore/pricing-packaging/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "release-checklist",
+        "tier": "leaf",
+        "purpose": "preparing a release checklist with rollout, rollback, and monitoring steps",
+        "useWhen": "preparing a release checklist with rollout, rollback, and monitoring steps",
+        "outputs": [
+          "`docs/09-release/release-notes/<slug>_release.md`."
+        ],
+        "ownerModule": "release-checklist",
+        "location": ".agents/skills/release/release-checklist/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "report-bug",
+        "tier": "leaf",
+        "purpose": "writing a bug report with reproduction details and impact",
+        "useWhen": "writing a bug report with reproduction details and impact",
+        "outputs": [
+          "Structured bug report."
+        ],
+        "ownerModule": "report-bug",
+        "location": ".agents/skills/develop/report-bug/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "reproduce-bug",
+        "tier": "leaf",
+        "purpose": "you need to reproduce a bug with clear steps and evidence",
+        "useWhen": "you need to reproduce a bug with clear steps and evidence",
+        "outputs": [
+          "Repro steps and evidence.",
+          "Minimal reproduction notes."
+        ],
+        "ownerModule": "reproduce-bug",
+        "location": ".agents/skills/develop/reproduce-bug/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "resolve-pr-feedback",
+        "tier": "leaf",
+        "purpose": "addressing PR feedback and re-verifying changes",
+        "useWhen": "addressing PR feedback and re-verifying changes",
+        "outputs": [
+          "Updated code changes.",
+          "Reply notes for reviewers."
+        ],
+        "ownerModule": "resolve-pr-feedback",
+        "location": ".agents/skills/develop/resolve-pr-feedback/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "resolve-todos",
+        "tier": "leaf",
+        "purpose": "resolving TODOs and cleanup items with verification",
+        "useWhen": "resolving TODOs and cleanup items with verification",
+        "outputs": [
+          "Resolved TODOs.",
+          "Updated notes or dev-log."
+        ],
+        "ownerModule": "resolve-todos",
+        "location": ".agents/skills/develop/resolve-todos/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "roadmap",
+        "tier": "leaf",
+        "purpose": "outlining high-level sequencing and milestones in Explore",
+        "useWhen": "outlining high-level sequencing and milestones in Explore",
+        "outputs": [
+          "High-level roadmap with milestones.",
+          "Next milestone definition."
+        ],
+        "ownerModule": "roadmap",
+        "location": ".agents/skills/explore/roadmap/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "skill-creator",
+        "tier": "leaf",
+        "purpose": "Guide for creating effective skills. This skill",
+        "useWhen": "users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations",
+        "outputs": [],
+        "ownerModule": "skill-creator",
+        "location": ".agents/skills/utilities/skill-creator/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "spike-plan",
+        "tier": "leaf",
+        "purpose": "a timeboxed spike is needed to answer risks or unknowns",
+        "useWhen": "a timeboxed spike is needed to answer risks or unknowns",
+        "outputs": [
+          "`docs/05-prds/<slug>_spike-plan.md`."
+        ],
+        "ownerModule": "spike-plan",
+        "location": ".agents/skills/shape/spike-plan/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "trash",
+        "tier": "core",
+        "purpose": "safely deleting or archiving files with confirmation and notes",
+        "useWhen": "safely deleting or archiving files with confirmation and notes",
+        "outputs": [
+          "Removed files or archived copies.",
+          "Notes about what was removed."
+        ],
+        "ownerModule": "trash",
+        "location": ".agents/skills/utilities/trash/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "use-ai-sdk",
+        "tier": "leaf",
+        "purpose": "AI SDK guidance. Use for Vercel AI SDK APIs (generateText, streamText, ToolLoopAgent, tools), providers, streaming, tool calling, structured output, or troubleshooting",
+        "useWhen": "",
+        "outputs": [],
+        "ownerModule": "use-ai-sdk",
+        "location": ".agents/skills/develop/use-ai-sdk/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "video-transcript-downloader",
+        "tier": "leaf",
+        "purpose": "Download videos, audio, subtitles, and clean paragraph-style transcripts from YouTube and any other yt-dlp supported site",
+        "useWhen": "asked to \u201cdownload this video\u201d, \u201csave this clip\u201d, \u201crip audio\u201d, \u201cget subtitles\u201d, \u201cget transcript\u201d, or to troubleshoot yt-dlp/ffmpeg and formats/playlists",
+        "outputs": [],
+        "ownerModule": "video-transcript-downloader",
+        "location": ".agents/skills/utilities/video-transcript-downloader/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      },
+      {
+        "name": "work-execute",
+        "tier": "leaf",
+        "purpose": "implementing planned work with a tight verify-first loop",
+        "useWhen": "implementing planned work with a tight verify-first loop",
+        "outputs": [
+          "Code changes.",
+          "`docs/06-delivery/<slug>_dev-log.md`."
+        ],
+        "ownerModule": "work-execute",
+        "location": ".agents/skills/develop/work-execute/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct"
+      }
+    ],
+    "commands": [],
+    "hooks": [],
+    "agentsDocs": []
+  }
+}
