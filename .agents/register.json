@@ -19,7 +19,9 @@
         "ownerModule": "agent-browser",
         "location": ".agents/skills/utilities/agent-browser/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "agent-native-architecture",
@@ -32,7 +34,9 @@
         "ownerModule": "agent-native-architecture",
         "location": ".agents/skills/review/agent-native-architecture/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "agentation",
@@ -43,7 +47,9 @@
         "ownerModule": "agentation",
         "location": ".agents/skills/review/agentation/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "ask-questions-if-underspecified",
@@ -54,47 +60,9 @@
         "ownerModule": "ask-questions-if-underspecified",
         "location": ".agents/skills/utilities/ask-questions-if-underspecified/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "breadboard",
-        "tier": "leaf",
-        "purpose": "mapping the core user/system flow for a feature or change",
-        "useWhen": "mapping the core user/system flow for a feature or change",
-        "outputs": [
-          "`docs/05-prds/<slug>_breadboard.md`."
-        ],
-        "ownerModule": "breadboard",
-        "location": ".agents/skills/shape/breadboard/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "browser-qa",
-        "tier": "leaf",
-        "purpose": "running browser QA checks for user flows and visual regressions",
-        "useWhen": "running browser QA checks for user flows and visual regressions",
-        "outputs": [
-          "Browser QA notes.",
-          "Screenshots or recordings (optional)."
-        ],
-        "ownerModule": "browser-qa",
-        "location": ".agents/skills/review/browser-qa/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "changelog-draft",
-        "tier": "leaf",
-        "purpose": "drafting release notes or a changelog entry for a release",
-        "useWhen": "drafting release notes or a changelog entry for a release",
-        "outputs": [
-          "`docs/09-release/release-notes/<slug>_changelog.md`."
-        ],
-        "ownerModule": "changelog-draft",
-        "location": ".agents/skills/release/changelog-draft/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "compound-docs",
@@ -107,7 +75,9 @@
         "ownerModule": "compound-docs",
         "location": ".agents/skills/compound/compound-docs/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "create-cli",
@@ -120,34 +90,9 @@
         "ownerModule": "create-cli",
         "location": ".agents/skills/utilities/create-cli/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "create-json-prd",
-        "tier": "leaf",
-        "purpose": "converting a PRD into the canonical JSON PRD for tooling; requires a PRD and may include breadboard/spike/plan inputs",
-        "useWhen": "converting a PRD into the canonical JSON PRD for tooling; requires a PRD and may include breadboard/spike/plan inputs",
-        "outputs": [
-          "`.agents/tasks/prd-<slug>.json`.",
-          "Optional: `docs/05-prds/<slug>.json`."
-        ],
-        "ownerModule": "create-json-prd",
-        "location": ".agents/skills/shape/create-json-prd/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "create-prd",
-        "tier": "leaf",
-        "purpose": "shaping work into a PRD with acceptance criteria and verification plan",
-        "useWhen": "shaping work into a PRD with acceptance criteria and verification plan",
-        "outputs": [
-          "`docs/05-prds/<slug>.md`."
-        ],
-        "ownerModule": "create-prd",
-        "location": ".agents/skills/shape/create-prd/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "creating-agent-skills",
@@ -158,34 +103,9 @@
         "ownerModule": "create-agent-skills",
         "location": ".agents/skills/utilities/create-agent-skills/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "customer-segmentation",
-        "tier": "leaf",
-        "purpose": "defining customer segments and targeting criteria during Explore",
-        "useWhen": "defining customer segments and targeting criteria during Explore",
-        "outputs": [
-          "Segment list with defining traits.",
-          "Primary target segment and rationale."
-        ],
-        "ownerModule": "customer-segmentation",
-        "location": ".agents/skills/explore/customer-segmentation/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "deepen-plan",
-        "tier": "leaf",
-        "purpose": "sequencing work, dependencies, and cut lines need a deeper plan",
-        "useWhen": "sequencing work, dependencies, and cut lines need a deeper plan",
-        "outputs": [
-          "`docs/05-prds/<slug>_plan.md`."
-        ],
-        "ownerModule": "deepen-plan",
-        "location": ".agents/skills/shape/deepen-plan/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "docs-list",
@@ -198,7 +118,9 @@
         "ownerModule": "docs-list",
         "location": ".agents/skills/utilities/docs-list/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "every-style-editor",
@@ -209,7 +131,9 @@
         "ownerModule": "every-style-editor",
         "location": ".agents/skills/utilities/every-style-editor/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "file-todos",
@@ -220,7 +144,9 @@
         "ownerModule": "file-todos",
         "location": ".agents/skills/utilities/file-todos/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "frontend-design",
@@ -231,7 +157,9 @@
         "ownerModule": "frontend-design",
         "location": ".agents/skills/utilities/frontend-design/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "gemini-imagegen",
@@ -242,7 +170,9 @@
         "ownerModule": "gemini-imagegen",
         "location": ".agents/skills/utilities/gemini-imagegen/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "markdown-converter",
@@ -253,7 +183,9 @@
         "ownerModule": "markdown-converter",
         "location": ".agents/skills/utilities/markdown-converter/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "modular-skills-architect",
@@ -268,21 +200,9 @@
         "ownerModule": "modular-skills-architect",
         "location": ".agents/skills/utilities/modular-skills-architect/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "multi-agent-routing",
-        "tier": "core",
-        "purpose": "Route multi-agent work: choose sub-agents if supported, else parallel/serial sessions",
-        "useWhen": "splitting tasks across multiple agents and client capability varies",
-        "outputs": [
-          "Routing plan (sub-agents vs sessions; parallel vs serial).",
-          "Labeled outputs per slice."
-        ],
-        "ownerModule": "multi-agent-routing",
-        "location": ".agents/skills/utilities/multi-agent-routing/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "nano-banana-pro",
@@ -297,7 +217,9 @@
         "ownerModule": "nano-banana-pro",
         "location": ".agents/skills/utilities/nano-banana-pro/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "openai-image-gen",
@@ -312,21 +234,9 @@
         "ownerModule": "openai-image-gen",
         "location": ".agents/skills/utilities/openai-image-gen/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "opportunity-solution-tree",
-        "tier": "leaf",
-        "purpose": "selecting a product opportunity and defining the next experiment; produce an opportunity-solution tree",
-        "useWhen": "selecting a product opportunity and defining the next experiment; produce an opportunity-solution tree",
-        "outputs": [
-          "Opportunity-solution tree (outline or diagram).",
-          "Next experiment definition."
-        ],
-        "ownerModule": "opportunity-solution-tree",
-        "location": ".agents/skills/explore/opportunity-solution-tree/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "oracle",
@@ -339,156 +249,9 @@
         "ownerModule": "oracle",
         "location": ".agents/skills/utilities/oracle/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "positioning",
-        "tier": "leaf",
-        "purpose": "defining product positioning, differentiation, and messaging in Explore",
-        "useWhen": "defining product positioning, differentiation, and messaging in Explore",
-        "outputs": [
-          "Positioning statement.",
-          "Differentiation bullets."
-        ],
-        "ownerModule": "positioning",
-        "location": ".agents/skills/explore/positioning/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "post-release-verify",
-        "tier": "leaf",
-        "purpose": "verifying post-release behavior and monitoring signals",
-        "useWhen": "verifying post-release behavior and monitoring signals",
-        "outputs": [
-          "`docs/09-release/release-notes/<slug>_post-release.md`."
-        ],
-        "ownerModule": "post-release-verify",
-        "location": ".agents/skills/release/post-release-verify/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "pr-review",
-        "tier": "leaf",
-        "purpose": "reviewing a PR for correctness, risk, and verification evidence",
-        "useWhen": "reviewing a PR for correctness, risk, and verification evidence",
-        "outputs": [
-          "Review notes and decision."
-        ],
-        "ownerModule": "pr-review",
-        "location": ".agents/skills/review/pr-review/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "prd-review",
-        "tier": "leaf",
-        "purpose": "reviewing a PRD for clarity, scope, and verification readiness",
-        "useWhen": "reviewing a PRD for clarity, scope, and verification readiness",
-        "outputs": [
-          "Review notes and gaps list."
-        ],
-        "ownerModule": "prd-review",
-        "location": ".agents/skills/shape/prd-review/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "pricing-packaging",
-        "tier": "leaf",
-        "purpose": "exploring pricing and packaging options for a product or feature",
-        "useWhen": "exploring pricing and packaging options for a product or feature",
-        "outputs": [
-          "Candidate pricing/packaging options.",
-          "Recommended option with risks."
-        ],
-        "ownerModule": "pricing-packaging",
-        "location": ".agents/skills/explore/pricing-packaging/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "release-checklist",
-        "tier": "leaf",
-        "purpose": "preparing a release checklist with rollout, rollback, and monitoring steps",
-        "useWhen": "preparing a release checklist with rollout, rollback, and monitoring steps",
-        "outputs": [
-          "`docs/09-release/release-notes/<slug>_release.md`."
-        ],
-        "ownerModule": "release-checklist",
-        "location": ".agents/skills/release/release-checklist/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "report-bug",
-        "tier": "leaf",
-        "purpose": "writing a bug report with reproduction details and impact",
-        "useWhen": "writing a bug report with reproduction details and impact",
-        "outputs": [
-          "Structured bug report."
-        ],
-        "ownerModule": "report-bug",
-        "location": ".agents/skills/develop/report-bug/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "reproduce-bug",
-        "tier": "leaf",
-        "purpose": "you need to reproduce a bug with clear steps and evidence",
-        "useWhen": "you need to reproduce a bug with clear steps and evidence",
-        "outputs": [
-          "Repro steps and evidence.",
-          "Minimal reproduction notes."
-        ],
-        "ownerModule": "reproduce-bug",
-        "location": ".agents/skills/develop/reproduce-bug/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "resolve-pr-feedback",
-        "tier": "leaf",
-        "purpose": "addressing PR feedback and re-verifying changes",
-        "useWhen": "addressing PR feedback and re-verifying changes",
-        "outputs": [
-          "Updated code changes.",
-          "Reply notes for reviewers."
-        ],
-        "ownerModule": "resolve-pr-feedback",
-        "location": ".agents/skills/develop/resolve-pr-feedback/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "resolve-todos",
-        "tier": "leaf",
-        "purpose": "resolving TODOs and cleanup items with verification",
-        "useWhen": "resolving TODOs and cleanup items with verification",
-        "outputs": [
-          "Resolved TODOs.",
-          "Updated notes or dev-log."
-        ],
-        "ownerModule": "resolve-todos",
-        "location": ".agents/skills/develop/resolve-todos/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "roadmap",
-        "tier": "leaf",
-        "purpose": "outlining high-level sequencing and milestones in Explore",
-        "useWhen": "outlining high-level sequencing and milestones in Explore",
-        "outputs": [
-          "High-level roadmap with milestones.",
-          "Next milestone definition."
-        ],
-        "ownerModule": "roadmap",
-        "location": ".agents/skills/explore/roadmap/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "skill-creator",
@@ -499,34 +262,9 @@
         "ownerModule": "skill-creator",
         "location": ".agents/skills/utilities/skill-creator/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "spike-plan",
-        "tier": "leaf",
-        "purpose": "a timeboxed spike is needed to answer risks or unknowns",
-        "useWhen": "a timeboxed spike is needed to answer risks or unknowns",
-        "outputs": [
-          "`docs/05-prds/<slug>_spike-plan.md`."
-        ],
-        "ownerModule": "spike-plan",
-        "location": ".agents/skills/shape/spike-plan/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
-      },
-      {
-        "name": "trash",
-        "tier": "core",
-        "purpose": "safely deleting or archiving files with confirmation and notes",
-        "useWhen": "safely deleting or archiving files with confirmation and notes",
-        "outputs": [
-          "Removed files or archived copies.",
-          "Notes about what was removed."
-        ],
-        "ownerModule": "trash",
-        "location": ".agents/skills/utilities/trash/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
         "name": "use-ai-sdk",
@@ -537,7 +275,9 @@
         "ownerModule": "use-ai-sdk",
         "location": ".agents/skills/develop/use-ai-sdk/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
       },
       {
         "name": "video-transcript-downloader",
@@ -548,25 +288,713 @@
         "ownerModule": "video-transcript-downloader",
         "location": ".agents/skills/utilities/video-transcript-downloader/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "vendor",
+        "status": "missing"
       },
       {
-        "name": "work-execute",
+        "name": "agent-native-reviewer",
         "tier": "leaf",
-        "purpose": "implementing planned work with a tight verify-first loop",
-        "useWhen": "implementing planned work with a tight verify-first loop",
+        "purpose": "review features for agent-native parity (action + context)",
+        "useWhen": "reviewing feature/PR for agent-native parity",
         "outputs": [
-          "Code changes.",
-          "`docs/06-delivery/<slug>_dev-log.md`."
+          "Review notes",
+          "Parity checklist",
+          "Fix recommendations"
         ],
-        "ownerModule": "work-execute",
-        "location": ".agents/skills/develop/work-execute/SKILL.md",
+        "ownerModule": "agent-native-reviewer",
+        "location": ".agents/skills/review/agent-native-reviewer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct"
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "architecture-strategist",
+        "tier": "leaf",
+        "purpose": "review architecture decisions, constraints, tradeoffs",
+        "useWhen": "reviewing architecture decisions and risks",
+        "outputs": [
+          "Review notes",
+          "Risks + mitigations",
+          "Follow-up questions"
+        ],
+        "ownerModule": "architecture-strategist",
+        "location": ".agents/skills/review/architecture-strategist/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "code-simplicity-reviewer",
+        "tier": "leaf",
+        "purpose": "simplify code, remove unnecessary complexity",
+        "useWhen": "final pass for simplicity/minimalism",
+        "outputs": [
+          "Simplification notes",
+          "Deletion/merge suggestions"
+        ],
+        "ownerModule": "code-simplicity-reviewer",
+        "location": ".agents/skills/review/code-simplicity-reviewer/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "data-integrity-guardian",
+        "tier": "leaf",
+        "purpose": "review data changes for integrity and safety",
+        "useWhen": "migrations or data changes touch critical data",
+        "outputs": [
+          "Integrity risks",
+          "Validation checks",
+          "Rollback notes"
+        ],
+        "ownerModule": "data-integrity-guardian",
+        "location": ".agents/skills/review/data-integrity-guardian/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "data-migration-expert",
+        "tier": "leaf",
+        "purpose": "validate ID mappings and migration correctness",
+        "useWhen": "data migration involves ID mapping",
+        "outputs": [
+          "Mapping issues",
+          "Validation plan",
+          "Fix suggestions"
+        ],
+        "ownerModule": "data-migration-expert",
+        "location": ".agents/skills/review/data-migration-expert/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "deployment-verification-agent",
+        "tier": "leaf",
+        "purpose": "create go/no-go checklist for risky deploys",
+        "useWhen": "risky deploys or data changes need go/no-go",
+        "outputs": [
+          "Go/No-Go checklist",
+          "Rollback triggers"
+        ],
+        "ownerModule": "deployment-verification-agent",
+        "location": ".agents/skills/review/deployment-verification-agent/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "kieran-python-reviewer",
+        "tier": "leaf",
+        "purpose": "review Python code for strict conventions",
+        "useWhen": "Python code needs strict convention review",
+        "outputs": [
+          "Convention violations",
+          "Fix suggestions"
+        ],
+        "ownerModule": "kieran-python-reviewer",
+        "location": ".agents/skills/review/kieran-python-reviewer/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "kieran-typescript-reviewer",
+        "tier": "leaf",
+        "purpose": "review TypeScript code for strict conventions",
+        "useWhen": "TypeScript code needs strict convention review",
+        "outputs": [
+          "Convention violations",
+          "Fix suggestions"
+        ],
+        "ownerModule": "kieran-typescript-reviewer",
+        "location": ".agents/skills/review/kieran-typescript-reviewer/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "pattern-recognition-specialist",
+        "tier": "leaf",
+        "purpose": "scan for patterns and anti-patterns",
+        "useWhen": "spotting repeated patterns/anti-patterns",
+        "outputs": [
+          "Pattern list",
+          "Anti-pattern risks",
+          "Refactor ideas"
+        ],
+        "ownerModule": "pattern-recognition-specialist",
+        "location": ".agents/skills/review/pattern-recognition-specialist/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "performance-oracle",
+        "tier": "leaf",
+        "purpose": "identify perf risks and optimization targets",
+        "useWhen": "performance review needed",
+        "outputs": [
+          "Hotspots",
+          "Optimization plan",
+          "Measurement plan"
+        ],
+        "ownerModule": "performance-oracle",
+        "location": ".agents/skills/review/performance-oracle/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "security-sentinel",
+        "tier": "leaf",
+        "purpose": "security review for auth/data exposure",
+        "useWhen": "security review needed for changes",
+        "outputs": [
+          "Vulnerabilities",
+          "Mitigations",
+          "Security tests"
+        ],
+        "ownerModule": "security-sentinel",
+        "location": ".agents/skills/review/security-sentinel/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "review"
+      },
+      {
+        "name": "bug-reproduction-validator",
+        "tier": "leaf",
+        "purpose": "reproduce bugs and validate reports",
+        "useWhen": "bug report needs validation",
+        "outputs": [
+          "Repro steps",
+          "Evidence",
+          "Minimal repro notes"
+        ],
+        "ownerModule": "bug-reproduction-validator",
+        "location": ".agents/skills/develop/bug-reproduction-validator/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "workflow"
+      },
+      {
+        "name": "pr-comment-resolver",
+        "tier": "leaf",
+        "purpose": "address PR comments and re-verify",
+        "useWhen": "PR comments need resolution",
+        "outputs": [
+          "Fixes applied",
+          "Reply notes",
+          "Verification results"
+        ],
+        "ownerModule": "pr-comment-resolver",
+        "location": ".agents/skills/develop/pr-comment-resolver/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "workflow"
+      },
+      {
+        "name": "spec-flow-analyzer",
+        "tier": "leaf",
+        "purpose": "analyze specs for flow gaps",
+        "useWhen": "specs need flow/gap analysis",
+        "outputs": [
+          "Gap list",
+          "Open questions",
+          "Spec updates"
+        ],
+        "ownerModule": "spec-flow-analyzer",
+        "location": ".agents/skills/shape/spec-flow-analyzer/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "workflow"
+      },
+      {
+        "name": "best-practices-researcher",
+        "tier": "leaf",
+        "purpose": "find external best practices and examples",
+        "useWhen": "need external best practices",
+        "outputs": [
+          "Source list",
+          "Summary",
+          "Recommendations"
+        ],
+        "ownerModule": "best-practices-researcher",
+        "location": ".agents/skills/utilities/best-practices-researcher/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "research"
+      },
+      {
+        "name": "framework-docs-researcher",
+        "tier": "leaf",
+        "purpose": "consult official framework docs for correct usage",
+        "useWhen": "framework behavior/usage needs confirmation",
+        "outputs": [
+          "Doc summary",
+          "Recommended approach",
+          "Links"
+        ],
+        "ownerModule": "framework-docs-researcher",
+        "location": ".agents/skills/utilities/framework-docs-researcher/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "research"
+      },
+      {
+        "name": "git-history-analyzer",
+        "tier": "leaf",
+        "purpose": "analyze git history for context",
+        "useWhen": "need change history or context",
+        "outputs": [
+          "Change summary",
+          "Key commits",
+          "Evolution notes"
+        ],
+        "ownerModule": "git-history-analyzer",
+        "location": ".agents/skills/utilities/git-history-analyzer/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "research"
+      },
+      {
+        "name": "repo-research-analyst",
+        "tier": "leaf",
+        "purpose": "survey repo structure and conventions",
+        "useWhen": "need repo structure/conventions overview",
+        "outputs": [
+          "Structure summary",
+          "Conventions",
+          "Entry points"
+        ],
+        "ownerModule": "repo-research-analyst",
+        "location": ".agents/skills/utilities/repo-research-analyst/SKILL.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present",
+        "originGroup": "research"
       }
     ],
-    "commands": [],
-    "hooks": [],
-    "agentsDocs": []
+    "commands": [
+      {
+        "name": "agent-native-audit",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/agent-native-audit.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "changelog",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/changelog.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "compound",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/compound.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "create-agent-skill",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/create-agent-skill.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "deepen-plan",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/deepen-plan.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "generate-command",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/generate-command.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "handoff",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/handoff.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "heal-skill",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/heal-skill.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "landpr",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/landpr.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "oracle",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/oracle.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "pickup",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/pickup.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "plan-review",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/plan-review.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "report-bug",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/report-bug.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "reproduce-bug",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/reproduce-bug.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "resolve-parallel",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/resolve-parallel.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "resolve-pr-parallel",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/resolve-pr-parallel.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "resolve-todo-parallel",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/resolve-todo-parallel.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "test-browser",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/test-browser.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "triage",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/triage.md",
+        "provenance": "synced",
+        "changeAuthority": "upstream-only",
+        "source": "vendor",
+        "status": "present"
+      },
+      {
+        "name": "verify",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/verify.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-develop",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-develop.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-explore",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-explore.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-ralph",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-ralph.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-release",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-release.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-review",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-review.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "wf-shape",
+        "purpose": "command",
+        "calls": [],
+        "outputs": [],
+        "location": ".agents/commands/wf-shape.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      }
+    ],
+    "hooks": [
+      {
+        "name": "README",
+        "trigger": "n/a (examples only)",
+        "precedence": "n/a",
+        "location": ".agents/hooks/README.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      }
+    ],
+    "agentsDocs": [
+      {
+        "name": "AGENTS.root",
+        "scope": "root",
+        "location": "AGENTS.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.architecture",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.architecture.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.delivery",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.delivery.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.docs",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.docs.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.guidelines",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.guidelines.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.release.",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.release..md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.root",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.root.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.verify",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.verify.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      },
+      {
+        "name": "AGENTS.web-apps",
+        "scope": "template",
+        "location": "docs/agentsmd/AGENTS.web-apps.md",
+        "provenance": "forked",
+        "changeAuthority": "direct",
+        "source": "local",
+        "status": "present"
+      }
+    ]
   }
 }

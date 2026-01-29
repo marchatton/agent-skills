@@ -248,6 +248,7 @@ Use **`.agents/vendors.json`** for explicit source→target mappings:
 }
 ```
 Changelogs remain human-readable (decisions); config is machine-readable (mappings).
+* TODO: revisit `multi-agent-routing` skill (removed from canonical; add back only if needed).
 
 ### 17) Non-Node verification
 

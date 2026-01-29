@@ -1,0 +1,1 @@
+../generate-command.md
