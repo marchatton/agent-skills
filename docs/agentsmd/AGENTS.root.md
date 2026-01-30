@@ -3,14 +3,8 @@
 ## Tooling
 - Package manager: pnpm (workspaces).
 
-## Canonical and local agents files and instructions (skills, commands, hooks etc)
-- For codex, use .agents and Agents.md
-- For other agentic tools, respective skills and files etc will be symlinked using `iannuttal/dotagents. Don’t fork instructions per agentic tool (e.g. Claude, Amp).
-- `AGENTS.md` is the source of truth. Any other agent-specific files are symlinks — don’t fork instructions per tool.
-- Canonical skills/commands/hooks live in `marchatton/templates` (synced into this repo via symlinks). If a skill/command seems missing or wrong, fix it there.
-
 ## Principles
-- Keep changes small and focused (one concern per PR).
+- Keep changes small and focused (one concern per commit/PR).
 - Prefer the simplest thing that meets the requirement (avoid enterprise edge-case soup).
 - Prefer TypeScript for new code unless the repo already uses something else.
 
@@ -27,8 +21,13 @@
 - Don’t guess commands. Use `docs/verify.md` (if present) and the relevant package `package.json` scripts.
 - Use `agent-browser` skill 
 
-## Skills usage
-Core skills to frequently use:
+## Core skills to use frequently
 - `ask-questions-if-underspecified` when unclear.
 - `oracle` for deep research.
-- When you invoke a skill, print echo: `:: the <skill name> skill must FLOW ::`
+
+When you invoke a skill, print echo: `:: the <skill name> skill must FLOW ::`
+
+## Canonical and local agents files and instructions (skills, commands, hooks etc)
+- For other agentic tools (not Codex), respective skills and files etc will be symlinked using `iannuttal/dotagents. Don’t fork instructions per agentic tool (e.g. Claude, Amp).
+- `AGENTS.md` is the source of truth. Any other agent-specific files are symlinks — don’t fork instructions per tool.
+- Canonical skills/commands/hooks live in `marchatton/templates` (synced into this repo via symlinks). If a skill/command seems missing or wrong, fix it there.

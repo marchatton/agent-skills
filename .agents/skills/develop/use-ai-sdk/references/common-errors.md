@@ -5,7 +5,7 @@ description: Reference for common AI SDK errors and how to resolve them.
 
 # Common Errors
 
-## `maxTokens` → `maxOutputTokens`
+## `maxTokens` -> `maxOutputTokens`
 
 ```typescript
 // ❌ Incorrect
@@ -23,7 +23,7 @@ const result = await generateText({
 });
 ```
 
-## `maxSteps` → `stopWhen: stepCountIs(n)`
+## `maxSteps` -> `stopWhen: stepCountIs(n)`
 
 ```typescript
 // ❌ Incorrect
@@ -45,7 +45,7 @@ const result = await generateText({
 });
 ```
 
-## `parameters` → `inputSchema` (in tool definition)
+## `parameters` -> `inputSchema` (in tool definition)
 
 ```typescript
 // ❌ Incorrect
@@ -67,7 +67,7 @@ const weatherTool = tool({
 });
 ```
 
-## `generateObject` → `generateText` with `output`
+## `generateObject` -> `generateText` with `output`
 
 `generateObject` is deprecated. Use `generateText` with the `output` option instead.
 
@@ -105,7 +105,7 @@ const result = await generateText({
 console.log(result.output); // typed object
 ```
 
-## Manual JSON parsing → `generateText` with `output`
+## Manual JSON parsing -> `generateText` with `output`
 
 ```typescript
 // ❌ Incorrect
