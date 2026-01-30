@@ -56,6 +56,17 @@ const listHookFiles = (dir, baseDir) => {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       results.push(...listHookFiles(fullPath, baseDir));
+    } else if (entry.isSymbolicLink()) {
+      try {
+        const stats = fs.statSync(fullPath);
+        if (stats.isDirectory()) {
+          results.push(...listHookFiles(fullPath, baseDir));
+        } else if (stats.isFile()) {
+          results.push(path.relative(baseDir, fullPath));
+        }
+      } catch {
+        // Ignore broken symlinks.
+      }
     } else if (entry.isFile()) {
       results.push(path.relative(baseDir, fullPath));
     }
