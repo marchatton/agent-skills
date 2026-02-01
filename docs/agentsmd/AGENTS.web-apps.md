@@ -13,6 +13,3 @@ Next.js App Router web application.
 - Never import server-only into client components (use `server-only` / `client-only` boundaries).
 - Validate external inputs with Zod and map errors to safe user-facing messages.
 
-## Verification
-- Don’t guess commands. Use `docs/verify.md` (if present) and `apps/web/package.json` scripts.
-- If behaviour depends on real browser interaction, use the `agent-browser` skill.

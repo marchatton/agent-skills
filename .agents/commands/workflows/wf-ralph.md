@@ -13,18 +13,18 @@ Run a continuous coding loop with Ralph and finish with verification.
 
 - `.agents/tasks/prd-<slug>.json`
 - `.ralph/` state and logs
-- Optional: `docs/06-delivery/<slug>_ralph-log.md`
+- Optional: docs log per `docs/AGENTS.md` in the target repo
 
 ## Steps
 
 1. Ensure `.agents/tasks/prd-<slug>.json` exists (prefer `0001_<short>` slug).
 2. Ask for iteration count (default 10).
 3. Loop `ralph build 1` for N iterations.
-4. Run `verify` and record GO/NO-GO.
+4. Run the verify skill and record GO/NO-GO.
 
 ## Verification
 
-- `verify` (pnpm ladder)
+- Verify skill (pnpm ladder)
 
 ## Go/No-Go
 

@@ -652,7 +652,11 @@
         ],
         "ownerModule": "create-prd",
         "location": ".agents/skills/shape/create-prd/SKILL.md",
-        "provenance": "local"
+        "provenance": "forked",
+        "upstream": {
+          "repo": "snarktank/ralph",
+          "path": "skills/prd/SKILL.md"
+        }
       },
       {
         "name": "create-json-prd",
@@ -664,19 +668,11 @@
         ],
         "ownerModule": "create-json-prd",
         "location": ".agents/skills/shape/create-json-prd/SKILL.md",
-        "provenance": "local"
-      },
-      {
-        "name": "opportunity-solution-tree",
-        "tier": "core",
-        "purpose": "Draft an opportunity-solution tree with a clear next experiment",
-        "useWhen": "explore phase needs a structured opportunity map",
-        "outputs": [
-          "Opportunity-solution tree doc"
-        ],
-        "ownerModule": "opportunity-solution-tree",
-        "location": ".agents/skills/explore/opportunity-solution-tree/SKILL.md",
-        "provenance": "local"
+        "provenance": "forked",
+        "upstream": {
+          "repo": "snarktank/ralph",
+          "path": "skills/ralph/SKILL.md"
+        }
       },
       {
         "name": "verify",

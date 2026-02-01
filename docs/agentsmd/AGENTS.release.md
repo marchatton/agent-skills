@@ -10,4 +10,4 @@ This folder holds the global release history across projects.
 - Record incidents/postmortems under `docs/06-release/postmortems/` when needed.
 
 ## Helpers (if available)
-Prefer release skills/commands (e.g. `changelog-draft`, `release-checklist`, `post-release-verify`) over inventing a bespoke checklist each time.
+Prefer existing release skills/commands in the repo over inventing a bespoke checklist.

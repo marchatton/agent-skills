@@ -1,4 +1,4 @@
-# Hooks (examples only)
+# Hooks (templates)
 
-Hooks under `.agents/hooks/` are examples only in v1.
-Do not require them for normal usage.
+Hooks under `.agents/hooks/` are canonical templates.
+Install via `scripts/install_git_hooks.sh` when desired.

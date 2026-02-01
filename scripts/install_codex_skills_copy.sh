@@ -26,9 +26,9 @@ mkdir -p "${dest_dir}"
 echo "Copying skills to ${dest_dir}"
 
 if command -v rsync >/dev/null 2>&1; then
-  rsync -a "${source_dir}/" "${dest_dir}/"
+  rsync -aL "${source_dir}/" "${dest_dir}/"
 else
-  cp -R "${source_dir}/" "${dest_dir}/"
+  cp -RL "${source_dir}/" "${dest_dir}/"
 fi
 
 echo "Copy complete."

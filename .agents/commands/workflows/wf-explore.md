@@ -12,16 +12,12 @@ Define the opportunity and next experiment before shaping.
 
 ## Outputs
 
-- `docs/00-strategy/<slug>_opportunity-solution-tree.md`
-- Optional: `docs/00-strategy/<slug>_customer-segmentation.md`
-- Optional: `docs/00-strategy/<slug>_positioning.md`
-- Optional: `docs/00-strategy/<slug>_roadmap.md`
-- Optional: `docs/00-strategy/<slug>_pricing-packaging.md`
+- Docs artefacts saved per `docs/AGENTS.md` in the target repo (explore brief + next experiment required; optional supporting docs as needed).
 
 ## Steps
 
 1. Define the work slug (prefer `0001_<short>` for ordering).
-2. Run skill `opportunity-solution-tree` to capture problems, opportunities, and experiments.
+2. Draft the explore brief per `docs/AGENTS.md` (problems, opportunities, assumptions, next experiment).
 3. Add optional segmentation/positioning/roadmap/pricing docs if needed.
 4. Summarize the next experiment and expected learning.
 

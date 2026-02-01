@@ -16,7 +16,7 @@ description: Use when listing or summarizing docs files in a repo.
 
 ## Steps
 
-1. Identify doc roots and file patterns.
+1. If `bin/docs-list` or `scripts/docs-list.ts` exists, run it; else list manually.
 2. Produce a concise list with 1-line summaries.
 3. Flag missing or stale docs.
 

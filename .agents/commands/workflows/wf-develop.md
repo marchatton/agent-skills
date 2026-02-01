@@ -13,22 +13,18 @@ Implement changes with a verification-first loop.
 ## Outputs
 
 - Code changes.
-- `docs/06-delivery/<slug>_dev-log.md` (what changed + how verified + GO/NO-GO).
+- Docs artefacts saved per `docs/AGENTS.md` in the target repo (dev log summary + verification + GO/NO-GO).
 
 ## Steps
 
 1. Define the work slug (prefer `0001_<short>` for ordering) and open the target repo.
 2. Implement changes with tight, verifiable increments.
-3. Run pnpm ladder (lint/typecheck/test/build/verify).
-4. Write `docs/06-delivery/<slug>_dev-log.md` with summary, verification, and GO/NO-GO.
+3. Run the verify skill (pnpm ladder).
+4. Write a dev log with summary, verification, and GO/NO-GO.
 
 ## Verification
 
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm test`
-- `pnpm build`
-- `pnpm verify`
+- Verify skill (pnpm ladder).
 
 ## Go/No-Go
 

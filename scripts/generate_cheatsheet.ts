@@ -27,20 +27,22 @@ const extractSectionLine = (content, heading) => {
   return '';
 };
 
-const parseDescription = (content) => {
+const parseFrontmatter = (content) => {
   const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*/);
-  if (!match) return '';
+  if (!match) return { name: '', description: '' };
   const lines = match[1].split(/\r?\n/);
+  let name = '';
+  let description = '';
   for (const line of lines) {
     const idx = line.indexOf(':');
     if (idx === -1) continue;
     const key = line.slice(0, idx).trim();
-    if (key !== 'description') continue;
     let value = line.slice(idx + 1).trim();
     value = value.replace(/^['"]/, '').replace(/['"]$/, '').trim();
-    return value;
+    if (key === 'name') name = value;
+    if (key === 'description') description = value;
   }
-  return '';
+  return { name, description };
 };
 
 const listFiles = (dir, filterFn) => {
@@ -94,7 +96,8 @@ if (fs.existsSync(commandsDir)) {
   const commandFiles = listCommandFiles(commandsDir);
   for (const filePath of commandFiles) {
     const content = readFile(filePath);
-    const name = path.basename(filePath, '.md');
+    const frontmatter = parseFrontmatter(content);
+    const name = frontmatter.name || path.basename(filePath, '.md');
     const purpose = extractSectionLine(content, 'Purpose') || 'Purpose not documented.';
     const verification = extractSectionLine(content, 'Verification') || 'See command.';
     commands.push({ name, purpose, verification });
@@ -112,8 +115,10 @@ if (fs.existsSync(skillsDir)) {
       const skillFile = path.join(categoryDir, skill, 'SKILL.md');
       if (!fs.existsSync(skillFile)) continue;
       const content = readFile(skillFile);
-      const description = parseDescription(content) || 'Description not documented.';
-      skills.push({ name: skill, description });
+      const frontmatter = parseFrontmatter(content);
+      const name = frontmatter.name || skill;
+      const description = frontmatter.description || 'Description not documented.';
+      skills.push({ name, description });
     }
     skillsByCategory[category] = skills;
   }
@@ -164,28 +169,10 @@ if (hookFiles.length === 0) {
 }
 
 output += '## Verification\n';
-output += '- `pnpm lint`\n';
-output += '- `pnpm typecheck`\n';
-output += '- `pnpm test`\n';
-output += '- `pnpm build`\n';
-output += '- `pnpm verify`\n\n';
+output += '- Use the `verify` skill for the pnpm ladder.\n\n';
 
-output += '## Key Output Paths\n';
-output += '- `docs/explore/<slug>/opportunity-solution-tree.md`\n';
-output += '- `docs/shape/<slug>/prd.md`\n';
-output += '- `docs/shape/<slug>/breadboard.md`\n';
-output += '- `docs/shape/<slug>/spike-plan.md`\n';
-output += '- `docs/shape/<slug>/plan.md`\n';
-output += '- `docs/shape/<slug>/prd.json`\n';
-output += '- `.agents/tasks/prd-<slug>.json`\n';
-output += '- `docs/dev/<slug>/dev-log.md`\n';
-output += '- `docs/review/<slug>/review.md`\n';
-output += '- `docs/review/<slug>/browser-qa.md`\n';
-output += '- `docs/release/<slug>/release.md`\n';
-output += '- `docs/release/<slug>/changelog.md`\n';
-output += '- `docs/release/<slug>/post-release.md`\n';
-output += '- `docs/learnings.md`\n';
-output += '- `.ralph/`\n';
+output += '## Docs Structure\n';
+output += '- See `docs/AGENTS.md` in target repos for doc locations and naming.\n';
 
 fs.writeFileSync(path.join(rootDir, 'cheatsheet.md'), output);
 console.log('cheatsheet.md updated.');

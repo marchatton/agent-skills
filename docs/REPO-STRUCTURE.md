@@ -48,6 +48,7 @@ docs/
   04-projects/                       # all work items once implementation begins (dossiers)
     README.md                        # how to create a new dossier + naming conventions
     _templates/                      # copy these when creating a new dossier
+    (each dossier may include reviews/ for review notes + QA and review-to-dos/ for findings)
 
     01-experiments/                  # lightweight trials, metric-driven
     02-features/                     # feature work
@@ -55,7 +56,7 @@ docs/
     04-refactors/                    # internal quality work
     05-migrations/                   # data/schema/rollout heavy work
 
-  05-audits-governance/              # periodic assurance work (not strategy refresh)
+  05-reviews-audits/                 # periodic reviews + audits (not strategy refresh)
     governance.md                    # standards + how audits happen
     security-audit_YYYY-MM.md
     pii-audit_YYYY-MM.md

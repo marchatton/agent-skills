@@ -7,7 +7,7 @@ description: Manage file-based todos stored alongside a dossier. Create, triage,
 
 ## Overview
 
-The dossier `todos` folder contains a file-based tracking system for managing code review feedback, technical debt, feature requests, and work items. Each todo is a markdown file with YAML frontmatter and structured sections.
+The dossier `review-to-dos` folder contains a file-based tracking system for managing code review feedback, technical debt, feature requests, and work items. Each todo is a markdown file with YAML frontmatter and structured sections.
 
 This skill should be used when:
 - Creating new todos from findings or feedback
@@ -18,7 +18,7 @@ This skill should be used when:
 - Updating work logs during todo execution
 
 ## Location
-- Set `TODOS_DIR` to the active dossier’s `todos` folder (see `docs/AGENTS.md`).
+- Set `REVIEW_TODOS_DIR` to the active dossier’s `review-to-dos` folder (see `docs/AGENTS.md`).
 
 ## File Naming Convention
 
@@ -75,8 +75,8 @@ dependencies: ["001"]     # Issue IDs this is blocked by
 
 **To create a new todo from findings or feedback:**
 
-1. Determine next issue ID: `ls $TODOS_DIR/ | grep -o '^[0-9]\+' | sort -n | tail -1`
-2. Copy template: `cp assets/todo-template.md $TODOS_DIR/{NEXT_ID}-pending-{priority}-{description}.md`
+1. Determine next issue ID: `ls $REVIEW_TODOS_DIR/ | grep -o '^[0-9]\+' | sort -n | tail -1`
+2. Copy template: `cp assets/todo-template.md $REVIEW_TODOS_DIR/{NEXT_ID}-pending-{priority}-{description}.md`
 3. Edit and fill required sections:
    - Problem Statement
    - Findings (if from investigation)
@@ -105,7 +105,7 @@ dependencies: ["001"]     # Issue IDs this is blocked by
 
 **To triage pending todos:**
 
-1. List pending items: `ls $TODOS_DIR/*-pending-*.md`
+1. List pending items: `ls $REVIEW_TODOS_DIR/*-pending-*.md`
 2. For each todo:
    - Read Problem Statement and Findings
    - Review Proposed Solutions
@@ -130,18 +130,18 @@ dependencies: []               # No blockers - can work immediately
 
 **To check what blocks a todo:**
 ```bash
-grep "^dependencies:" $TODOS_DIR/003-*.md
+grep "^dependencies:" $REVIEW_TODOS_DIR/003-*.md
 ```
 
 **To find what a todo blocks:**
 ```bash
-grep -l 'dependencies:.*"002"' $TODOS_DIR/*.md
+grep -l 'dependencies:.*"002"' $REVIEW_TODOS_DIR/*.md
 ```
 
 **To verify blockers are complete before starting:**
 ```bash
 for dep in 001 002 003; do
-  [ -f "$TODOS_DIR/${dep}-complete-*.md" ] || echo "Issue $dep not complete"
+  [ -f "$REVIEW_TODOS_DIR/${dep}-complete-*.md" ] || echo "Issue $dep not complete"
 done
 ```
 
@@ -180,7 +180,7 @@ Work logs serve as:
 2. Update Work Log with final session and results
 3. Rename file: `mv {file}-ready-{pri}-{desc}.md {file}-complete-{pri}-{desc}.md`
 4. Update frontmatter: `status: ready` → `status: complete`
-5. Check for unblocked work: `grep -l 'dependencies:.*"002"' $TODOS_DIR/*-ready-*.md`
+5. Check for unblocked work: `grep -l 'dependencies:.*"002"' $REVIEW_TODOS_DIR/*-ready-*.md`
 6. Commit with issue reference: `feat: resolve issue 002`
 
 ## Integration with Development Workflows
@@ -198,45 +198,45 @@ Work logs serve as:
 **Finding work:**
 ```bash
 # List highest priority unblocked work
-grep -l 'dependencies: \[\]' $TODOS_DIR/*-ready-p1-*.md
+grep -l 'dependencies: \[\]' $REVIEW_TODOS_DIR/*-ready-p1-*.md
 
 # List all pending items needing triage
-ls $TODOS_DIR/*-pending-*.md
+ls $REVIEW_TODOS_DIR/*-pending-*.md
 
 # Find next issue ID
-ls $TODOS_DIR/ | grep -o '^[0-9]\+' | sort -n | tail -1 | awk '{printf "%03d", $1+1}'
+ls $REVIEW_TODOS_DIR/ | grep -o '^[0-9]\+' | sort -n | tail -1 | awk '{printf "%03d", $1+1}'
 
 # Count by status
 for status in pending ready complete; do
-  echo "$status: $(ls -1 $TODOS_DIR/*-$status-*.md 2>/dev/null | wc -l)"
+  echo "$status: $(ls -1 $REVIEW_TODOS_DIR/*-$status-*.md 2>/dev/null | wc -l)"
 done
 ```
 
 **Dependency management:**
 ```bash
 # What blocks this todo?
-grep "^dependencies:" $TODOS_DIR/003-*.md
+grep "^dependencies:" $REVIEW_TODOS_DIR/003-*.md
 
 # What does this todo block?
-grep -l 'dependencies:.*"002"' $TODOS_DIR/*.md
+grep -l 'dependencies:.*"002"' $REVIEW_TODOS_DIR/*.md
 ```
 
 **Searching:**
 ```bash
 # Search by tag
-grep -l "tags:.*rails" $TODOS_DIR/*.md
+grep -l "tags:.*rails" $REVIEW_TODOS_DIR/*.md
 
 # Search by priority
-ls $TODOS_DIR/*-p1-*.md
+ls $REVIEW_TODOS_DIR/*-p1-*.md
 
 # Full-text search
-grep -r "payment" $TODOS_DIR/
+grep -r "payment" $REVIEW_TODOS_DIR/
 ```
 
 ## Key Distinctions
 
 **File-todos system (this skill):**
-- Markdown files in `$TODOS_DIR/` directory
+- Markdown files in `$REVIEW_TODOS_DIR/` directory
 - Development/project tracking
 - Standalone markdown files with YAML frontmatter
 - Used by humans and agents

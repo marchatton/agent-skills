@@ -1,1 +1,8 @@
-/Users/marc/code/personal-projects/templates/inspiration/compound-engineering-plugin/plugins/compound-engineering/commands/create-agent-skill.md
+---
+name: create-agent-skill
+description: Create or edit Claude Code skills with expert guidance on structure and best practices
+allowed-tools: Skill(creating-agent-skills)
+argument-hint: [skill description or requirements]
+---
+
+Invoke the create-agent-skills skill for: $ARGUMENTS

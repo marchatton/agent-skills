@@ -12,11 +12,7 @@ Produce a PRD and optional supporting artefacts that are ready for implementatio
 
 ## Outputs
 
-- `docs/05-prds/<slug>.md`
-- Optional: `docs/05-prds/<slug>_breadboard.md`
-- Optional: `docs/05-prds/<slug>_spike-plan.md`
-- Optional: `docs/05-prds/<slug>_plan.md`
-- Optional: `docs/05-prds/<slug>.json`
+- Docs artefacts saved per `docs/AGENTS.md` in the target repo (PRD required; optional supporting docs per skills).
 - Required for tooling: `.agents/tasks/prd-<slug>.json`
 
 ## Steps
@@ -25,7 +21,7 @@ Produce a PRD and optional supporting artefacts that are ready for implementatio
 2. Run skill `create-prd` and fill acceptance criteria + verification plan.
 3. Add breadboard and spike plan if needed.
 4. Run `deepen-plan` when sequencing is complex.
-5. Generate JSON PRD from the PRD (include optional artefacts if present).
+5. Run skill `create-json-prd` to generate JSON PRD (include optional artefacts if present).
 
 ## Verification
 

@@ -52,7 +52,6 @@ Date: February 01, 2026
 - docs-list
 - file-todos
 - modular-skills-architect
-- opportunity-solution-tree
 - use-ai-sdk
 - verify
 
