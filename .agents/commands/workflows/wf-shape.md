@@ -8,7 +8,7 @@ Produce a PRD and optional supporting artefacts that are ready for implementatio
 
 - Opportunity brief or problem statement.
 - Constraints, dependencies, and risks.
-- Existing Explore artefacts (if any).
+- Discovery insights (interviews, data, market) if any.
 
 ## Outputs
 

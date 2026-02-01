@@ -969,14 +969,6 @@
         "provenance": "local"
       },
       {
-        "name": "wf-explore",
-        "purpose": "command",
-        "calls": [],
-        "outputs": [],
-        "location": ".agents/commands/workflows/wf-explore.md",
-        "provenance": "local"
-      },
-      {
         "name": "wf-ralph",
         "purpose": "command",
         "calls": [],

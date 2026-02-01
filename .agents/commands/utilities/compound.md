@@ -6,7 +6,7 @@ Append a structured learning entry to `docs/learnings.md` in the project repo.
 
 ## Inputs
 
-- Stage (explore/shape/develop/review/release/other).
+- Stage (explore = discovery/insights; shape/develop/review/release/other).
 - Title.
 - Context links (PR, issue, docs paths).
 - Summary and what changed.
