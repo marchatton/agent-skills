@@ -29,7 +29,6 @@ required_commands=(
   ".agents/commands/workflows/wf-review.md"
   ".agents/commands/workflows/wf-release.md"
   ".agents/commands/workflows/wf-ralph.md"
-  ".agents/commands/utilities/verify.md"
   ".agents/commands/utilities/compound.md"
 )
 
@@ -42,7 +41,6 @@ done
 
 required_templates=(
   "${root_dir}/docs/templates/learnings.md"
-  "${root_dir}/docs/templates/learning-entry.md"
 )
 
 for file in "${required_templates[@]}"; do
@@ -121,7 +119,6 @@ fi
 
 echo "Manual smoke steps:"
 echo "- ./scripts/vendor_update.sh"
-echo "- ./scripts/vendor_sync.sh"
 echo "- ./scripts/npx_skills_refresh.sh"
 echo "- node --experimental-strip-types ./scripts/generate_cheatsheet.ts"
 echo "- ./scripts/verify_repo.sh"

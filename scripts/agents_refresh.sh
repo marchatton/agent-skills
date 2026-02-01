@@ -5,7 +5,6 @@ root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 steps=(
   "vendor_update|${root_dir}/scripts/vendor_update.sh"
-  "vendor_sync|${root_dir}/scripts/vendor_sync.sh"
   "npx_skills_refresh|${root_dir}/scripts/npx_skills_refresh.sh"
   "generate_cheatsheet|${root_dir}/scripts/generate_cheatsheet.ts"
   "verify_repo|${root_dir}/scripts/verify_repo.sh"

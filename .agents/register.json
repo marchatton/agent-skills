@@ -1,8 +1,8 @@
 {
   "version": 1,
   "canonicalRepo": "marchatton/templates",
-  "localRoot": "~/templates",
-  "generatedAt": "2026-01-29",
+  "localRoot": ".",
+  "generatedAt": "2026-02-01",
   "tiers": [
     "core",
     "leaf",
@@ -19,9 +19,10 @@
         "ownerModule": "agent-browser",
         "location": ".agents/skills/utilities/agent-browser/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/agent-browser"
+        }
       },
       {
         "name": "agent-native-architecture",
@@ -34,9 +35,10 @@
         "ownerModule": "agent-native-architecture",
         "location": ".agents/skills/review/agent-native-architecture/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/agent-native-architecture"
+        }
       },
       {
         "name": "agentation",
@@ -45,11 +47,12 @@
         "useWhen": "installing/configuring agentation or adding dev-only <Agentation />",
         "outputs": [],
         "ownerModule": "agentation",
-        "location": ".agents/skills/review/agentation/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "location": ".agents/skills/utilities/agentation/SKILL.md",
+        "provenance": "synced",
+        "upstream": {
+          "repo": "benjitaylor/agentation",
+          "path": "skills/agentation/SKILL.md"
+        }
       },
       {
         "name": "ask-questions-if-underspecified",
@@ -59,10 +62,7 @@
         "outputs": [],
         "ownerModule": "ask-questions-if-underspecified",
         "location": ".agents/skills/utilities/ask-questions-if-underspecified/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "compound-docs",
@@ -75,9 +75,10 @@
         "ownerModule": "compound-docs",
         "location": ".agents/skills/compound/compound-docs/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/compound-docs"
+        }
       },
       {
         "name": "create-cli",
@@ -90,9 +91,10 @@
         "ownerModule": "create-cli",
         "location": ".agents/skills/utilities/create-cli/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/create-cli"
+        }
       },
       {
         "name": "creating-agent-skills",
@@ -102,10 +104,11 @@
         "outputs": [],
         "ownerModule": "create-agent-skills",
         "location": ".agents/skills/utilities/create-agent-skills/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "provenance": "synced",
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/create-agent-skills"
+        }
       },
       {
         "name": "docs-list",
@@ -117,10 +120,11 @@
         ],
         "ownerModule": "docs-list",
         "location": ".agents/skills/utilities/docs-list/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "synced",
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "scripts/docs-list.ts"
+        }
       },
       {
         "name": "every-style-editor",
@@ -131,13 +135,9 @@
         "ownerModule": "every-style-editor",
         "location": ".agents/skills/utilities/every-style-editor/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/workflow/every-style-editor.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/every-style-editor"
         }
       },
       {
@@ -149,9 +149,10 @@
         "ownerModule": "file-todos",
         "location": ".agents/skills/utilities/file-todos/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/file-todos"
+        }
       },
       {
         "name": "frontend-design",
@@ -162,9 +163,10 @@
         "ownerModule": "frontend-design",
         "location": ".agents/skills/utilities/frontend-design/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/frontend-design"
+        }
       },
       {
         "name": "gemini-imagegen",
@@ -175,9 +177,10 @@
         "ownerModule": "gemini-imagegen",
         "location": ".agents/skills/utilities/gemini-imagegen/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/gemini-imagegen"
+        }
       },
       {
         "name": "markdown-converter",
@@ -188,9 +191,10 @@
         "ownerModule": "markdown-converter",
         "location": ".agents/skills/utilities/markdown-converter/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/markdown-converter"
+        }
       },
       {
         "name": "modular-skills-architect",
@@ -204,10 +208,7 @@
         ],
         "ownerModule": "modular-skills-architect",
         "location": ".agents/skills/utilities/modular-skills-architect/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "nano-banana-pro",
@@ -222,9 +223,10 @@
         "ownerModule": "nano-banana-pro",
         "location": ".agents/skills/utilities/nano-banana-pro/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/nano-banana-pro"
+        }
       },
       {
         "name": "openai-image-gen",
@@ -239,24 +241,26 @@
         "ownerModule": "openai-image-gen",
         "location": ".agents/skills/utilities/openai-image-gen/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/openai-image-gen"
+        }
       },
       {
         "name": "oracle",
         "tier": "core",
-        "purpose": "running Oracle CLI workflows; wraps the latest Oracle CLI with Node 22+ checks",
-        "useWhen": "running Oracle CLI workflows; wraps the latest Oracle CLI with Node 22+ checks",
+        "purpose": "Run Oracle CLI workflows; requires Node 22+",
+        "useWhen": "running Oracle CLI workflows",
         "outputs": [
           "Oracle CLI output."
         ],
         "ownerModule": "oracle",
         "location": ".agents/skills/utilities/oracle/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/oracle"
+        }
       },
       {
         "name": "skill-creator",
@@ -267,9 +271,10 @@
         "ownerModule": "skill-creator",
         "location": ".agents/skills/utilities/skill-creator/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/skills/skill-creator"
+        }
       },
       {
         "name": "use-ai-sdk",
@@ -279,10 +284,11 @@
         "outputs": [],
         "ownerModule": "use-ai-sdk",
         "location": ".agents/skills/develop/use-ai-sdk/SKILL.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "synced",
+        "upstream": {
+          "repo": "vercel/ai",
+          "path": "skills/use-ai-sdk/SKILL.md"
+        }
       },
       {
         "name": "video-transcript-downloader",
@@ -293,9 +299,10 @@
         "ownerModule": "video-transcript-downloader",
         "location": ".agents/skills/utilities/video-transcript-downloader/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "vendor",
-        "status": "missing"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "skills/video-transcript-downloader"
+        }
       },
       {
         "name": "agent-native-reviewer",
@@ -310,14 +317,10 @@
         "ownerModule": "agent-native-reviewer",
         "location": ".agents/skills/review/agent-native-reviewer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/agent-native-reviewer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/agent-native-reviewer.md"
         }
       },
       {
@@ -333,14 +336,10 @@
         "ownerModule": "architecture-strategist",
         "location": ".agents/skills/review/architecture-strategist/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/architecture-strategist.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/architecture-strategist.md"
         }
       },
       {
@@ -355,14 +354,10 @@
         "ownerModule": "code-simplicity-reviewer",
         "location": ".agents/skills/review/code-simplicity-reviewer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/code-simplicity-reviewer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/code-simplicity-reviewer.md"
         }
       },
       {
@@ -378,14 +373,10 @@
         "ownerModule": "data-integrity-guardian",
         "location": ".agents/skills/review/data-integrity-guardian/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/data-integrity-guardian.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/data-integrity-guardian.md"
         }
       },
       {
@@ -401,14 +392,10 @@
         "ownerModule": "data-migration-expert",
         "location": ".agents/skills/review/data-migration-expert/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/data-migration-expert.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/data-migration-expert.md"
         }
       },
       {
@@ -423,14 +410,10 @@
         "ownerModule": "deployment-verification-agent",
         "location": ".agents/skills/review/deployment-verification-agent/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/deployment-verification-agent.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/deployment-verification-agent.md"
         }
       },
       {
@@ -445,14 +428,10 @@
         "ownerModule": "kieran-python-reviewer",
         "location": ".agents/skills/review/kieran-python-reviewer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/kieran-python-reviewer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/kieran-python-reviewer.md"
         }
       },
       {
@@ -467,14 +446,10 @@
         "ownerModule": "kieran-typescript-reviewer",
         "location": ".agents/skills/review/kieran-typescript-reviewer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/kieran-typescript-reviewer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/kieran-typescript-reviewer.md"
         }
       },
       {
@@ -490,14 +465,10 @@
         "ownerModule": "pattern-recognition-specialist",
         "location": ".agents/skills/review/pattern-recognition-specialist/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/pattern-recognition-specialist.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/pattern-recognition-specialist.md"
         }
       },
       {
@@ -513,14 +484,10 @@
         "ownerModule": "performance-oracle",
         "location": ".agents/skills/review/performance-oracle/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/performance-oracle.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/performance-oracle.md"
         }
       },
       {
@@ -536,14 +503,10 @@
         "ownerModule": "security-sentinel",
         "location": ".agents/skills/review/security-sentinel/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "review",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/review/security-sentinel.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/review/security-sentinel.md"
         }
       },
       {
@@ -559,14 +522,10 @@
         "ownerModule": "bug-reproduction-validator",
         "location": ".agents/skills/develop/bug-reproduction-validator/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "workflow",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/workflow/bug-reproduction-validator.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/workflow/bug-reproduction-validator.md"
         }
       },
       {
@@ -582,14 +541,10 @@
         "ownerModule": "pr-comment-resolver",
         "location": ".agents/skills/develop/pr-comment-resolver/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "workflow",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/workflow/pr-comment-resolver.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/workflow/pr-comment-resolver.md"
         }
       },
       {
@@ -605,14 +560,10 @@
         "ownerModule": "spec-flow-analyzer",
         "location": ".agents/skills/shape/spec-flow-analyzer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "workflow",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/workflow/spec-flow-analyzer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/workflow/spec-flow-analyzer.md"
         }
       },
       {
@@ -628,14 +579,10 @@
         "ownerModule": "best-practices-researcher",
         "location": ".agents/skills/utilities/best-practices-researcher/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "research",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/research/best-practices-researcher.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/research/best-practices-researcher.md"
         }
       },
       {
@@ -651,14 +598,10 @@
         "ownerModule": "framework-docs-researcher",
         "location": ".agents/skills/utilities/framework-docs-researcher/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "research",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/research/framework-docs-researcher.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/research/framework-docs-researcher.md"
         }
       },
       {
@@ -674,14 +617,10 @@
         "ownerModule": "git-history-analyzer",
         "location": ".agents/skills/utilities/git-history-analyzer/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "research",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/research/git-history-analyzer.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/research/git-history-analyzer.md"
         }
       },
       {
@@ -697,15 +636,135 @@
         "ownerModule": "repo-research-analyst",
         "location": ".agents/skills/utilities/repo-research-analyst/SKILL.md",
         "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present",
         "originGroup": "research",
-        "derivedFrom": {
-          "type": "agent",
-          "vendor": "compound-engineering-plugin",
-          "location": "compound-engineering-plugin/plugins/compound-engineering/agents/research/repo-research-analyst.md"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/agents/research/repo-research-analyst.md"
         }
+      },
+      {
+        "name": "create-prd",
+        "tier": "core",
+        "purpose": "Draft a PRD with clear scope, acceptance criteria, and verification plan",
+        "useWhen": "you need a PRD ready for implementation",
+        "outputs": [
+          "PRD doc"
+        ],
+        "ownerModule": "create-prd",
+        "location": ".agents/skills/shape/create-prd/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "create-json-prd",
+        "tier": "core",
+        "purpose": "Convert a PRD into JSON PRD format for tooling",
+        "useWhen": "a JSON PRD is required for tooling or automation",
+        "outputs": [
+          "JSON PRD"
+        ],
+        "ownerModule": "create-json-prd",
+        "location": ".agents/skills/shape/create-json-prd/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "opportunity-solution-tree",
+        "tier": "core",
+        "purpose": "Draft an opportunity-solution tree with a clear next experiment",
+        "useWhen": "explore phase needs a structured opportunity map",
+        "outputs": [
+          "Opportunity-solution tree doc"
+        ],
+        "ownerModule": "opportunity-solution-tree",
+        "location": ".agents/skills/explore/opportunity-solution-tree/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "verify",
+        "tier": "core",
+        "purpose": "Run the repo verification ladder and report GO/NO-GO",
+        "useWhen": "you need a verification pass before marking work done",
+        "outputs": [
+          "Verification summary",
+          "GO/NO-GO decision"
+        ],
+        "ownerModule": "verify",
+        "location": ".agents/skills/utilities/verify/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "baseline-ui",
+        "tier": "leaf",
+        "purpose": "Baseline UI rules to prevent design slop",
+        "useWhen": "reviewing UI for baseline quality",
+        "outputs": [
+          "Review notes"
+        ],
+        "ownerModule": "baseline-ui",
+        "location": ".agents/skills/review/baseline-ui/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "fixing-motion-performance",
+        "tier": "leaf",
+        "purpose": "Fix animation performance issues",
+        "useWhen": "reviewing motion performance or refactors",
+        "outputs": [
+          "Fix plan",
+          "Applied changes"
+        ],
+        "ownerModule": "fixing-motion-performance",
+        "location": ".agents/skills/review/fixing-motion-performance/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "fixing-metadata",
+        "tier": "leaf",
+        "purpose": "Fix SEO/social metadata issues",
+        "useWhen": "auditing or fixing metadata",
+        "outputs": [
+          "Fix plan",
+          "Applied changes"
+        ],
+        "ownerModule": "fixing-metadata",
+        "location": ".agents/skills/review/fixing-metadata/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "fixing-accessibility",
+        "tier": "leaf",
+        "purpose": "Fix accessibility issues",
+        "useWhen": "auditing or fixing a11y problems",
+        "outputs": [
+          "Fix plan",
+          "Applied changes"
+        ],
+        "ownerModule": "fixing-accessibility",
+        "location": ".agents/skills/review/fixing-accessibility/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "web-design-guidelines",
+        "tier": "leaf",
+        "purpose": "Review UI for Web Interface Guidelines",
+        "useWhen": "UI/UX/accessibility audits",
+        "outputs": [
+          "Review notes"
+        ],
+        "ownerModule": "web-design-guidelines",
+        "location": ".agents/skills/review/web-design-guidelines/SKILL.md",
+        "provenance": "local"
+      },
+      {
+        "name": "react-best-practices",
+        "tier": "leaf",
+        "purpose": "React/Next.js performance and best practices",
+        "useWhen": "reviewing React/Next.js perf, data fetching, bundle size",
+        "outputs": [
+          "Review notes"
+        ],
+        "ownerModule": "react-best-practices",
+        "location": ".agents/skills/develop/react-best-practices/SKILL.md",
+        "provenance": "local"
       }
     ],
     "commands": [
@@ -716,9 +775,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/report-bug.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/report-bug.md"
+        }
       },
       {
         "name": "reproduce-bug",
@@ -727,9 +787,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/reproduce-bug.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/reproduce-bug.md"
+        }
       },
       {
         "name": "resolve-parallel",
@@ -738,9 +799,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/resolve-parallel.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/resolve_parallel.md"
+        }
       },
       {
         "name": "resolve-pr-parallel",
@@ -749,9 +811,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/resolve-pr-parallel.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/resolve_pr_parallel.md"
+        }
       },
       {
         "name": "resolve-todo-parallel",
@@ -760,9 +823,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/resolve-todo-parallel.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/resolve_todo_parallel.md"
+        }
       },
       {
         "name": "triage",
@@ -771,9 +835,10 @@
         "outputs": [],
         "location": ".agents/commands/develop/triage.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/triage.md"
+        }
       },
       {
         "name": "changelog",
@@ -782,9 +847,10 @@
         "outputs": [],
         "location": ".agents/commands/release/changelog.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/changelog.md"
+        }
       },
       {
         "name": "agent-native-audit",
@@ -792,10 +858,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/review/agent-native-audit.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "test-browser",
@@ -804,9 +867,10 @@
         "outputs": [],
         "location": ".agents/commands/review/test-browser.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/test-browser.md"
+        }
       },
       {
         "name": "deepen-plan",
@@ -815,9 +879,10 @@
         "outputs": [],
         "location": ".agents/commands/shape/deepen-plan.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/deepen-plan.md"
+        }
       },
       {
         "name": "plan-review",
@@ -826,9 +891,10 @@
         "outputs": [],
         "location": ".agents/commands/shape/plan-review.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "compound-engineering-plugin",
+          "path": "plugins/compound-engineering/commands/plan_review.md"
+        }
       },
       {
         "name": "compound",
@@ -836,10 +902,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/utilities/compound.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "create-agent-skill",
@@ -847,10 +910,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/utilities/create-agent-skill.md",
-        "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "generate-command",
@@ -858,10 +918,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/utilities/generate-command.md",
-        "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "handoff",
@@ -870,9 +927,10 @@
         "outputs": [],
         "location": ".agents/commands/utilities/handoff.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "docs/slash-commands/handoff.md"
+        }
       },
       {
         "name": "heal-skill",
@@ -880,10 +938,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/utilities/heal-skill.md",
-        "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "landpr",
@@ -892,20 +947,10 @@
         "outputs": [],
         "location": ".agents/commands/utilities/landpr.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
-      },
-      {
-        "name": "oracle",
-        "purpose": "command",
-        "calls": [],
-        "outputs": [],
-        "location": ".agents/commands/utilities/oracle.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "docs/slash-commands/landpr.md"
+        }
       },
       {
         "name": "pickup",
@@ -914,20 +959,10 @@
         "outputs": [],
         "location": ".agents/commands/utilities/pickup.md",
         "provenance": "synced",
-        "changeAuthority": "upstream-only",
-        "source": "vendor",
-        "status": "present"
-      },
-      {
-        "name": "verify",
-        "purpose": "command",
-        "calls": [],
-        "outputs": [],
-        "location": ".agents/commands/utilities/verify.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "upstream": {
+          "repo": "agent-scripts",
+          "path": "docs/slash-commands/pickup.md"
+        }
       },
       {
         "name": "wf-develop",
@@ -935,10 +970,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-develop.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "wf-explore",
@@ -946,10 +978,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-explore.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "wf-ralph",
@@ -957,10 +986,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-ralph.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "wf-release",
@@ -968,10 +994,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-release.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "wf-review",
@@ -979,10 +1002,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-review.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "wf-shape",
@@ -990,10 +1010,7 @@
         "calls": [],
         "outputs": [],
         "location": ".agents/commands/workflows/wf-shape.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       }
     ],
     "hooks": [
@@ -1002,60 +1019,42 @@
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/README.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "commit-msg",
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/git/commit-msg",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "post-merge",
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/git/post-merge",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "pre-commit",
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/git/pre-commit",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "pre-push",
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/git/pre-push",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "prepare-commit-msg",
         "trigger": "git hook template",
         "precedence": "n/a",
         "location": ".agents/hooks/git/prepare-commit-msg",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       }
     ],
     "agentsDocs": [
@@ -1063,82 +1062,49 @@
         "name": "AGENTS.root",
         "scope": "root",
         "location": "AGENTS.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "AGENTS.architecture",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.architecture.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "AGENTS.delivery",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.delivery.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "AGENTS.docs",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.docs.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "AGENTS.guidelines",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.guidelines.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
-        "name": "AGENTS.release.",
+        "name": "AGENTS.release",
         "scope": "template",
-        "location": "docs/agentsmd/AGENTS.release..md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "location": "docs/agentsmd/AGENTS.release.md",
+        "provenance": "local"
       },
       {
-        "name": "AGENTS.root",
+        "name": "AGENTS.root.template",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.root.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
-      },
-      {
-        "name": "AGENTS.verify",
-        "scope": "template",
-        "location": "docs/agentsmd/AGENTS.verify.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       },
       {
         "name": "AGENTS.web-apps",
         "scope": "template",
         "location": "docs/agentsmd/AGENTS.web-apps.md",
-        "provenance": "forked",
-        "changeAuthority": "direct",
-        "source": "local",
-        "status": "present"
+        "provenance": "local"
       }
     ]
   }
