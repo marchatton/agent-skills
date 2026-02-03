@@ -3,9 +3,11 @@ This is the canonical docs structure that `marchatton/templates` scaffolds into 
 Guidelines are stored in the respective AGENTS.md folder 
 
 ## Repo shape (stable concepts)
+- `.agents/`: agent skills/commands/hooks (synced from templates)
 - `apps/*`: runnable apps
 - `packages/*`: shared libs (shared logic lives here)
 - `docs/*`: specs, decisions, tracking
+- `scripts/*`: repo scripts (from templates; edit in place)
 - `tmp/*`: scratch (OK to commit), for random scripts, tests etc
 - `throwaway/*`: local-only (gitignored)
 

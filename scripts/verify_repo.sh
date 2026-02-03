@@ -38,7 +38,7 @@ for skill in "${required_workflow_skills[@]}"; do
 done
 
 required_templates=(
-  "${root_dir}/docs/templates/learnings.md"
+  "${root_dir}/docs/doc-templates/learnings.md"
 )
 
 for file in "${required_templates[@]}"; do

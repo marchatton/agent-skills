@@ -30,6 +30,7 @@
 
 
 ## Canonical and local agents files and instructions (skills, commands, hooks etc)
-- For other agentic tools (not Codex), respective skills and files etc will be symlinked using `iannuttal/dotagents`. Don’t fork instructions per agentic tool (e.g. Claude, Amp).
+- `.agents/` is canonical in this repo; Codex reads it directly.
+- For other agentic tools, use `iannuttall/dotagents` to symlink `.agents` into tool-specific files/folders. Don’t fork instructions per tool.
 - `AGENTS.md` is the source of truth. Any other agent-specific files are symlinks — don’t fork instructions per tool.
-- Canonical skills/commands/hooks live in `marchatton/templates` (synced into this repo via symlinks). If a skill/command seems missing or wrong, fix it there.
+- Canonical skills/commands/hooks live in `marchatton/templates`. If a skill/command seems missing or wrong, fix it there.

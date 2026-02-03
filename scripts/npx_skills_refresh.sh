@@ -46,12 +46,13 @@ mkdir -p "${add_stage}/.agents/skills"
 )
 
 ui_stage="${tmp_dir}/ui-skills"
-mkdir -p "${ui_stage}/.codex/skills"
+agents_home="${ui_stage}/.agents"
+mkdir -p "${agents_home}/skills"
 mkdir -p "${ui_stage}/home"
 
 (
   cd "${ui_stage}"
-  HOME="${ui_stage}/home" npx -y ui-skills@latest add --all
+  AGENTS_HOME="${agents_home}" CODEX_HOME="${agents_home}" HOME="${ui_stage}/home" npx -y ui-skills@latest add --all
 )
 
 copy_skill() {
@@ -86,13 +87,13 @@ copy_skill "${add_stage}/.agents/skills/ai-sdk" \
 copy_skill "${add_stage}/.agents/skills/agentation" \
   "${root_dir}/.agents/skills/utilities/agentation"
 
-copy_skill "${ui_stage}/.codex/skills/baseline-ui" \
+copy_skill "${agents_home}/skills/baseline-ui" \
   "${root_dir}/.agents/skills/review/baseline-ui"
-copy_skill "${ui_stage}/.codex/skills/fixing-motion-performance" \
+copy_skill "${agents_home}/skills/fixing-motion-performance" \
   "${root_dir}/.agents/skills/review/fixing-motion-performance"
-copy_skill "${ui_stage}/.codex/skills/fixing-metadata" \
+copy_skill "${agents_home}/skills/fixing-metadata" \
   "${root_dir}/.agents/skills/review/fixing-metadata"
-copy_skill "${ui_stage}/.codex/skills/fixing-accessibility" \
+copy_skill "${agents_home}/skills/fixing-accessibility" \
   "${root_dir}/.agents/skills/review/fixing-accessibility"
 
 python3 - "${root_dir}" <<'PY'

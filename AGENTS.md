@@ -13,7 +13,8 @@ Make skills concise + specific. Sacrifice grammar for concision.
 ## Template structure
 - Canonical repo of skills/commands/hooks lives under .agents
 - Canonical docs folder structure `docs/REPO-STRUCTURE.md`
-- Canonical document templates `docs/templates`
+- Canonical document templates `docs/doc-templates`
+- Project script templates `docs/scripts` (copied to target repo root `scripts/`)
 - Target-repo AGENTS.md templates live in `docs/agentsmd/`.
 - For commands, skills, agent files etc; `AGENTS.md` is the source of truth. Agentic tool specific files (e.g. `CLAUDE.md`) should be symlinked via `iannuttal/dotagents` — don’t fork instructions per agentic tool (e.g. Claude, Amp).
 - Canonical workflows live under `.agents/skills` (`wf-*`); keep AGENTS references in sync
@@ -27,7 +28,7 @@ Make skills concise + specific. Sacrifice grammar for concision.
 
 
 ## Codex web search
-- Live web: start with `--yolo` or set `web_search = "live"` in `~/.codex/config.toml`.
+- Live web: start with `--yolo` or set `web_search = "live"` in `~/.agents/config.toml`.
 - Web search strong lately; avoids outdated framework data from LLM cutoff.
 
 ## When unclear

@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Usage:
 #   ./scripts/install_codex_skills_copy.sh
-#   CODEX_HOME=/custom/path ./scripts/install_codex_skills_copy.sh
+#   AGENTS_HOME=/custom/path ./scripts/install_codex_skills_copy.sh
+#   CODEX_HOME=/custom/path ./scripts/install_codex_skills_copy.sh  # legacy
 
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source_dir="${root_dir}/.agents/skills"
@@ -13,8 +14,8 @@ if [ ! -d "${source_dir}" ]; then
   exit 1
 fi
 
-codex_home="${CODEX_HOME:-$HOME/.codex}"
-dest_dir="${codex_home}/skills"
+agents_home="${AGENTS_HOME:-${CODEX_HOME:-$HOME/.agents}}"
+dest_dir="${agents_home}/skills"
 
 if [ -L "${dest_dir}" ]; then
   echo "Refusing to copy into symlinked destination: ${dest_dir}"
@@ -32,5 +33,6 @@ else
 fi
 
 echo "Copy complete."
-echo "If needed, set CODEX_HOME to target a different Codex home."
+echo "If needed, set AGENTS_HOME to target a different agents home."
+echo "Legacy: CODEX_HOME is still accepted."
 echo "Note: This copy does not delete stale skills; remove them manually if needed."
