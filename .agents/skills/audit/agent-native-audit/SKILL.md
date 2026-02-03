@@ -1,12 +1,20 @@
 ---
 
 name: agent-native-audit
-description: This skill should be used when running a comprehensive agent-native architecture audit with scored principles.
+description: Comprehensive agent-native architecture audit with scored principles and multi-slice review. Use for system-wide health checks or periodic audits.
 ---
 
 # Agent-Native Architecture Audit
 
 Conduct a comprehensive review of the codebase against agent-native architecture principles, running multi-agent slices (parallel or serial) and producing a scored report.
+
+## When to Use
+- System-wide health checks
+- Periodic audits
+- Major refactors or architecture resets
+
+## Output Location
+- Write results under `docs/05-reviews-audits/` as `agent-native-audit_YYYY_MM_DD.md`.
 
 ## Core Principles to Audit
 

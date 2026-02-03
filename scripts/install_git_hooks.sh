@@ -27,4 +27,4 @@ for hook in "${hooks_src}"/*; do
 done
 
 echo "Installed hooks:"
-printf "- %s\n" "${installed[@]}"
+printf -- "- %s\n" "${installed[@]}"

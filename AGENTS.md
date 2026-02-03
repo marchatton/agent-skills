@@ -8,7 +8,7 @@ Make skills concise + specific. Sacrifice grammar for concision.
 - Changes here propagate into many repos. Prefer small changes, avoid breaking downstream scaffolds, and call out any intentional breakage in the PR.
 - If a workflow is repeatable, prefer adding/updating a skill/command rather than growing AGENTS.
 - Avoid brittle file-path assertions in prose. Describe stable concepts and search if unsure.
-- For creating new skills, default to `@creating-agent-skills`.
+- For creating new skills, default to `@create-agent-skills`.
 
 ## Template structure
 - Canonical repo of skills/commands/hooks lives under .agents

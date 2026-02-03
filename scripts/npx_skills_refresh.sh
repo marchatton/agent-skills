@@ -32,10 +32,11 @@ mkdir -p "${add_stage}/.agents/skills"
   npx -y add-skill@latest vercel-labs/agent-skills \
     --skill web-design-guidelines \
     --skill react-best-practices \
+    --skill composition-patterns \
     --agent amp \
     --yes
   npx -y add-skill@latest vercel/ai \
-    --skill use-ai-sdk \
+    --skill ai-sdk \
     --agent amp \
     --yes
   npx -y add-skill@latest benjitaylor/agentation \
@@ -67,10 +68,20 @@ copy_skill() {
 }
 
 copy_skill "${add_stage}/.agents/skills/web-design-guidelines" \
-  "${root_dir}/.agents/skills/review/web-design-guidelines"
-copy_skill "${add_stage}/.agents/skills/react-best-practices" \
-  "${root_dir}/.agents/skills/develop/react-best-practices"
-copy_skill "${add_stage}/.agents/skills/use-ai-sdk" \
+  "${root_dir}/.agents/skills/develop/web-design-guidelines"
+if [ -d "${add_stage}/.agents/skills/react-best-practices" ]; then
+  copy_skill "${add_stage}/.agents/skills/react-best-practices" \
+    "${root_dir}/.agents/skills/develop/react-best-practices"
+else
+  echo "Skipping react-best-practices (not found in source repo)"
+fi
+if [ -d "${add_stage}/.agents/skills/composition-patterns" ]; then
+  copy_skill "${add_stage}/.agents/skills/composition-patterns" \
+    "${root_dir}/.agents/skills/develop/composition-patterns"
+else
+  echo "Skipping composition-patterns (not found in source repo)"
+fi
+copy_skill "${add_stage}/.agents/skills/ai-sdk" \
   "${root_dir}/.agents/skills/develop/use-ai-sdk"
 copy_skill "${add_stage}/.agents/skills/agentation" \
   "${root_dir}/.agents/skills/utilities/agentation"
@@ -100,7 +111,7 @@ default_verify = [
 
 targets = [
     {
-        "path": root_dir / ".agents" / "skills" / "review" / "web-design-guidelines" / "SKILL.md",
+        "path": root_dir / ".agents" / "skills" / "develop" / "web-design-guidelines" / "SKILL.md",
         "name": "web-design-guidelines",
         "description": "Review UI for Web Interface Guidelines. Use for UI/UX/accessibility audits.",
         "verify": default_verify,
@@ -108,8 +119,20 @@ targets = [
     {
         "path": root_dir / ".agents" / "skills" / "develop" / "react-best-practices" / "SKILL.md",
         "name": "react-best-practices",
-        "description": "React/Next.js perf rules from Vercel. Use for perf, data fetching, bundle size.",
+        "description": "React/Next.js performance best practices from Vercel. Use when writing, reviewing, or refactoring React/Next.js code for performance, data fetching, or bundle size.",
         "verify": default_verify,
+    },
+    {
+        "path": root_dir / ".agents" / "skills" / "develop" / "composition-patterns" / "SKILL.md",
+        "name": "composition-patterns",
+        "description": "React composition patterns that scale. Use when refactoring boolean prop proliferation, designing reusable component APIs, or reviewing component architecture.",
+        "verify": default_verify,
+    },
+    {
+        "path": root_dir / ".agents" / "skills" / "develop" / "use-ai-sdk" / "SKILL.md",
+        "name": "use-ai-sdk",
+        "description": "AI SDK guidance. Use for Vercel AI SDK APIs (generateText, streamText, ToolLoopAgent, tools), providers, streaming, tool calling, structured output, or troubleshooting.",
+        "verify": [],
     },
     {
         "path": root_dir / ".agents" / "skills" / "review" / "baseline-ui" / "SKILL.md",
@@ -182,7 +205,8 @@ def ensure_verify(text: str, verify_lines: list[str]) -> str:
 def normalize(target: dict[str, object]) -> None:
     path = Path(target["path"])
     if not path.exists():
-        raise FileNotFoundError(path)
+        print(f"Skip normalize missing skill: {path}")
+        return
     raw = path.read_text(encoding="utf-8")
     keys, body = parse_frontmatter(raw)
 

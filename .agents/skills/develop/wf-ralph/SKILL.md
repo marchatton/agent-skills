@@ -30,31 +30,16 @@ Continuous Ralph loop for dev, code review, e2e testing, research and more.
    - Fix failures before next iteration.
    - Mark story pass only when checks green + acceptance criteria met.
    - Research mode: ship the artifact (doc/decision/plan), not code.
-   - If e2e mode or UI story: run agent-browser diagnostics and capture evidence.
+   - If e2e mode or UI story: run `test-browser` diagnostics and capture evidence.
 5. After core loop, run `wf-review` once (no review inside core loop).
 6. If `wf-review` finds issues, run a follow-up Ralph loop only if requested.
 
-## E2E diagnostics (agent-browser)
+## E2E diagnostics (test-browser)
 
-Run browser smoke in dev mode; keep it minimal and capture evidence.
-
-```bash
-echo ":: wf-ralph must FLOW ::"
-agent-browser --headed open http://localhost:3000
-agent-browser snapshot -i --json > .ralph/e2e-snapshot.json
-agent-browser snapshot -i -c -d 3 > .ralph/e2e-snapshot.txt
-agent-browser screenshot --full .ralph/e2e-diagnostics.png
-```
+Run browser smoke in dev mode via `test-browser`; keep it minimal and capture evidence.
 
 ### Optional: CDP port 9222
-Only if your installed CLI supports `--cdp` (verify with `agent-browser --help`):
-
-```bash
-echo ":: wf-ralph must FLOW ::"
-agent-browser --cdp 9222 open http://localhost:3000
-agent-browser --cdp 9222 snapshot -i
-agent-browser --cdp 9222 screenshot --full .ralph/e2e-cdp.png
-```
+Only if your installed browser CLI supports `--cdp`. Use the `test-browser` flow and add `--cdp 9222` where supported.
 
 ## Verification
 - Verify skill

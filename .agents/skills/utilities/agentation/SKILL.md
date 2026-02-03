@@ -1,37 +1,49 @@
 ---
 name: agentation
-description: Add Agentation visual feedback toolbar to Next.js (App Router or Pages Router). Use when installing/configuring agentation or adding dev-only <Agentation />.
+description: Add Agentation toolbar to Next.js. Use for install/config or dev-only <Agentation />.
 ---
 
-# Agentation
+# Agentation Setup
 
-## Install
+Set up the Agentation annotation toolbar in this project.
 
-- Check `package.json` for `agentation`.
-- If missing, install with the active package manager (match lockfile).
+## Steps
 
-## Place component
+1. **Check if already installed**
+   - Look for `agentation` in package.json dependencies
+   - If not found, run `npm install agentation` (or pnpm/yarn based on lockfile)
 
-- If `app/layout.*` exists (App Router), add to root layout body after children:
-```tsx
-import { Agentation } from "agentation";
+2. **Check if already configured**
+   - Search for `<Agentation` or `import { Agentation }` in src/ or app/
+   - If found, report that Agentation is already set up and exit
 
-{process.env.NODE_ENV === "development" && <Agentation />}
-```
-- If `pages/_app.*` exists (Pages Router), add after `Component`:
-```tsx
-import { Agentation } from "agentation";
+3. **Detect framework**
+   - Next.js App Router: has `app/layout.tsx` or `app/layout.js`
+   - Next.js Pages Router: has `pages/_app.tsx` or `pages/_app.js`
 
-{process.env.NODE_ENV === "development" && <Agentation />}
-```
+4. **Add the component**
+
+   For Next.js App Router, add to the root layout:
+   ```tsx
+   import { Agentation } from "agentation";
+
+   // Add inside the body, after children:
+   {process.env.NODE_ENV === "development" && <Agentation />}
+   ```
+
+   For Next.js Pages Router, add to _app:
+   ```tsx
+   import { Agentation } from "agentation";
+
+   // Add after Component:
+   {process.env.NODE_ENV === "development" && <Agentation />}
+   ```
+
+5. **Confirm setup**
+   - Tell the user to run their dev server and look for the Agentation toolbar (floating button in bottom-right corner)
 
 ## Notes
 
-- Dev-only via `NODE_ENV` gate.
-- Requires React 18.
-- No extra config.
-
-## Verify
-
-- Run dev server; confirm toolbar appears.
-- If code touched: run `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm verify`; report GO or NO-GO with evidence.
+- The `NODE_ENV` check ensures Agentation only loads in development
+- Agentation requires React 18
+- No additional configuration needed — it works out of the box

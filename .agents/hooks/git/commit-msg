@@ -1,5 +1,28 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Optional template. Add commit message checks here if needed.
-exit 0
+if [ -z "${ENFORCE_CONVENTIONAL_COMMITS:-}" ]; then
+  exit 0
+fi
+
+msg_file="${1:-}"
+if [ -z "${msg_file}" ] || [ ! -f "${msg_file}" ]; then
+  exit 0
+fi
+
+first_line="$(head -n 1 "${msg_file}" | tr -d '\r')"
+
+if [[ "${first_line}" =~ ^Merge[[:space:]] ]] || [[ "${first_line}" =~ ^Revert[[:space:]] ]]; then
+  exit 0
+fi
+
+pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._-]+\))?(!)?: .+'
+
+if ! [[ "${first_line}" =~ ${pattern} ]]; then
+  echo "Commit message must follow Conventional Commits:"
+  echo "  <type>(<scope>)!: <subject>"
+  echo "Examples:"
+  echo "  feat(auth): add SSO"
+  echo "  fix: handle empty input"
+  exit 1
+fi

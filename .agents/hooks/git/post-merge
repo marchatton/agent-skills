@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Optional template. Add post-merge reminders here if needed.
+if [ -n "${SKIP_GIT_HOOKS:-}" ]; then
+  exit 0
+fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+cd "${repo_root}"
+
+if ! git rev-parse -q --verify ORIG_HEAD >/dev/null 2>&1; then
+  exit 0
+fi
+
+changed="$(git diff --name-only ORIG_HEAD HEAD 2>/dev/null || true)"
+
+if echo "${changed}" | grep -Eq '(^|/)(package\.json|pnpm-lock\.yaml|package-lock\.json|yarn\.lock|pnpm-workspace\.yaml)$'; then
+  echo "Post-merge: dependency inputs changed."
+  echo "If you see build/test issues, run your package install step."
+fi
+
 exit 0

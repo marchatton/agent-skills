@@ -2,8 +2,11 @@
   "name": "templates",
   "private": true,
   "scripts": {
+    "typecheck": "bash scripts/typecheck.sh",
     "lint": "bash scripts/lint.sh",
+    "ast-grep": "bash scripts/ast-grep.sh",
     "test": "bash scripts/test.sh",
+    "knip": "bash scripts/knip.sh",
     "build": "bash scripts/build.sh",
     "verify": "bash scripts/verify.sh"
   }

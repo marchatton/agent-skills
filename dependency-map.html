@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dependency Map</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151922;
+      --text: #e6e9ef;
+      --muted: #9aa3b2;
+    }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #22283a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid #2a3347;
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+    main {
+      padding: 16px 20px 24px 20px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #22283a;
+      border-radius: 12px;
+      padding: 12px;
+      overflow: auto;
+    }
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .error {
+      display: none;
+      margin-top: 10px;
+      color: #ffb4b4;
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Dependency Map</strong>
+    <span class="badge">sanitized labels to avoid syntax errors</span>
+  </header>
+  <main>
+    <div class="panel">
+      <pre class="mermaid">%%{init: {"flowchart": {"curve": "basis"}}}%%
+graph TD
+  _agents_skills_audit_agent_native_audit_SKILL_md[".agents/skills/audit/agent-native-audit/SKILL.md"] --> file__agents_skills_audit_agent_native_audit_docs_05_reviews_audits_agent_native_audit_YYYY_MM_DD_md["file:.agents/skills/audit/agent-native-audit/docs/05-reviews-audits/agent-native-audit_YYYY_MM_DD.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs__sanitized_symptom___module___YYYYMMDD__md["file:.agents/skills/compound/compound-docs/(sanitized-symptom)-(module)-(YYYYMMDD).md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_assets_critical_pattern_template_md["file:.agents/skills/compound/compound-docs/assets/critical-pattern-template.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_assets_resolution_template_md["file:.agents/skills/compound/compound-docs/assets/resolution-template.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_docs_learnings_md["file:.agents/skills/compound/compound-docs/docs/learnings.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_docs_solutions_patterns_critical_patterns_md["file:.agents/skills/compound/compound-docs/docs/solutions/patterns/critical-patterns.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_docs_solutions_performance_issues_n_plus_one_brief_generation_BriefSystem_20251110_md["file:.agents/skills/compound/compound-docs/docs/solutions/performance-issues/n-plus-one-brief-generation-BriefSystem-20251110.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_docs_solutions_performance_issues_n_plus_one_briefs_md["file:.agents/skills/compound/compound-docs/docs/solutions/performance-issues/n-plus-one-briefs.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_hotwire_native_references_examples_md["file:.agents/skills/compound/compound-docs/hotwire-native/references/examples.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_hotwire_native_references_resources_md["file:.agents/skills/compound/compound-docs/hotwire-native/references/resources.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_missing_include_BriefSystem_20251110_md["file:.agents/skills/compound/compound-docs/missing-include-BriefSystem-20251110.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_n_plus_one_brief_generation_BriefSystem_20251110_md["file:.agents/skills/compound/compound-docs/n-plus-one-brief-generation-BriefSystem-20251110.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_parameter_not_saving_state_EmailProcessing_20251110_md["file:.agents/skills/compound/compound-docs/parameter-not-saving-state-EmailProcessing-20251110.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_references_yaml_schema_md["file:.agents/skills/compound/compound-docs/references/yaml-schema.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__agents_skills_compound_compound_docs_webview_crash_on_resize_Assistant_20251110_md["file:.agents/skills/compound/compound-docs/webview-crash-on-resize-Assistant-20251110.md"]
+  _agents_skills_compound_compound_docs_SKILL_md[".agents/skills/compound/compound-docs/SKILL.md"] --> file__doc_fix["file:/doc-fix"]
+  _agents_skills_develop_bug_reproduction_validator_SKILL_md[".agents/skills/develop/bug-reproduction-validator/SKILL.md"] --> skill_test_browser["skill:test-browser"]
+  _agents_skills_develop_composition_patterns_SKILL_md[".agents/skills/develop/composition-patterns/SKILL.md"] --> file__agents_skills_develop_composition_patterns_AGENTS_md["file:.agents/skills/develop/composition-patterns/AGENTS.md"]
+  _agents_skills_develop_rams_SKILL_md[".agents/skills/develop/rams/SKILL.md"] --> file__prompts_rams["file:/prompts-rams"]
+  _agents_skills_develop_react_best_practices_SKILL_md[".agents/skills/develop/react-best-practices/SKILL.md"] --> file__agents_skills_develop_react_best_practices_AGENTS_md["file:.agents/skills/develop/react-best-practices/AGENTS.md"]
+  _agents_skills_develop_repo_research_analyst_SKILL_md[".agents/skills/develop/repo-research-analyst/SKILL.md"] --> file__agents_skills_develop_repo_research_analyst______md["file:.agents/skills/develop/repo-research-analyst/**/*.md"]
+  _agents_skills_develop_repo_research_analyst_SKILL_md[".agents/skills/develop/repo-research-analyst/SKILL.md"] --> file__agents_skills_develop_repo_research_analyst____CLAUDE_md["file:.agents/skills/develop/repo-research-analyst/**/CLAUDE.md"]
+  _agents_skills_develop_repo_research_analyst_SKILL_md[".agents/skills/develop/repo-research-analyst/SKILL.md"] --> file__agents_skills_develop_repo_research_analyst__github_ISSUE_TEMPLATE["file:.agents/skills/develop/repo-research-analyst/.github/ISSUE_TEMPLATE"]
+  _agents_skills_develop_triage_SKILL_md[".agents/skills/develop/triage/SKILL.md"] --> file__agents_skills_develop_triage_042_ready_p1_transaction_boundaries_md["file:.agents/skills/develop/triage/042-ready-p1-transaction-boundaries.md"]
+  _agents_skills_develop_triage_SKILL_md[".agents/skills/develop/triage/SKILL.md"] --> file__agents_skills_develop_triage__id__pending__priority___desc__md["file:.agents/skills/develop/triage/{id}-pending-{priority}-{desc}.md"]
+  _agents_skills_develop_triage_SKILL_md[".agents/skills/develop/triage/SKILL.md"] --> file__agents_skills_develop_triage__id__ready__priority___desc__md["file:.agents/skills/develop/triage/{id}-ready-{priority}-{desc}.md"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk__md["file:.agents/skills/develop/use-ai-sdk/.md"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk__ai_sdk_openai["file:.agents/skills/develop/use-ai-sdk/@ai-sdk/openai"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk__ai_sdk_react["file:.agents/skills/develop/use-ai-sdk/@ai-sdk/react"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_node_modules__ai_sdk__provider__docs["file:.agents/skills/develop/use-ai-sdk/node_modules/@ai-sdk/(provider)/docs"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_node_modules_ai["file:.agents/skills/develop/use-ai-sdk/node_modules/ai"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_node_modules_ai_docs["file:.agents/skills/develop/use-ai-sdk/node_modules/ai/docs"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_node_modules_ai_src["file:.agents/skills/develop/use-ai-sdk/node_modules/ai/src"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_package_json["file:.agents/skills/develop/use-ai-sdk/package.json"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_references_ai_gateway_md["file:.agents/skills/develop/use-ai-sdk/references/ai-gateway.md"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_references_common_errors_md["file:.agents/skills/develop/use-ai-sdk/references/common-errors.md"]
+  _agents_skills_develop_use_ai_sdk_SKILL_md[".agents/skills/develop/use-ai-sdk/SKILL.md"] --> file__agents_skills_develop_use_ai_sdk_references_type_safe_agents_md["file:.agents/skills/develop/use-ai-sdk/references/type-safe-agents.md"]
+  _agents_skills_develop_wf_develop_SKILL_md[".agents/skills/develop/wf-develop/SKILL.md"] --> file__agents_skills_develop_wf_develop_docs_AGENTS_md["file:.agents/skills/develop/wf-develop/docs/AGENTS.md"]
+  _agents_skills_develop_wf_develop_SKILL_md[".agents/skills/develop/wf-develop/SKILL.md"] --> workflow_wf_develop["workflow:wf-develop"]
+  _agents_skills_develop_wf_ralph_SKILL_md[".agents/skills/develop/wf-ralph/SKILL.md"] --> file__agents_skills_develop_wf_ralph__ralph["file:.agents/skills/develop/wf-ralph/.ralph"]
+  _agents_skills_develop_wf_ralph_SKILL_md[".agents/skills/develop/wf-ralph/SKILL.md"] --> workflow_wf_ralph["workflow:wf-ralph"]
+  _agents_skills_develop_wf_ralph_SKILL_md[".agents/skills/develop/wf-ralph/SKILL.md"] --> workflow_wf_review["workflow:wf-review"]
+  _agents_skills_release_wf_release_SKILL_md[".agents/skills/release/wf-release/SKILL.md"] --> file__agents_skills_release_wf_release_docs_AGENTS_md["file:.agents/skills/release/wf-release/docs/AGENTS.md"]
+  _agents_skills_release_wf_release_SKILL_md[".agents/skills/release/wf-release/SKILL.md"] --> file__agents_skills_release_wf_release_docs_learnings_md["file:.agents/skills/release/wf-release/docs/learnings.md"]
+  _agents_skills_release_wf_release_SKILL_md[".agents/skills/release/wf-release/SKILL.md"] --> workflow_wf_release["workflow:wf-release"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_context_md["file:.agents/skills/review/agent-native-architecture/context.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references["file:.agents/skills/review/agent-native-architecture/references"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_action_parity_discipline_md["file:.agents/skills/review/agent-native-architecture/references/action-parity-discipline.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_agent_execution_patterns_md["file:.agents/skills/review/agent-native-architecture/references/agent-execution-patterns.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_agent_native_testing_md["file:.agents/skills/review/agent-native-architecture/references/agent-native-testing.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_architecture_patterns_md["file:.agents/skills/review/agent-native-architecture/references/architecture-patterns.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_dynamic_context_injection_md["file:.agents/skills/review/agent-native-architecture/references/dynamic-context-injection.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_files_universal_interface_md["file:.agents/skills/review/agent-native-architecture/references/files-universal-interface.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_from_primitives_to_domain_tools_md["file:.agents/skills/review/agent-native-architecture/references/from-primitives-to-domain-tools.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_mcp_tool_design_md["file:.agents/skills/review/agent-native-architecture/references/mcp-tool-design.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_mobile_patterns_md["file:.agents/skills/review/agent-native-architecture/references/mobile-patterns.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_product_implications_md["file:.agents/skills/review/agent-native-architecture/references/product-implications.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_refactoring_to_prompt_native_md["file:.agents/skills/review/agent-native-architecture/references/refactoring-to-prompt-native.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_self_modification_md["file:.agents/skills/review/agent-native-architecture/references/self-modification.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_shared_workspace_architecture_md["file:.agents/skills/review/agent-native-architecture/references/shared-workspace-architecture.md"]
+  _agents_skills_review_agent_native_architecture_SKILL_md[".agents/skills/review/agent-native-architecture/SKILL.md"] --> file__agents_skills_review_agent_native_architecture_references_system_prompt_design_md["file:.agents/skills/review/agent-native-architecture/references/system-prompt-design.md"]
+  _agents_skills_review_agent_native_reviewer_SKILL_md[".agents/skills/review/agent-native-reviewer/SKILL.md"] --> file__agents_skills_review_agent_native_reviewer_agent_output["file:.agents/skills/review/agent-native-reviewer/agent_output"]
+  _agents_skills_review_baseline_ui_SKILL_md[".agents/skills/review/baseline-ui/SKILL.md"] --> file__agents_skills_review_baseline_ui_motion_react["file:.agents/skills/review/baseline-ui/motion/react"]
+  _agents_skills_review_baseline_ui_SKILL_md[".agents/skills/review/baseline-ui/SKILL.md"] --> file__baseline_ui["file:/baseline-ui"]
+  _agents_skills_review_fixing_accessibility_SKILL_md[".agents/skills/review/fixing-accessibility/SKILL.md"] --> file__fixing_accessibility["file:/fixing-accessibility"]
+  _agents_skills_review_fixing_metadata_SKILL_md[".agents/skills/review/fixing-metadata/SKILL.md"] --> file__fixing_metadata["file:/fixing-metadata"]
+  _agents_skills_review_fixing_motion_performance_SKILL_md[".agents/skills/review/fixing-motion-performance/SKILL.md"] --> file__fixing_motion_performance["file:/fixing-motion-performance"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_assets_stylesheets__["file:.agents/skills/review/test-browser/app/assets/stylesheets/*"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_components___component_rb["file:.agents/skills/review/test-browser/app/components/*_component.rb"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_controllers_settings_controller_rb["file:.agents/skills/review/test-browser/app/controllers/settings_controller.rb"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_helpers___helper_rb["file:.agents/skills/review/test-browser/app/helpers/*_helper.rb"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_javascript_controllers___controller_js["file:.agents/skills/review/test-browser/app/javascript/controllers/*_controller.js"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_views_layouts__["file:.agents/skills/review/test-browser/app/views/layouts/*"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_app_views_users__["file:.agents/skills/review/test-browser/app/views/users/*"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_bin_dev["file:.agents/skills/review/test-browser/bin/dev"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_src_app__["file:.agents/skills/review/test-browser/src/app/*"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser_src_components__["file:.agents/skills/review/test-browser/src/components/*"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__agents_skills_review_test_browser__id__pending_p1_browser_test__description__md["file:.agents/skills/review/test-browser/{id}-pending-p1-browser-test-{description}.md"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__settings["file:/settings"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__users["file:/users"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__users__id["file:/users/:id"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> file__users_new["file:/users/new"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> skill_agent_browser["skill:agent-browser"]
+  _agents_skills_review_test_browser_SKILL_md[".agents/skills/review/test-browser/SKILL.md"] --> skill_ask_questions_if_underspecified["skill:ask-questions-if-underspecified"]
+  _agents_skills_review_wf_review_SKILL_md[".agents/skills/review/wf-review/SKILL.md"] --> file__agents_skills_review_wf_review_docs_04_projects__lane___id___slug__todos["file:.agents/skills/review/wf-review/docs/04-projects/(lane)/(id)_(slug)/todos"]
+  _agents_skills_review_wf_review_SKILL_md[".agents/skills/review/wf-review/SKILL.md"] --> file__agents_skills_review_wf_review_docs_05_reviews_audits__slug__todos["file:.agents/skills/review/wf-review/docs/05-reviews-audits/(slug)/todos"]
+  _agents_skills_review_wf_review_SKILL_md[".agents/skills/review/wf-review/SKILL.md"] --> file__review["file:/review"]
+  _agents_skills_review_wf_review_SKILL_md[".agents/skills/review/wf-review/SKILL.md"] --> skill_file_todos["skill:file-todos"]
+  _agents_skills_review_wf_review_SKILL_md[".agents/skills/review/wf-review/SKILL.md"] --> workflow_wf_review["workflow:wf-review"]
+  _agents_skills_shape_best_practices_researcher_SKILL_md[".agents/skills/shape/best-practices-researcher/SKILL.md"] --> file__agents_skills_shape_best_practices_researcher_______SKILL_md["file:.agents/skills/shape/best-practices-researcher/**/**/SKILL.md"]
+  _agents_skills_shape_best_practices_researcher_SKILL_md[".agents/skills/shape/best-practices-researcher/SKILL.md"] --> file__agents_skills_shape_best_practices_researcher__claude_skills____SKILL_md["file:.agents/skills/shape/best-practices-researcher/.claude/skills/**/SKILL.md"]
+  _agents_skills_shape_best_practices_researcher_SKILL_md[".agents/skills/shape/best-practices-researcher/SKILL.md"] --> file__agents_skills_shape_best_practices_researcher____claude_skills____SKILL_md["file:.agents/skills/shape/best-practices-researcher/~/.claude/skills/**/SKILL.md"]
+  _agents_skills_shape_create_json_prd_SKILL_md[".agents/skills/shape/create-json-prd/SKILL.md"] --> file__agents_skills_shape_create_json_prd_docs_templates_json_prd_schema_json["file:.agents/skills/shape/create-json-prd/docs/templates/json-prd.schema.json"]
+  _agents_skills_shape_create_json_prd_SKILL_md[".agents/skills/shape/create-json-prd/SKILL.md"] --> file__agents_skills_shape_create_json_prd_prd_json["file:.agents/skills/shape/create-json-prd/prd.json"]
+  _agents_skills_shape_create_json_prd_SKILL_md[".agents/skills/shape/create-json-prd/SKILL.md"] --> file__agents_skills_shape_create_json_prd_prd_md["file:.agents/skills/shape/create-json-prd/prd.md"]
+  _agents_skills_shape_create_prd_SKILL_md[".agents/skills/shape/create-prd/SKILL.md"] --> file__agents_skills_shape_create_prd_docs_AGENTS_md["file:.agents/skills/shape/create-prd/docs/AGENTS.md"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan__claude_agents["file:.agents/skills/shape/deepen-plan/.claude/agents"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_2026_01_15_feat_auth_plan_deepened_md["file:.agents/skills/shape/deepen-plan/2026-01-15-feat-auth-plan-deepened.md"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_agents_design__["file:.agents/skills/shape/deepen-plan/agents/design/*"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_agents_docs__["file:.agents/skills/shape/deepen-plan/agents/docs/*"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_agents_research__["file:.agents/skills/shape/deepen-plan/agents/research/*"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_agents_review__["file:.agents/skills/shape/deepen-plan/agents/review/*"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_agents_workflow__["file:.agents/skills/shape/deepen-plan/agents/workflow/*"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_authentication_issues["file:.agents/skills/shape/deepen-plan/authentication-issues"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_database_migrations["file:.agents/skills/shape/deepen-plan/database-migrations"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_docs_plans_2026_01_15_feat_my_feature_plan_md["file:.agents/skills/shape/deepen-plan/docs/plans/2026-01-15-feat-my-feature-plan.md"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan_rails_specific["file:.agents/skills/shape/deepen-plan/rails-specific"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__agents_skills_shape_deepen_plan____claude_agents["file:.agents/skills/shape/deepen-plan/~/.claude/agents"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__plan_review["file:/plan_review"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__workflows_plan["file:/workflows:plan"]
+  _agents_skills_shape_deepen_plan_SKILL_md[".agents/skills/shape/deepen-plan/SKILL.md"] --> file__workflows_work["file:/workflows:work"]
+  _agents_skills_shape_reproduce_bug_SKILL_md[".agents/skills/shape/reproduce-bug/SKILL.md"] --> file__agents_skills_shape_reproduce_bug_app_services_example_service_rb_42["file:.agents/skills/shape/reproduce-bug/app/services/example_service.rb:42"]
+  _agents_skills_shape_reproduce_bug_SKILL_md[".agents/skills/shape/reproduce-bug/SKILL.md"] --> file__agents_skills_shape_reproduce_bug_bin_dev["file:.agents/skills/shape/reproduce-bug/bin/dev"]
+  _agents_skills_shape_wf_shape_SKILL_md[".agents/skills/shape/wf-shape/SKILL.md"] --> file__agents_skills_shape_wf_shape__agents_tasks_prd__slug__json["file:.agents/skills/shape/wf-shape/.agents/tasks/prd-(slug).json"]
+  _agents_skills_shape_wf_shape_SKILL_md[".agents/skills/shape/wf-shape/SKILL.md"] --> file__agents_skills_shape_wf_shape_docs_AGENTS_md["file:.agents/skills/shape/wf-shape/docs/AGENTS.md"]
+  _agents_skills_shape_wf_shape_SKILL_md[".agents/skills/shape/wf-shape/SKILL.md"] --> skill_create_json_prd["skill:create-json-prd"]
+  _agents_skills_shape_wf_shape_SKILL_md[".agents/skills/shape/wf-shape/SKILL.md"] --> skill_create_prd["skill:create-prd"]
+  _agents_skills_shape_wf_shape_SKILL_md[".agents/skills/shape/wf-shape/SKILL.md"] --> workflow_wf_shape["workflow:wf-shape"]
+  _agents_skills_skills_maintenance_create_agent_skills_SKILL_md[".agents/skills/skills-maintenance/create-agent-skills/SKILL.md"] --> file__agents_skills_skills_maintenance_create_agent_skills_references_best_practices_md["file:.agents/skills/skills-maintenance/create-agent-skills/references/best-practices.md"]
+  _agents_skills_skills_maintenance_create_agent_skills_SKILL_md[".agents/skills/skills-maintenance/create-agent-skills/SKILL.md"] --> file__agents_skills_skills_maintenance_create_agent_skills_references_official_spec_md["file:.agents/skills/skills-maintenance/create-agent-skills/references/official-spec.md"]
+  _agents_skills_skills_maintenance_heal_skill_SKILL_md[".agents/skills/skills-maintenance/heal-skill/SKILL.md"] --> file__agents_skills_skills_maintenance_heal_skill_SKILL_DIR____agents_skills__CATEGORY__SKILL_NAME["file:.agents/skills/skills-maintenance/heal-skill/SKILL_DIR=./.agents/skills/$CATEGORY/$SKILL_NAME"]
+  _agents_skills_skills_maintenance_modular_skills_architect_SKILL_md[".agents/skills/skills-maintenance/modular-skills-architect/SKILL.md"] --> file__agents_skills_skills_maintenance_modular_skills_architect__agents_register_json["file:.agents/skills/skills-maintenance/modular-skills-architect/.agents/register.json"]
+  _agents_skills_skills_maintenance_modular_skills_architect_SKILL_md[".agents/skills/skills-maintenance/modular-skills-architect/SKILL.md"] --> file__agents_skills_skills_maintenance_modular_skills_architect_AGENTS_md["file:.agents/skills/skills-maintenance/modular-skills-architect/AGENTS.md"]
+  _agents_skills_skills_maintenance_modular_skills_architect_SKILL_md[".agents/skills/skills-maintenance/modular-skills-architect/SKILL.md"] --> file__agents_skills_skills_maintenance_modular_skills_architect_docs_agentsmd__["file:.agents/skills/skills-maintenance/modular-skills-architect/docs/agentsmd/*"]
+  _agents_skills_skills_maintenance_modular_skills_architect_SKILL_md[".agents/skills/skills-maintenance/modular-skills-architect/SKILL.md"] --> file__agents_skills_skills_maintenance_modular_skills_architect_marchatton_templates["file:.agents/skills/skills-maintenance/modular-skills-architect/marchatton/templates"]
+  _agents_skills_skills_maintenance_modular_skills_architect_SKILL_md[".agents/skills/skills-maintenance/modular-skills-architect/SKILL.md"] --> file__agents_skills_skills_maintenance_modular_skills_architect_register_json["file:.agents/skills/skills-maintenance/modular-skills-architect/register.json"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets["file:.agents/skills/skills-maintenance/skill-creator/assets"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets_font_ttf["file:.agents/skills/skills-maintenance/skill-creator/assets/font.ttf"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets_frontend_template["file:.agents/skills/skills-maintenance/skill-creator/assets/frontend-template"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets_hello_world["file:.agents/skills/skills-maintenance/skill-creator/assets/hello-world"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets_logo_png["file:.agents/skills/skills-maintenance/skill-creator/assets/logo.png"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_assets_slides_pptx["file:.agents/skills/skills-maintenance/skill-creator/assets/slides.pptx"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references["file:.agents/skills/skills-maintenance/skill-creator/references"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references_api_docs_md["file:.agents/skills/skills-maintenance/skill-creator/references/api_docs.md"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references_finance_md["file:.agents/skills/skills-maintenance/skill-creator/references/finance.md"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references_mnda_md["file:.agents/skills/skills-maintenance/skill-creator/references/mnda.md"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references_policies_md["file:.agents/skills/skills-maintenance/skill-creator/references/policies.md"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_references_schema_md["file:.agents/skills/skills-maintenance/skill-creator/references/schema.md"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_scripts["file:.agents/skills/skills-maintenance/skill-creator/scripts"]
+  _agents_skills_skills_maintenance_skill_creator_SKILL_md[".agents/skills/skills-maintenance/skill-creator/SKILL.md"] --> file__agents_skills_skills_maintenance_skill_creator_scripts_rotate_pdf_py["file:.agents/skills/skills-maintenance/skill-creator/scripts/rotate_pdf.py"]
+  _agents_skills_utilities_agent_browser_SKILL_md[".agents/skills/utilities/agent-browser/SKILL.md"] --> skill_agent_browser["skill:agent-browser"]
+  _agents_skills_utilities_agentation_SKILL_md[".agents/skills/utilities/agentation/SKILL.md"] --> file__agents_skills_utilities_agentation_app_layout_js["file:.agents/skills/utilities/agentation/app/layout.js"]
+  _agents_skills_utilities_agentation_SKILL_md[".agents/skills/utilities/agentation/SKILL.md"] --> file__agents_skills_utilities_agentation_app_layout_tsx["file:.agents/skills/utilities/agentation/app/layout.tsx"]
+  _agents_skills_utilities_agentation_SKILL_md[".agents/skills/utilities/agentation/SKILL.md"] --> file__agents_skills_utilities_agentation_pages__app_js["file:.agents/skills/utilities/agentation/pages/_app.js"]
+  _agents_skills_utilities_agentation_SKILL_md[".agents/skills/utilities/agentation/SKILL.md"] --> file__agents_skills_utilities_agentation_pages__app_tsx["file:.agents/skills/utilities/agentation/pages/_app.tsx"]
+  _agents_skills_utilities_create_cli_SKILL_md[".agents/skills/utilities/create-cli/SKILL.md"] --> file__agents_skills_utilities_create_cli__h___help["file:.agents/skills/utilities/create-cli/-h/--help"]
+  _agents_skills_utilities_create_cli_SKILL_md[".agents/skills/utilities/create-cli/SKILL.md"] --> file__agents_skills_utilities_create_cli_agent_scripts_skills_create_cli_references_cli_guidelines_md["file:.agents/skills/utilities/create-cli/agent-scripts/skills/create-cli/references/cli-guidelines.md"]
+  _agents_skills_utilities_docs_list_SKILL_md[".agents/skills/utilities/docs-list/SKILL.md"] --> file__agents_skills_utilities_docs_list_bin_docs_list["file:.agents/skills/utilities/docs-list/bin/docs-list"]
+  _agents_skills_utilities_docs_list_SKILL_md[".agents/skills/utilities/docs-list/SKILL.md"] --> file__agents_skills_utilities_docs_list_scripts_docs_list_ts["file:.agents/skills/utilities/docs-list/scripts/docs-list.ts"]
+  _agents_skills_utilities_every_style_editor_SKILL_md[".agents/skills/utilities/every-style-editor/SKILL.md"] --> file__agents_skills_utilities_every_style_editor_references_EVERY_WRITE_STYLE_md["file:.agents/skills/utilities/every-style-editor/references/EVERY_WRITE_STYLE.md"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__agents_skills_utilities_file_todos__REVIEW_TODOS_DIR["file:.agents/skills/utilities/file-todos/$REVIEW_TODOS_DIR"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__agents_skills_utilities_file_todos_app_models_todo_rb["file:.agents/skills/utilities/file-todos/app/models/todo.rb"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__agents_skills_utilities_file_todos_assets_todo_template_md["file:.agents/skills/utilities/file-todos/assets/todo-template.md"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__agents_skills_utilities_file_todos_docs_AGENTS_md["file:.agents/skills/utilities/file-todos/docs/AGENTS.md"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__resolve_pr_parallel["file:/resolve_pr_parallel"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__resolve_todo_parallel["file:/resolve_todo_parallel"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__triage["file:/triage"]
+  _agents_skills_utilities_file_todos_SKILL_md[".agents/skills/utilities/file-todos/SKILL.md"] --> file__workflows_review["file:/workflows:review"]
+  _agents_skills_utilities_handoff_SKILL_md[".agents/skills/utilities/handoff/SKILL.md"] --> file__agents_skills_utilities_handoff____codex_prompts_handoff_md["file:.agents/skills/utilities/handoff/~/.codex/prompts/handoff.md"]
+  _agents_skills_utilities_landpr_SKILL_md[".agents/skills/utilities/landpr/SKILL.md"] --> file__agents_skills_utilities_landpr_CHANGELOG_md["file:.agents/skills/utilities/landpr/CHANGELOG.md"]
+  _agents_skills_utilities_openai_image_gen_SKILL_md[".agents/skills/utilities/openai-image-gen/SKILL.md"] --> file__agents_skills_utilities_openai_image_gen_prompts_json["file:.agents/skills/utilities/openai-image-gen/prompts.json"]
+  _agents_skills_utilities_openai_image_gen_SKILL_md[".agents/skills/utilities/openai-image-gen/SKILL.md"] --> file__agents_skills_utilities_openai_image_gen_tmp____["file:.agents/skills/utilities/openai-image-gen/tmp/..."]
+  _agents_skills_utilities_openai_image_gen_SKILL_md[".agents/skills/utilities/openai-image-gen/SKILL.md"] --> file__agents_skills_utilities_openai_image_gen___Projects_tmp____["file:.agents/skills/utilities/openai-image-gen/~/Projects/tmp/..."]
+  _agents_skills_utilities_oracle_SKILL_md[".agents/skills/utilities/oracle/SKILL.md"] --> file__agents_skills_utilities_oracle____oracle_sessions["file:.agents/skills/utilities/oracle/~/.oracle/sessions"]
+  _agents_skills_utilities_oracle_SKILL_md[".agents/skills/utilities/oracle/SKILL.md"] --> skill_oracle["skill:oracle"]
+  _agents_skills_utilities_pickup_SKILL_md[".agents/skills/utilities/pickup/SKILL.md"] --> file__agents_skills_utilities_pickup____codex_prompts_pickup_md["file:.agents/skills/utilities/pickup/~/.codex/prompts/pickup.md"]
+  _agents_skills_utilities_verify_SKILL_md[".agents/skills/utilities/verify/SKILL.md"] --> skill_test_browser["skill:test-browser"]
+  _agents_skills_utilities_video_transcript_downloader_SKILL_md[".agents/skills/utilities/video-transcript-downloader/SKILL.md"] --> file__agents_skills_utilities_video_transcript_downloader_scripts_vtd_js["file:.agents/skills/utilities/video-transcript-downloader/scripts/vtd.js"]
+  docs_agentsmd_AGENTS_architecture_md["docs/agentsmd/AGENTS.architecture.md"] --> file_docs_agentsmd_docs_03_architecture["file:docs/agentsmd/docs/03-architecture"]
+  docs_agentsmd_AGENTS_architecture_md["docs/agentsmd/AGENTS.architecture.md"] --> file_docs_agentsmd_docs_03_architecture_decisions_md["file:docs/agentsmd/docs/03-architecture/decisions.md"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_docs_04_projects__lane___id___slug_["file:docs/agentsmd/docs/04-projects/(lane)/(id)_(slug)"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_marchatton_templates["file:docs/agentsmd/marchatton/templates"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_package_json["file:docs/agentsmd/package.json"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_packages__["file:docs/agentsmd/packages/*"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_prd_json["file:docs/agentsmd/prd.json"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_prd_md["file:docs/agentsmd/prd.md"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_reviews["file:docs/agentsmd/reviews"]
+  docs_agentsmd_AGENTS_delivery_md["docs/agentsmd/AGENTS.delivery.md"] --> file_docs_agentsmd_todos["file:docs/agentsmd/todos"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_00_strategy["file:docs/agentsmd/00-strategy"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_01_insights["file:docs/agentsmd/01-insights"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_02_guidelines["file:docs/agentsmd/02-guidelines"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_03_architecture["file:docs/agentsmd/03-architecture"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_03_architecture_decisions_md["file:docs/agentsmd/03-architecture/decisions.md"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_04_projects["file:docs/agentsmd/04-projects"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_05_reviews_audits["file:docs/agentsmd/05-reviews-audits"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_06_release["file:docs/agentsmd/06-release"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_10_tmp["file:docs/agentsmd/10-tmp"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_99_archive["file:docs/agentsmd/99-archive"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_CHANGELOG_md["file:docs/agentsmd/CHANGELOG.md"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_docs_04_projects_02_features["file:docs/agentsmd/docs/04-projects/02-features"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_docs_04_projects_02_features_0007_bulk_invite_members["file:docs/agentsmd/docs/04-projects/02-features/0007_bulk-invite-members"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_docs_99_archive["file:docs/agentsmd/docs/99-archive"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_learnings_md["file:docs/agentsmd/learnings.md"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_prd_json["file:docs/agentsmd/prd.json"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_prd_md["file:docs/agentsmd/prd.md"]
+  docs_agentsmd_AGENTS_docs_md["docs/agentsmd/AGENTS.docs.md"] --> file_docs_agentsmd_reviews["file:docs/agentsmd/reviews"]
+  docs_agentsmd_AGENTS_guidelines_md["docs/agentsmd/AGENTS.guidelines.md"] --> file_docs_agentsmd_brand_guidelines_md["file:docs/agentsmd/brand-guidelines.md"]
+  docs_agentsmd_AGENTS_guidelines_md["docs/agentsmd/AGENTS.guidelines.md"] --> file_docs_agentsmd_brand_tone_md["file:docs/agentsmd/brand-tone.md"]
+  docs_agentsmd_AGENTS_guidelines_md["docs/agentsmd/AGENTS.guidelines.md"] --> file_docs_agentsmd_docs_02_guidelines["file:docs/agentsmd/docs/02-guidelines"]
+  docs_agentsmd_AGENTS_guidelines_md["docs/agentsmd/AGENTS.guidelines.md"] --> file_docs_agentsmd_product_principles_md["file:docs/agentsmd/product-principles.md"]
+  docs_agentsmd_AGENTS_guidelines_md["docs/agentsmd/AGENTS.guidelines.md"] --> skill_docs_list["skill:docs-list"]
+  docs_agentsmd_AGENTS_release_md["docs/agentsmd/AGENTS.release.md"] --> file_docs_agentsmd_docs_06_release_CHANGELOG_md["file:docs/agentsmd/docs/06-release/CHANGELOG.md"]
+  docs_agentsmd_AGENTS_release_md["docs/agentsmd/AGENTS.release.md"] --> file_docs_agentsmd_docs_06_release_postmortems["file:docs/agentsmd/docs/06-release/postmortems"]
+  docs_agentsmd_AGENTS_root_md["docs/agentsmd/AGENTS.root.md"] --> file_docs_agentsmd_AGENTS_md["file:docs/agentsmd/AGENTS.md"]
+  docs_agentsmd_AGENTS_root_md["docs/agentsmd/AGENTS.root.md"] --> file_docs_agentsmd_iannuttal_dotagents["file:docs/agentsmd/iannuttal/dotagents"]
+  docs_agentsmd_AGENTS_root_md["docs/agentsmd/AGENTS.root.md"] --> file_docs_agentsmd_marchatton_templates["file:docs/agentsmd/marchatton/templates"]
+  docs_agentsmd_AGENTS_root_md["docs/agentsmd/AGENTS.root.md"] --> file_docs_agentsmd_package_json["file:docs/agentsmd/package.json"]
+  docs_agentsmd_AGENTS_web_apps_md["docs/agentsmd/AGENTS.web-apps.md"] --> file__prompts_rams["file:/prompts-rams"]</pre>
+    </div>
+    <div class="note">If the graph is large, use browser zoom or scroll inside the panel.</div>
+    <div id="err" class="error"></div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    try {
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    } catch (e) {
+      const el = document.getElementById('err');
+      el.style.display = 'block';
+      el.textContent = 'Mermaid failed: ' + (e && e.message ? e.message : e);
+      console.error(e);
+    }
+  </script>
+</body>
+</html>
