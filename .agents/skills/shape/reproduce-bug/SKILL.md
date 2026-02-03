@@ -8,6 +8,8 @@ description: This skill should be used when reproducing and investigating a bug 
 
 Look at github issue #$ARGUMENTS and read the issue description and comments.
 
+When I report a bug, don't start by trying to fix it. Instead, start by writing a test that reproduces the bug. Then, have subagents try to fix the bug and prove it with a passing test.
+
 ## Phase 1: Log Investigation
 
 Run the following agents in parallel to investigate the bug:
