@@ -1,14 +1,21 @@
 ---
-
 name: pickup
-description: This skill should be used when preparing a pickup checklist when starting a task.
+description: This skill should be used when preparing a pickup checklist when starting a task, rehydrating context from the latest local handoff note if available.
 ---
 
 # /pickup
 
 Purpose: rehydrate context quickly when you start work.
 
-Steps:
+## Read a handoff note first (preferred)
+
+- If the user provides a handoff note path, read that file first.
+- Else, attempt to locate the most recent handoff note under repo root:
+  - `throwaway/handoffs/*/*.md`
+- If no handoff note exists, continue with the standard pickup steps.
+
+## Pickup steps
+
 1) Read AGENTS.MD pointer + relevant docs (run `pnpm run docs:list` if present).
 2) Repo state: `git status -sb`; check for local commits; confirm current branch/PR.
 3) CI/PR: `gh pr view <num> --comments --files` (or derive PR from branch) and note failing checks.
@@ -18,6 +25,12 @@ Steps:
 5) Tests/checks: note what last ran (from handoff notes/CI) and what you will run first.
 6) Plan next 2–3 actions as bullets and execute.
 
-Output format: concise bullet summary; include copy/paste tmux attach/capture commands when live sessions are present.
+## Output format
 
-Location: global prompt lives in `~/.codex/prompts/pickup.md`; this file mirrors it for easy edits.
+- Concise bullet summary.
+- Include copy/paste tmux attach/capture commands when live sessions are present.
+
+## Notes
+
+- Prefer starting new threads between workflows: run `handoff`, start a new thread, then run `pickup`.
+- If the handoff note contradicts the current repo state, trust the repo state and call out the mismatch.
