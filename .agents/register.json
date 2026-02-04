@@ -1381,15 +1381,15 @@
         "useWhen": "specs need flow/gap analysis"
       },
       {
-        "location": ".agents/skills/02-shape/spike/SKILL.md",
-        "name": "spike",
+        "location": ".agents/skills/02-shape/spike-investigation/SKILL.md",
+        "name": "spike-investigation",
         "outputs": [
           "Risk register",
           "Spike plan",
           "Spike report",
           "Updated shaped artefacts"
         ],
-        "ownerModule": "spike",
+        "ownerModule": "spike-investigation",
         "provenance": "local",
         "purpose": "Run a timeboxed spike to de-risk rabbit holes and turn uncertainty into proof",
         "tier": "leaf",

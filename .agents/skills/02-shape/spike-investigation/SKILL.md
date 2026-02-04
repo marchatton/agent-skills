@@ -1,9 +1,9 @@
 ---
-name: spike
+name: spike-investigation
 description: This skill should be used when shaping work and needing to de-risk rabbit holes (technical unknowns, design gaps, interdependencies) by running timeboxed spikes, documenting proof, and updating the shaped concept with patches, cuts, and out-of-bounds so the work stays thin-tailed within the appetite.
 ---
 
-# Spiking
+# Spike Investigation
 
 ## Purpose
 
