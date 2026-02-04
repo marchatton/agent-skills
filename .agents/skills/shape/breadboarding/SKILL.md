@@ -27,7 +27,7 @@ Use those to build a lightweight model of the current system and the proposed ch
 
 ## Inputs to request or infer
 
-Prefer working with whatever exists. If inputs are missing, infer reasonable defaults and mark them explicitly.
+Prefer working with whatever exists. If inputs are missing, use `ask-questions-if-underspecified` skill
 
 - Appetite / timebox and any hard boundaries.
 - Problem statement and success definition.
@@ -96,7 +96,7 @@ Interpretation rule:
 
 ### 5) Build a wiring diagram from affordances
 
-Convert the inventories into a simple directed graph.
+Convert the inventories into a simple directed graph using `beautiful-mermaid` skill.
 
 - Nodes: places, UI affordances, code affordances, external services, browser events.
 - Edges:
@@ -109,7 +109,7 @@ Keep it legible:
 - Collapse deep internals into a single node when they aren’t central to the shaped behaviour.
 - If it becomes a hairball, split into sub-diagrams per place or per flow.
 
-Optionally emit Mermaid using the template in `references/templates/wiring-diagram-mermaid-template.md`.
+Optionally emit Mermaid using the template in `references/templates/wiring-diagram-mermaid-template.md`
 
 ### 6) Produce a parts list (BOM)
 
