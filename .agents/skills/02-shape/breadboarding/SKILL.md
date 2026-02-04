@@ -31,6 +31,7 @@ Prefer working with whatever exists. If inputs are missing, use `ask-questions-i
 
 - Appetite / timebox and any hard boundaries.
 - Problem statement and success definition.
+- Brief (problem, goals, in/out scope). If missing, pause and draft a brief first.
 - Requirements list (or a rough list of must-haves).
 - Entry point(s): where the user starts, how they discover the feature.
 - Existing system context: routes/screens, key components, services, data stores.
@@ -191,5 +192,6 @@ Use `references/templates/breadboard-pack-template.md`.
 
 - `references/shapeup-breadboarding-notes.md` — summary of Shape Up breadboarding concepts.
 - `references/templates/*` — reusable templates for breadboard pack, tables, diagrams, fit checks.
+- `references/templates/brief-template.md` — brief template used by the brief skill.
 - `references/examples/letter-search-example.md` — an end-to-end example using UI+code affordances.
 - `scripts/render_mermaid_from_edges.py` — optional helper to turn a JSON edge list into Mermaid.
