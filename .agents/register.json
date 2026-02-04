@@ -2,7 +2,7 @@
   "version": 1,
   "canonicalRepo": "marchatton/templates",
   "localRoot": ".",
-  "generatedAt": "2026-02-03",
+  "generatedAt": "2026-02-04",
   "tiers": [
     "core",
     "leaf",
@@ -1400,6 +1400,19 @@
         ]
       },
       {
+        "name": "wf-plan",
+        "tier": "core",
+        "purpose": "Create a commit-ready plan from a shaped packet (brief, breadboard, risks, spikes) before development starts.",
+        "useWhen": "This skill should only be used when the user uses the word workflow and asks to create a commit-ready, deep project plan from a shaped packet (brief, breadboard, risks, spikes) before development starts.",
+        "outputs": [
+          "Dossier `plan.md` with scope, sequencing, acceptance criteria, verification, rollout/rollback, and research references.",
+          "Commit decision (GO/NO-GO) at the end of `plan.md`."
+        ],
+        "ownerModule": "wf-plan",
+        "location": ".agents/skills/03-plan/wf-plan/SKILL.md",
+        "provenance": "local"
+      },
+      {
         "name": "wf-ralph",
         "tier": "core",
         "purpose": "Continuous Ralph loop for dev, code review, e2e testing, research and more.",
@@ -1453,14 +1466,14 @@
       {
         "name": "wf-shape",
         "tier": "core",
-        "purpose": "Produce a PRD and optional supporting artefacts that are ready for implementation.",
-        "useWhen": "This skill should only be used when the user uses the word workflow and asks to shape a project (produce a PRD and supporting artefacts).",
+        "purpose": "Shape messy inputs into a de-risked, de-scoped packet (brief, breadboard, risks, spikes) ready for wf-plan.",
+        "useWhen": "This skill should only be used when the user uses the word workflow and asks to shape a project from messy inputs into a de-risked, de-scoped shaped packet (brief, breadboard, risks, spikes) ready for wf-plan.",
         "outputs": [
-          "Docs artefacts saved per `docs/AGENTS.md` in the target repo (PRD required; optional supporting docs per skills).",
-          "Required for tooling: `.agents/tasks/prd-<slug>.json`"
+          "Dossier folder with `brief.md`, `breadboard-pack.md`, and `risk-register.md`.",
+          "Optional `spike-investigation.md` with oracle notes for each spike."
         ],
         "ownerModule": "wf-shape",
-        "location": ".agents/skills/shape/wf-shape/SKILL.md",
+        "location": ".agents/skills/02-shape/wf-shape/SKILL.md",
         "provenance": "local",
         "history": [
           "command:.agents/commands/workflows/wf-shape.md"
