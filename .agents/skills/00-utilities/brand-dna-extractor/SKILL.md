@@ -1,6 +1,6 @@
 ---
 name: brand-dna-extractor
-description: This skill should be used when users want to scrape multiple websites (Firecrawl or equivalent), extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction with three outputs: brand_guidelines.md, prompt_library.json, design_tokens.json.
+description: This skill should be used when users want to scrape multiple websites (Firecrawl or equivalent), extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction with three outputs - brand_guidelines.md, prompt_library.json, design_tokens.json.
 ---
 
 ## Scope
