@@ -1,25 +1,33 @@
 ---
 name: docs-list
-description: Use when listing or summarizing docs files in a repo.
+description: Run `scripts/docs-list.ts` to list `docs/` markdown + frontmatter summary/read_when. Use when auditing docs coverage.
 ---
 
 # Docs List
 
-## Inputs
+## Quick Start
 
-- Repo path.
-- Doc scope (docs/, README, guides).
+```bash
+pnpm dlx tsx scripts/docs-list.ts
+```
 
-## Outputs
+## Behavior
 
-- List of docs with short summaries.
+- Walks `docs/` (skips `archive/`, `research/`).
+- Requires frontmatter `summary:`; optional `read_when:` list.
+- Output `path - summary` (+ `Read when:`); errors flagged.
 
 ## Steps
 
-1. If the repo includes a docs listing helper, run it; else list manually.
-2. Produce a concise list with 1-line summaries.
-3. Flag missing or stale docs.
+1. Ensure local copy `scripts/docs-list.ts` (copy from `inspiration/agent-scripts/scripts/docs-list.ts` if missing).
+2. Run from repo root.
+3. Review errors for missing/stale docs.
+
+## Outputs
+
+- Paths + summaries for `docs/`.
+- Missing/stale notes.
 
 ## Verification
 
-- Output includes paths and summaries for the requested scope.
+- Output includes paths + summaries; errors shown.
