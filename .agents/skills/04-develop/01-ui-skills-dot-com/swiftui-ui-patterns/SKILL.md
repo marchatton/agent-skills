@@ -6,7 +6,6 @@ description: Best practices and example-driven guidance for building SwiftUI vie
 # SwiftUI UI Patterns
 Source: ui-skills.com.
 
-
 ## Quick start
 
 Choose a track based on your goal:

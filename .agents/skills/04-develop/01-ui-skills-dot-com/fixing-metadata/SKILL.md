@@ -6,7 +6,6 @@ description: Fix metadata issues. Use for SEO/social metadata audits or fixes.
 # fixing-metadata
 Source: ui-skills.com.
 
-
 Ship correct, complete metadata.
 
 ## how to use

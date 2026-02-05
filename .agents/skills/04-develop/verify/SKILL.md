@@ -1,12 +1,17 @@
 ---
 name: verify
-description: Verify changes before done; scripts then UI smoke; output PASS/NO-GO.
+description: Verification ladder. Pick smallest scope, run scripts in order, smoke UI, report PASS/NO-GO.
 ---
 
-# verify
+# Verify
 
 ## Purpose
 Provide a single, consistent way for agents to verify changes before claiming “done”.
+
+## Canonical rule
+Verification is skill-only.
+- Do not rely on a global `verify` command.
+- Do not require other docs to define verification logic. This skill is self-contained.
 
 ## When to run
 Run verification for every change that alters behaviour, build outputs, tests, types, linting, packaging, CI, or UI.

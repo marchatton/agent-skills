@@ -88,13 +88,13 @@ copy_skill "${add_stage}/.agents/skills/agentation" \
   "${root_dir}/.agents/skills/00-utilities/agentation"
 
 copy_skill "${agents_home}/skills/baseline-ui" \
-  "${root_dir}/.agents/skills/05-review/baseline-ui"
+  "${root_dir}/.agents/skills/04-develop/01-ui-skills-dot-com/baseline-ui"
 copy_skill "${agents_home}/skills/fixing-motion-performance" \
-  "${root_dir}/.agents/skills/05-review/fixing-motion-performance"
+  "${root_dir}/.agents/skills/04-develop/01-ui-skills-dot-com/fixing-motion-performance"
 copy_skill "${agents_home}/skills/fixing-metadata" \
-  "${root_dir}/.agents/skills/05-review/fixing-metadata"
+  "${root_dir}/.agents/skills/04-develop/01-ui-skills-dot-com/fixing-metadata"
 copy_skill "${agents_home}/skills/fixing-accessibility" \
-  "${root_dir}/.agents/skills/05-review/fixing-accessibility"
+  "${root_dir}/.agents/skills/04-develop/01-ui-skills-dot-com/fixing-accessibility"
 
 python3 - "${root_dir}" <<'PY'
 from __future__ import annotations
@@ -136,25 +136,25 @@ targets = [
         "verify": [],
     },
     {
-        "path": root_dir / ".agents" / "skills" / "05-review" / "baseline-ui" / "SKILL.md",
+        "path": root_dir / ".agents" / "skills" / "04-develop" / "01-ui-skills-dot-com" / "baseline-ui" / "SKILL.md",
         "name": "baseline-ui",
         "description": "Baseline UI rules to prevent design slop. Use for UI design or review.",
         "verify": default_verify,
     },
     {
-        "path": root_dir / ".agents" / "skills" / "05-review" / "fixing-motion-performance" / "SKILL.md",
+        "path": root_dir / ".agents" / "skills" / "04-develop" / "01-ui-skills-dot-com" / "fixing-motion-performance" / "SKILL.md",
         "name": "fixing-motion-performance",
         "description": "Fix animation performance issues. Use for motion audits or refactors.",
         "verify": default_verify,
     },
     {
-        "path": root_dir / ".agents" / "skills" / "05-review" / "fixing-metadata" / "SKILL.md",
+        "path": root_dir / ".agents" / "skills" / "04-develop" / "01-ui-skills-dot-com" / "fixing-metadata" / "SKILL.md",
         "name": "fixing-metadata",
         "description": "Fix metadata issues. Use for SEO/social metadata audits or fixes.",
         "verify": default_verify,
     },
     {
-        "path": root_dir / ".agents" / "skills" / "05-review" / "fixing-accessibility" / "SKILL.md",
+        "path": root_dir / ".agents" / "skills" / "04-develop" / "01-ui-skills-dot-com" / "fixing-accessibility" / "SKILL.md",
         "name": "fixing-accessibility",
         "description": "Fix accessibility issues. Use for a11y audits or fixes.",
         "verify": default_verify,

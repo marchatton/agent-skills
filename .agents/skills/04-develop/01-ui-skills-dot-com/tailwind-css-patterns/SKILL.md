@@ -9,7 +9,6 @@ license: MIT
 # Tailwind CSS Development Patterns
 Source: ui-skills.com.
 
-
 Expert guide for building modern, responsive user interfaces with Tailwind CSS utility-first framework. Covers v4.1+ features including CSS-first configuration, custom utilities, and enhanced developer experience.
 
 ## When to Use

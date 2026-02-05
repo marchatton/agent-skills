@@ -9,9 +9,12 @@ description: This skill should only be used when the user uses the word workflow
 
 Ship changes safely with a minimal release checklist, changelog/release notes, and post-release verification.
 
+Prefer `prd.json` as the source of truth for what shipped (user story IDs + acceptance criteria).
+`plan.md` may exist for rollout/rollback notes, but it’s optional.
+
 ## Inputs
 
-- Plan/PRD acceptance criteria
+- Plan/PRD acceptance criteria (prefer `prd.json`)
 - Release scope + rollout constraints
 - Monitoring + rollback requirements
 - Target repo + branch/PR
@@ -33,6 +36,7 @@ Capture:
 - rollout strategy (flags, staged, canary)
 - rollback steps (including data)
 - monitors to watch
+- link to `prd.json` (and plan.md if present)
 
 2) Pre-release verification (mandatory)
 - Run verify skill.
@@ -40,6 +44,7 @@ Capture:
 
 3) Release artefacts
 - Draft release notes / changelog entry (keep it short, user-facing)
+- Prefer listing shipped stories by ID (US-xxx) from `prd.json`
 - Note any operator actions (migrations, flags, config)
 
 4) Post-release verification

@@ -6,7 +6,6 @@ description: Conduct design interviews, generate five distinct UI variations in 
 # Design Lab Skill
 Source: ui-skills.com.
 
-
 This skill implements a complete design exploration workflow: interview, generate variations, collect feedback, refine, preview, and finalize.
 
 ## CRITICAL: Cleanup Behavior

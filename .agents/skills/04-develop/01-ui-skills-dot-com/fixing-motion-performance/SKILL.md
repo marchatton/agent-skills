@@ -6,7 +6,6 @@ description: Fix animation performance issues. Use for motion audits or refactor
 # fixing-motion-performance
 Source: ui-skills.com.
 
-
 Fix animation performance issues.
 
 ## how to use

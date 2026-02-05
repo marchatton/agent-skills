@@ -6,7 +6,6 @@ description: Baseline UI rules to prevent design slop. Use for UI design or revi
 # Baseline UI
 Source: ui-skills.com.
 
-
 Enforces an opinionated UI baseline to prevent AI-generated interface slop.
 
 ## How to use

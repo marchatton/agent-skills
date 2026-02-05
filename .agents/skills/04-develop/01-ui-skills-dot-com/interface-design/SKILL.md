@@ -6,7 +6,6 @@ description: This skill is for interface design — dashboards, admin panels, ap
 # Interface Design
 Source: ui-skills.com.
 
-
 Build interface design with craft and consistency.
 
 ## Scope

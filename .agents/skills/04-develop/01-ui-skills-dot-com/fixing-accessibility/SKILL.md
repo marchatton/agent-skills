@@ -6,7 +6,6 @@ description: Fix accessibility issues. Use for a11y audits or fixes.
 # fixing-accessibility
 Source: ui-skills.com.
 
-
 Fix accessibility issues.
 
 ## how to use

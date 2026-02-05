@@ -6,7 +6,6 @@ description: Design and implement microinteractions, motion design, transitions,
 # Interaction Design
 Source: ui-skills.com.
 
-
 Create engaging, intuitive interactions through motion, feedback, and thoughtful state transitions that enhance usability and delight users.
 
 ## When to Use This Skill

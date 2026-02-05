@@ -11,7 +11,6 @@ metadata:
 # 12 Principles of Animation
 Source: ui-skills.com.
 
-
 Disney animators codified these principles in the 1930s to make drawings feel real. We use them to make pixels feel human. The problems are surprisingly similar.
 
 ## When to Apply

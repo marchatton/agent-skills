@@ -6,7 +6,6 @@ description: Conduct WCAG 2.2 accessibility audits with automated testing, manua
 # WCAG Audit Patterns
 Source: ui-skills.com.
 
-
 Comprehensive guide to auditing web content against WCAG 2.2 guidelines with actionable remediation strategies.
 
 ## When to Use This Skill
