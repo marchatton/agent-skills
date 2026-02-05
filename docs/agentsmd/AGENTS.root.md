@@ -22,9 +22,6 @@ We mostly follow the core principles of the pragmatic programmer (book by Andy H
 
 And the vibe throughout is: be practical, stay curious, and optimise for long-term leverage, not short-term heroics.
 
-Other principles: 
-
-
 ## Error handling + safety (high level)
 - Validate external inputs at boundaries (Zod) and return safe user-facing errors.
 - Don’t leak internal errors/details to clients.
@@ -33,16 +30,10 @@ Other principles:
 ## Compatibility
 - Bcakwards compatibility usually not required.
 
-## Verification (required)
-- Use the `verify` skill. Report commands + results. If blocked, return NO-GO + smallest unblock.
-- Don’t guess scripts. Check relevant `package.json` (repo root + target package).
-- Monorepo/shared scope: `pnpm -r lint`, `pnpm -r test`, `pnpm -r build`.
-- Single package/app: `pnpm -F <pkg> lint`, `pnpm -F <pkg> test`, `pnpm -F <pkg> build`.
-- UI/user-flow changes: browser smoke + basic a11y spot-check (keyboard, focus, labels).
-
 ## Core skills to use frequently
 - `ask-questions-if-underspecified` when unclear.
 - `oracle` for deep research.
+- `verify` for code changes. 
 
 ## Canonical and local agents files and instructions (skills, commands, hooks etc)
 - `.agents/` is canonical in this repo; Codex reads it directly.

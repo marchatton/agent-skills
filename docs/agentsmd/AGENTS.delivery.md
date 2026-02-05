@@ -20,7 +20,7 @@ This folder tracks work items once implementation begins.
 - Cache with intent: revalidate where safe; invalidate tags/keys on mutation.
 
 ## Commands (common, if present)
-- Repo: `pnpm -r lint`, `pnpm -r test`, `pnpm -r build`
+- Use `verify` skill
 - Package/app: `pnpm -F <pkg> <script>` (check `package.json` scripts for canonical names)
 - Some repos include refactor signals like `scan`, `dead`, `dupes`, `refactor:check` — run when doing refactors.
 

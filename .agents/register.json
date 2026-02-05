@@ -1444,7 +1444,7 @@
         "useWhen": ""
       },
       {
-        "location": ".agents/skills/00-utilities/verify/SKILL.md",
+        "location": ".agents/skills/04-develop/verify/SKILL.md",
         "name": "verify",
         "outputs": [
           "Verification summary",
