@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "prompt_library.json",
+  "type": "object",
+  "required": [
+    "run_metadata",
+    "per_site_prompt_packs",
+    "composite_prompt_pack",
+    "provenance_map"
+  ],
+  "properties": {
+    "run_metadata": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "timestamp",
+        "urls",
+        "blend_mode",
+        "output_style"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blend_mode": {
+          "type": "string"
+        },
+        "output_style": {
+          "type": "string"
+        },
+        "tool_settings": {
+          "type": "object"
+        },
+        "pages_visited_count": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": true
+    },
+    "per_site_prompt_packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "site_id",
+          "root_url",
+          "prompt_pack"
+        ],
+        "properties": {
+          "site_id": {
+            "type": "string"
+          },
+          "root_url": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "prompt_pack": {
+            "$ref": "#/$defs/prompt_pack"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "composite_prompt_pack": {
+      "$ref": "#/$defs/prompt_pack"
+    },
+    "provenance_map": {
+      "description": "Map of composite elements to their source sites and evidence anchors.",
+      "type": [
+        "object",
+        "array"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "prompt_pack": {
+      "type": "object",
+      "required": [
+        "brand_style_prompt",
+        "visual_direction_prompt",
+        "ui_direction_prompt",
+        "copywriting_prompt",
+        "negative_prompt",
+        "token_set"
+      ],
+      "properties": {
+        "brand_style_prompt": {
+          "type": "string"
+        },
+        "visual_direction_prompt": {
+          "type": "string"
+        },
+        "ui_direction_prompt": {
+          "type": "string"
+        },
+        "copywriting_prompt": {
+          "type": "string"
+        },
+        "negative_prompt": {
+          "type": "string"
+        },
+        "token_set": {
+          "description": "Mix-and-match bullets grouped by colour/type/layout/imagery/voice.",
+          "type": [
+            "object",
+            "string"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -605,6 +605,20 @@
         "useWhen": "need external best practices"
       },
       {
+        "location": ".agents/skills/00-utilities/brand-dna-extractor/SKILL.md",
+        "name": "brand-dna-extractor",
+        "outputs": [
+          "brand_guidelines.md",
+          "prompt_library.json",
+          "design_tokens.json"
+        ],
+        "ownerModule": "brand-dna-extractor",
+        "provenance": "local",
+        "purpose": "Extract brand signals from multiple sites and blend into composite brand guidelines, prompt library, and design tokens",
+        "tier": "leaf",
+        "useWhen": "user wants to scrape multiple websites to extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction"
+      },
+      {
         "location": ".agents/skills/02-shape/breadboarding/SKILL.md",
         "name": "breadboarding",
         "outputs": [

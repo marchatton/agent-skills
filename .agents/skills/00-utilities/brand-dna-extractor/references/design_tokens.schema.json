@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "design_tokens.json",
+  "type": "object",
+  "required": [
+    "run_metadata",
+    "per_site_tokens",
+    "composite_tokens",
+    "conflicts",
+    "resolutions"
+  ],
+  "properties": {
+    "run_metadata": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "timestamp",
+        "urls",
+        "blend_mode",
+        "output_style"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blend_mode": {
+          "type": "string"
+        },
+        "output_style": {
+          "type": "string"
+        },
+        "tool_settings": {
+          "type": "object"
+        },
+        "pages_visited_count": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": true
+    },
+    "per_site_tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "site_id",
+          "root_url",
+          "tokens",
+          "evidence_map"
+        ],
+        "properties": {
+          "site_id": {
+            "type": "string"
+          },
+          "root_url": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "tokens": {
+            "$ref": "#/$defs/tokens"
+          },
+          "evidence_map": {
+            "description": "Evidence pointers keyed by signal path.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              }
+            }
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "needs_human_review": {
+            "type": "boolean"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "composite_tokens": {
+      "type": "object",
+      "required": [
+        "tokens",
+        "provenance"
+      ],
+      "properties": {
+        "tokens": {
+          "$ref": "#/$defs/tokens"
+        },
+        "provenance": {
+          "type": [
+            "object",
+            "array"
+          ],
+          "additionalProperties": true
+        },
+        "confidence": {
+          "type": "number"
+        },
+        "needs_human_review": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "description",
+          "affected_signals",
+          "sources"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "affected_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "decision",
+          "rationale",
+          "chosen_sources",
+          "blend_mode"
+        ],
+        "properties": {
+          "decision": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "chosen_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "blend_mode": {
+            "type": "string"
+          },
+          "evidence_anchors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_url"
+      ],
+      "properties": {
+        "source_url": {
+          "type": "string"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "excerpt": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "page_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "colours": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "typography": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "spacing": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "radius": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "shadows": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "borders": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "layout": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "imagery": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "iconography": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "motion": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "voice": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "personality": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -67,6 +67,7 @@
 - `agentation`: Add Agentation visual feedback toolbar to Next.js (App Router or Pages Router). Use when installing/configuring agentation or adding dev-only <Agentation />.
 - `ask-questions-if-underspecified`: Clarify requirements before implementing. Do not use automatically, only when invoked explicitly.
 - `beautiful-mermaid`: Render Mermaid diagrams to SVG or ASCII/Unicode with beautiful-mermaid (Node/Bun/Deno/browser, no DOM).
+- `brand-dna-extractor`: Extract brand signals from multiple sites, generate per-site prompt packs, and blend into `brand_guidelines.md`, `prompt_library.json`, `design_tokens.json`.
 - `create-cli`: >
 - `docs-list`: Use when listing or summarizing docs files in a repo.
 - `engineering-tutor`: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and Mermaid diagrams. Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
