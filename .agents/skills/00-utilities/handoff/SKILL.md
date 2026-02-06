@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: This skill should be used when preparing a handoff checklist for agents and persisting it as a local-only handoff note that can be picked up in a fresh thread.
+description: This skill should be used when preparing a handoff checklist for agents and persisting it as a handoff note that can be picked up in a fresh thread.
 ---
 
 # /handoff
@@ -12,12 +12,12 @@ Purpose: package the current state so the next agent (or future you) can resume 
 - Determine repo root.
   - Prefer: `git rev-parse --show-toplevel`
   - Fallback: current working directory
-- Use a local-only, gitignored handoff area under repo root:
-  - `throwaway/handoffs/YYYY_MM_DD/`
-- If `throwaway/` is not gitignored, recommend adding it (do not block).
-- Create the day folder if missing.
+- Use a git-tracked handoff area so it can be reused later (including via automations):
+  - If the work is tied to a dossier under `docs/04-projects/.../<dossier>/`: write to `<dossier>/tmp-handoffs/`.
+  - Otherwise (non-dossier or cross-dossier): write to `docs/98-tmp/handoffs/`.
+- Create the folder if missing.
 - Generate filename using the handoff time:
-  - `YYYY_MM_DD_HH_MM_ss_<3-5 words>.md`
+  - `handoff_YYYY-MM-DD_HH-MM-SS_<3-5 words>.md`
   - Choose 3–5 words that describe the work or topic.
   - Prefer lowercase kebab-case for the words (avoid spaces and special characters).
 - Write the handoff checklist content into that markdown file.
@@ -44,4 +44,4 @@ Purpose: package the current state so the next agent (or future you) can resume 
 ## Notes
 
 - Prefer writing the note even if the session continues. A fresh thread can be started at any time without losing state.
-- If file write is not possible, print the handoff checklist in chat and ask the user to save it into the local-only handoff area.
+- If file write is not possible, print the handoff checklist in chat and ask the user to save it into the git-tracked handoff area.

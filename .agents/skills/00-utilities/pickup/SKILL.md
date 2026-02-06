@@ -1,6 +1,6 @@
 ---
 name: pickup
-description: This skill should be used when preparing a pickup checklist when starting a task, rehydrating context from the latest local handoff note if available.
+description: This skill should be used when preparing a pickup checklist when starting a task, rehydrating context from the latest handoff note if available.
 ---
 
 # /pickup
@@ -11,7 +11,9 @@ Purpose: rehydrate context quickly when you start work.
 
 - If the user provides a handoff note path, read that file first.
 - Else, attempt to locate the most recent handoff note under repo root:
-  - `throwaway/handoffs/*/*.md`
+  - If the work is tied to a dossier: `<dossier>/tmp-handoffs/handoff_*.md`
+  - Otherwise (or if unsure): `docs/04-projects/**/tmp-handoffs/handoff_*.md`
+  - Also check cross-dossier handoffs: `docs/98-tmp/handoffs/handoff_*.md`
 - If no handoff note exists, continue with the standard pickup steps.
 
 ## Pickup steps
