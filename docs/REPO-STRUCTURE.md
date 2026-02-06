@@ -67,8 +67,9 @@ docs/
     CHANGELOG.md                     # dated entries linking to each project’s release.md
     postmortems/                     # incident postmortems, link back to dossiers
 
-  98-tmp/                            # scratch space for random docs, can be committed. 
-    README.md
+  97-throwaway/                      # scratch space for random docs, NOT committed.
+
+  98-tmp/                            # scratch space for random docs, can be committed.
 
   99-archive/                        # mirrors live structure for closed work + old context
     (mirrors live structure)
