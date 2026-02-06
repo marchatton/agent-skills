@@ -1,133 +1,110 @@
 # Overview
 
-- Run summary:
-  - Sites analysed: {{site_count}}
-  - Pages visited: {{pages_visited_total}}
-  - Blend mode: {{blend_mode}}
-  - Output style: {{output_style}}
-- High-level direction (3–6 bullets):
-  - {{composite_summary_bullets}}
+- What was analysed (sites, counts, coverage)
+- What this composite direction is meant for
+- Key limitations upfront
 
 # Composite Brand DNA
 
-## Visual
+## Personality
+- Traits (with evidence anchors)
 
-### Colours
-- Primary: {{primary_hex}} (usage: {{primary_usage}})
-- Secondary: {{secondary_hex}} (usage: {{secondary_usage}})
-- Accent: {{accent_hex}} (usage: {{accent_usage}})
-- Background: {{background_hex}}
-- Text: {{text_hex}}
-- Notes:
-  - {{colour_notes}}
+## Visual stance
+- High-level stance (with rationale)
 
-### Typography
-- Body: {{body_font}}
-- Headings: {{heading_font}}
-- Weights: {{weights_summary}}
-- Scale and hierarchy:
-  - {{type_hierarchy_notes}}
-
-### Imagery
-- Medium: {{imagery_medium}}
-- Treatment:
-  - {{imagery_treatment_bullets}}
-
-### Iconography
-- Style: {{icon_style_summary}}
-
-### Motion / Interaction
-- Style: {{motion_style_summary}}
-- Notes:
-  - {{motion_notes}}
-
-## UI and Components
-
-- Density: {{ui_density}}
-- Corner radius: {{radius_notes}}
-- Elevation: {{elevation_notes}}
-- Components (top patterns):
-  - {{component_inventory_bullets}}
-
-## Voice & Personality
-
-### Voice traits
-- {{voice_traits_bullets}}
-
-### Microcopy patterns
-- {{microcopy_patterns_bullets}}
-
-### Do / Don’t
-**Do**
-- {{do_bullets}}
-
-**Don’t**
-- {{dont_bullets}}
+## Experience stance
+- Density, friendliness, formality, motion posture
 
 # Composite Design Tokens
 
-Provide design tokens in human-readable form (these must match `design_tokens.json`):
+## Colour
+- Primary / secondary / accent / neutrals
+- Light and dark variants if present
+- Contrast notes (flag needs_human_review if uncertain)
 
-- Spacing scale: {{spacing_scale}}
-- Radius scale: {{radius_scale}}
-- Shadow tokens: {{shadow_tokens}}
-- Border tokens: {{border_tokens}}
-- Grid/layout rhythm: {{layout_rhythm}}
+## Typography
+- Body and headings families
+- Hierarchy traits
+- Usage notes
+
+## Spacing and layout
+- Base step and cadence
+- Container widths (if observed)
+- Grid tendencies
+
+## Shape, borders, shadows
+- Radius scale
+- Border usage
+- Elevation patterns
+
+## Motion and interaction
+- Transition archetypes
+- Focus ring posture
+- Hover posture
 
 # Composite Voice & Copy
 
-- Summary:
-  - {{copy_summary}}
-- Example rewrites (paraphrased, not lifted):
-  - {{rewrite_examples}}
+## Tone traits
+- Trait list with evidence
+
+## Do and don't
+- Do bullets
+- Don't bullets
+
+## Microcopy patterns
+- CTA verbs
+- Error/help text posture
 
 # Composite Prompt Pack
 
 ## Brand style prompt
-{{composite_prompt_pack.brand_style_prompt}}
 
 ## Visual direction prompt
-{{composite_prompt_pack.visual_direction_prompt}}
 
 ## UI direction prompt
-{{composite_prompt_pack.ui_direction_prompt}}
 
 ## Copywriting prompt
-{{composite_prompt_pack.copywriting_prompt}}
 
-## Negative prompt / Avoid
-{{composite_prompt_pack.negative_prompt}}
+## Negative prompt
 
 ## Token set
-{{composite_prompt_pack.token_set}}
+- Colour bullets
+- Type bullets
+- Layout bullets
+- Imagery bullets
+- Voice bullets
+- Motion bullets
 
 # Provenance Map
 
-Explain “what came from where”, including weights and evidence anchors:
-
-- {{provenance_bullets}}
+- Weighting used
+- What came from where
+- Evidence anchors mapping (site_id:page_id:signal_key)
 
 # Conflicts & Resolutions
 
-## Conflicts
-- {{conflicts_bullets}}
-
-## Resolutions
-- {{resolutions_bullets}}
+- Conflicts list (what, why, sources)
+- Resolutions list (choice, rationale, provenance)
 
 # Per-site Appendices
 
-For each site, include:
-- Site summary + confidence overview
-- Per-site Brand DNA (condensed)
-- Per-site prompt pack (optional summary, avoid dumping long prompts if output_style=concise)
-- Limitations
+## {site_id}
 
-{{per_site_appendices}}
+### Brand DNA (site)
+- Short summary
+- Distinctive signals
+
+### Evidence highlights
+- Key anchors to support the summary
+
+### Per-site limitations
+- What could not be inferred and why
 
 # Limitations
 
-- Global limitations:
-  - {{global_limitations_bullets}}
-- Per-site limitations:
-  - {{per_site_limitations_bullets}}
+## Global limitations
+- What could not be captured even with probing
+- Sampling limits (elements/pages/viewport)
+
+## Per-site limitations
+- Brief list per site

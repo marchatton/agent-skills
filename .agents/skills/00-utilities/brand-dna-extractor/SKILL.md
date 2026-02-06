@@ -1,381 +1,232 @@
 ---
 name: brand-dna-extractor
-description: This skill should be used when users want to scrape multiple websites (Firecrawl or equivalent), extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction with three outputs - brand_guidelines.md, prompt_library.json, design_tokens.json.
+description: "This skill should be used when users want to scrape multiple websites (Firecrawl, Parallel, or hybrid), extract brand guideline signals (including CSS variables + computed styles via browser probing), generate per-site prompt packs, and blend sources into a composite brand direction with exactly three outputs: brand_guidelines.md, prompt_library.json, design_tokens.json."
+license: Complete terms in LICENSE.txt
 ---
 
-## Scope
+# brand-dna-extractor
 
-Extract brand signals from multiple websites, convert each source into a traceable prompt pack, and blend sources into a single composite brand direction.
+## Purpose
+
+Extract brand signals from multiple sites, ground every claim in evidence, and blend sources into a single composite direction.
+
+## When to use
+
+Use when asked to:
+- scrape or crawl multiple sites for brand signals
+- create brand guidelines, prompt packs, or design tokens from real websites
+- compare and blend multiple brands into a “composite DNA”
+- capture “CSS etc” (CSS variables, computed styles, hover/focus states)
+
+## Outputs
 
 Produce exactly three artefacts:
-
 1) `brand_guidelines.md`
 2) `prompt_library.json`
 3) `design_tokens.json`
 
-Do not claim real scraping happened unless tool calls were actually executed in the current run.
+Do not output additional artefacts. Do not claim scraping or probing happened unless tool calls were actually executed in the current run.
 
-## Inputs and configuration
+## Inputs
 
-Accept a configuration object with these fields and defaults:
+Accept a configuration object (see `assets/sample_config.json` for a working example). Support:
 
-```json
-{
-  "urls": [],
-  "include_paths": [],
-  "exclude_paths": ["*/privacy*", "*/terms*", "*/cookie*", "*/legal*"],
-  "max_depth": 2,
-  "max_pages": 25,
-  "render_js": true,
-  "locale": "en",
-  "focus_pages": ["home", "pricing", "product", "about", "blog"],
-  "weights": {},
-  "blend_mode": "harmonise",
-  "output_style": "standard",
-  "quote_limit_words": 20,
-  "min_meaningful_pages_per_site": 3,
-  "download_images": false,
-  "take_screenshots": false
-}
-```
-
-Configuration rules:
-
-- Treat `urls` as required.
-- If `weights` is empty, weight all sites equally.
-- If `weights` is provided, normalise weights so they sum to 1 across included URLs.
-- Enforce `quote_limit_words` on any excerpt copied from a single page (including in evidence maps).
-- If fewer than `min_meaningful_pages_per_site` pages are extracted for a site, still continue but mark the site as low-confidence and include a limitation.
+- scraping lane provider: Firecrawl / Parallel / hybrid
+- browser-probe lane: agent-browser (recommended) or equivalent Playwright-class tooling
+- limits: max_pages, max_depth, pages_per_site for probing
+- evidence limits: quote_limit_words
 
 ## Workflow
 
-Follow this sequence. Keep the pipeline modular: crawl → extract → infer → summarise → promptify → blend → package outputs.
+Follow this modular pipeline:
 
-1) Validate inputs
-- Validate `urls` is a non-empty list.
-- Normalise URLs (strip tracking params, remove fragments, standardise trailing slashes).
-- Build a per-site run plan using `focus_pages`, `include_paths`, `exclude_paths`, `max_depth`, and `max_pages`.
+1) Validate inputs  
+2) Plan per-site run (pages to crawl + pages to probe)  
+3) Scrape pages (Firecrawl or Parallel or hybrid)  
+4) Probe styling + interaction (agent-browser)  
+5) Build corpora (copy + style)  
+6) Infer signals per site with confidence + evidence  
+7) Generate per-site prompt packs  
+8) Blend into composite direction (with weights + blend_mode)  
+9) Package exactly three outputs using the reference templates and schemas  
+10) Run quality checks and record limitations
 
-2) Crawl and scrape (Firecrawl-friendly, tool-agnostic)
-- Prefer sitemap and internal link discovery.
-- Prioritise likely brand signal pages early:
-  - homepage
-  - product / features
-  - blog index and one recent article
-  - brand / assets pages
-- Apply allow/deny rules:
-  - If `include_paths` is non-empty, crawl only those subpaths.
-  - Always apply `exclude_paths`.
-- Dedupe:
-  - Strip `utm_*`, `gclid`, `fbclid` params.
-  - Treat hash fragments as the same page.
-  - Dedupe near-identical pages using (a) main text similarity and (b) DOM structure signature.
-- For each kept page, collect artefacts (best effort):
-  - URL, status, timestamp
-  - page title, meta description
-  - headings (H1–H3)
-  - main text (readable extraction)
-  - raw HTML (rendered HTML if `render_js=true` and available)
-  - linked CSS URLs + inline style blocks
-  - style snapshot for key elements (body, headings, links, buttons, inputs, cards), using computed styles if available
-  - if `download_images=true`: hero images + other dominant images (save URLs at minimum)
-  - if `take_screenshots=true`: a full-page screenshot (or above-the-fold)
+### 1) Validate inputs
 
-Resilience:
-- Retry failed fetches up to 2 times.
-- Use a per-page timeout of 20 seconds.
-- If blocked:
-  - toggle JS rendering strategy if possible
-  - fall back to text-only extraction
-- If content is noisy, keep the page but down-rank it in signal extraction.
+- Require `urls` to be a non-empty list.
+- Normalise URLs:
+  - strip `utm_*`, `gclid`, `fbclid`
+  - remove fragments
+  - standardise trailing slashes
+- Normalise weights:
+  - if empty: equal weights
+  - if provided: normalise to sum to 1 across included URLs
+
+### 2) Plan pages per site
+
+- Build a candidate list from:
+  - home, product/features, pricing, about
+  - docs/help (important for real UI patterns)
+  - blog index + one recent post
+  - brand/press/assets pages
+- Apply allow/deny:
+  - if include_paths present, restrict to those
+  - always apply exclude_paths
+
+### 3) Scrape lane (Firecrawl / Parallel / hybrid)
+
+Implement a provider adapter that yields a shared `PageArtefact` shape (even if tool outputs differ):
+
+**PageArtefact**
+- url, status, timestamp
+- title, meta_description
+- headings (H1–H3)
+- main_text (clean)
+- markdown (if available)
+- raw_html (if available)
+- linked_css_urls, inline_style_blocks (best effort)
+- images (URLs, optional)
+- provider_trace (provider name + request ids + warnings)
+
+Provider rules:
+- Use Firecrawl crawl-first for broad, within-domain coverage.
+- Use Parallel Search for discovery when crawl coverage is weak or brand pages are hidden.
+- Use Parallel Extract for cleaner markdown when:
+  - JS-heavy pages break standard scrapers
+  - PDFs are involved
+  - crawl output is low-quality or boilerplate-heavy
 
 Noise removal (must do before inference):
-- Remove cookie banners, consent modals, newsletter popups.
-- Down-rank nav/footer repeated blocks (detect by repeated DOM blocks across pages).
-- Down-rank third-party widgets (chat, embedded social, video embeds) unless visually dominant.
+- remove cookie banners and popups
+- down-rank repeated nav/footer blocks
+- down-rank third-party widgets unless visually dominant
 
-3) Build per-site page corpus
-- Build a “clean copy corpus” containing:
-  - hero headlines, subheads
-  - product feature bullets
-  - CTA labels and microcopy
-  - pricing plan labels
-  - any error/help text if discoverable
-- Build a “style corpus” containing:
-  - CSS variables
-  - computed styles from key elements
-  - component-like DOM fragments (buttons, cards, forms, nav)
+### 4) Browser-probe lane (agent-browser)
 
-4) Infer brand signals (per site)
-Extract signals with confidence scores and evidence pointers for every claim. Never rely on vibes alone.
+Use browser probing to overcome “CSS variables / computed styles / interaction” limitations.
+
+Probe plan:
+- Probe up to `browser_probe.pages_per_site` pages per site.
+- Run at least desktop + light mode.
+- If configured, also run mobile and dark mode.
+- For each page × viewport × media_mode:
+  - capture stylesheet inventory (links + inline styles)
+  - best-effort CSS variable extraction
+  - computed styles snapshots (`getComputedStyle`) for key elements
+  - hover/focus diffs (state deltas)
+  - motion primitives (transition and animation properties)
+  - screenshots if enabled
+
+Use `scripts/probe_css.js` as the default probe payload.
+
+Store evidence in a structured `evidence_map` (see schema in `references/brand_dna_run.schema.json`).
+
+### 5) Build corpora
+
+Build two corpora per site:
+
+**Copy corpus**
+- hero headlines, subheads
+- feature bullets
+- CTA labels and microcopy
+- pricing plan labels
+- help/error text if discoverable
+
+**Style corpus**
+- CSS variables (declared tokens)
+- computed styles (resolved tokens)
+- state diffs (hover/focus)
+- component-like fragments and selectors
+
+### 6) Infer brand signals per site
+
+Extract signals with:
+- confidence score (0–1)
+- evidence pointers for every claim
+- needs_human_review=true if evidence is weak or conflicting
 
 Signal categories:
 - Colours
 - Typography
-- Design tokens (spacing, radius, shadows, borders, layout rhythm)
+- Design tokens (spacing, radius, borders, shadows, layout rhythm)
 - Components inventory (with variants)
 - Imagery style
 - Iconography style
 - Motion/interaction
-- Voice/tone and brand personality
+- Voice/tone/personality
 
-Evidence rules (strict):
-- Attach evidence to every extracted claim:
-  - `source_url` + (`selector` OR `excerpt`)
-- Never exceed `quote_limit_words` for any excerpt from a single page.
-- Prefer selectors, CSS variable names, and short excerpts.
-- If evidence is weak, set `needs_human_review=true` and reduce confidence.
+Evidence rules:
+- Never exceed `quote_limit_words` for any single excerpt.
+- Prefer selectors, CSS variable names, and computed-style properties over long quotes.
+- Attach evidence as one of:
+  - excerpt, selector, css_variable, computed_style, computed_style_diff, screenshot
 
-See `references/brand_dna_run.schema.json` for the required structure of extracted signals and evidence.
+### 7) Generate per-site prompt pack
 
-### Heuristics: colours
-- Prefer CSS variables that look semantic:
-  - `--primary`, `--accent`, `--brand`, `--text`, `--background`, `--surface`
-- Next, inspect computed styles:
-  - body background, body text colour
-  - link colour
-  - primary button background/text
-  - secondary button border/text
-- If `download_images=true`, optionally extract dominant colours from hero imagery, but treat as supporting evidence only.
-Guardrails:
-- Ignore cookie banners and consent UI unless the same tokens appear in core components.
-- Ignore third-party embed colours.
+Produce per-site prompt packs with keys:
+- brand_style_prompt
+- visual_direction_prompt
+- ui_direction_prompt
+- copywriting_prompt
+- negative_prompt
+- token_set (bullets grouped by: colour, type, layout, imagery, voice, motion)
 
-Output:
-- `primary`, `secondary`, `accent`, `background`, `text` with hex values
-- usage notes
-- `confidence` (0–1)
-- `needs_human_review` when `confidence < 0.6` or signals conflict
+Add evidence anchors like `[site_id:page_id:signal_key]` inline in prompts.
 
-### Heuristics: typography
-- Extract font families used for:
-  - body
-  - headings
-  - buttons/CTAs
-- Infer hierarchy and scale:
-  - heading size ratios, line-heights
-  - spacing between sections
-- Infer typographic vibe tags:
-  - modern sans / geometric / grotesk / serif editorial / mono accents
-Guardrails:
-- Ignore font usage inside embedded widgets.
+### 8) Blend multiple sites
 
-### Heuristics: design tokens
-Spacing:
-- Collect common padding/margin values and infer a base step (4px, 8px, etc).
-Radius:
-- Detect border-radius on buttons, cards, inputs.
-Shadows/borders:
-- Detect box-shadow patterns and border usage (flat vs layered).
-Layout rhythm:
-- Infer max-width containers, section spacing cadence, grid tendency.
-
-### Heuristics: components inventory
-Identify repeated component patterns via DOM structure signatures and class patterns.
-
-Track at minimum:
-- buttons (primary, secondary, tertiary)
-- nav (top, sticky, footer)
-- cards
-- forms/inputs
-- badges/chips
-- tables (if present)
-- modals (if detectable)
-
-For each component, capture:
-- variants
-- key styling traits
-- interaction notes if detectable (hover, focus, active)
-
-### Heuristics: imagery style
-Classify, then describe:
-- photo vs illustration vs 3D vs mixed
-- subject matter (people, product, abstract)
-- composition (tight crop vs roomy)
-- lighting (natural vs studio)
-- colour treatment (muted vs vivid)
-- texture (grain/no grain)
-Evidence:
-- If images are not downloaded, rely on alt text and surrounding copy and set lower confidence.
-
-### Heuristics: iconography style
-Infer from inline SVGs or icon sets when detectable:
-- stroke vs filled
-- line weight
-- rounded vs sharp corners
-- metaphor style (literal vs abstract)
-
-### Heuristics: motion/interaction
-Detect CSS transitions/animations and interaction affordances:
-- hover states, focus rings
-- scroll behaviours (if observable)
-If not detectable, state “not confidently inferred” and set low confidence.
-
-### Heuristics: voice, tone, personality
-Build a copy corpus from multiple page sections.
-
-Infer:
-- tone traits (direct, warm, playful, premium, technical, etc)
-- cadence (short punchy vs long-form explanatory)
-- CTA verb style
-- punctuation patterns (exclamation marks, emoji usage)
-- reading level proxy (sentence length, jargon density)
-
-Output:
-- 5–7 personality traits with evidence
-- “do” and “don’t” bullets
-- 3 paraphrased example rewrites (never copy slogans)
-
-5) Generate prompt pack (per site)
-Generate a prompt pack with these keys:
-
-- `brand_style_prompt` (1–2 paragraphs)
-- `visual_direction_prompt` (for image generation)
-- `ui_direction_prompt` (for landing page/product UI)
-- `copywriting_prompt` (tone + microcopy guidance)
-- `negative_prompt` (what to avoid)
-- `token_set` (mix-and-match bullets grouped by: colour, type, layout, imagery, voice)
-
-Constraints:
-- Ground every prompt in extracted signals.
-- Add evidence anchors like `[site_id:page_id:signal_key]` in prompts.
-- Do not replicate proprietary slogans or unique lines. Paraphrase.
-
-6) Blend multiple sites into a composite direction
 Normalise each site into comparable token sets:
-
-- colours: roles + hue-family tags
-- typography: category tags + hierarchy traits
-- UI: density, radius, elevation, spacing rhythm
+- colours: roles + hex + hue tags (+ light/dark variants if available)
+- typography: families + hierarchy traits
+- UI: density, radius, elevation, spacing cadence
 - imagery: medium + treatment tags
-- voice: traits + cadence + CTA style
+- voice: traits + cadence + CTA verb style
+- motion: transition duration/easing archetypes
 
-Weighting:
-- If `weights` empty: equal weights.
-- Else normalise weights.
+Detect conflicts:
+- palette clash
+- typography clash
+- voice clash
+- UI shape/density clash
+- theme clash (light/dark inconsistencies)
 
-Similarity and clustering:
-- Compute similarity per domain: colour, type, UI patterns, imagery, voice.
-- Find common denominators and outliers.
+Resolve using blend_mode:
+- harmonise
+- bold_hybrid
+- dominant_source
+- theme_collage
 
-Conflict detection rules:
-- palette clash (too many primaries, competing accents, poor contrast)
-- typography clash (two dominant families with opposing intent)
-- voice clash (playful vs formal, slang vs corporate)
-- UI clash (rounded-soft vs sharp-industrial, dense vs airy)
+Record conflicts and resolutions with provenance.
 
-Resolve conflicts using `blend_mode`:
+### 9) Package outputs
 
-- `harmonise`:
-  - choose common denominators
-  - soften extremes
-  - constrain to 1 primary, 1 accent, coherent neutrals
-
-- `bold_hybrid`:
-  - keep 2–3 deliberate contrasts
-  - enforce cohesion via shared spacing scale + shared component shapes
-  - constrain palette to 1 primary + up to 2 accents
-
-- `dominant_source`:
-  - pick highest-weight site as foundation for colour + type + voice
-  - take accent contributions from others (imagery treatment, component details)
-
-- `theme_collage`:
-  - output 2–4 themed mini-directions
-  - for each theme: when to use, audience fit, risks, mini prompt pack + token set
-
-Allowed pseudocode (blending only):
-
-```text
-for each site:
-  normalise signals → token sets
-normalise weights
-
-if blend_mode == dominant_source:
-  foundation = argmax(weights)
-else:
-  foundation = site with best weighted confidence across signals
-
-for each domain in [colour, type, ui, imagery, voice]:
-  cluster site tokens by similarity
-  choose composite tokens:
-    harmonise: choose medoids/common denominators
-    bold_hybrid: choose foundation + one contrasting cluster as accent
-    dominant_source: choose foundation, then add small accents from others
-    theme_collage: output per-cluster themes
-
-detect conflicts and record:
-  conflicts[] with affected signals and sources
-resolve conflicts and record:
-  resolutions[] with rationale and provenance
-```
-
-7) Package outputs (exact contracts)
-Render outputs using the templates in `references/`:
-
+Use the reference files:
 - `references/brand_guidelines_template.md`
 - `references/prompt_library.schema.json`
 - `references/design_tokens.schema.json`
 
-### brand_guidelines.md
-Use these exact headings, in this exact order:
+Constraints:
+- Output exactly three artefacts.
+- In `brand_guidelines.md`, include the exact required headings (same order as template).
 
-- Overview
-- Composite Brand DNA
-- Composite Design Tokens
-- Composite Voice & Copy
-- Composite Prompt Pack
-- Provenance Map
-- Conflicts & Resolutions
-- Per-site Appendices
-- Limitations
+### 10) Quality checks
 
-Include:
-- composite signals + rationale
-- per-site appendix with short “Brand DNA” and limitations
-- conflicts and resolutions
-- provenance map: what came from where (with weights)
+Run:
+- quote limit enforcement on any excerpt evidence
+- required headings check for `brand_guidelines.md`
+- required top-level keys check for JSON outputs
+- low-confidence site flags if meaningful pages < min_meaningful_pages_per_site
+- browser-probe coverage checks (if enabled):
+  - body, h1, primary_cta computed styles captured at least once
+  - dark mode captured if requested, else record limitation
+  - at least one hover or focus diff captured if requested, else record limitation
 
-### prompt_library.json
-Top-level keys must exist:
+Use `scripts/validate_outputs.py` as a baseline validator.
 
-- run_metadata
-- per_site_prompt_packs
-- composite_prompt_pack
-- provenance_map
+## What not to do
 
-### design_tokens.json
-Top-level keys must exist:
-
-- run_metadata
-- per_site_tokens
-- composite_tokens
-- conflicts
-- resolutions
-
-Include evidence maps inside `per_site_tokens[*].evidence_map` and inside composite tokens/provenance where relevant.
-
-8) Quality checks (must run)
-- Enforce quote limit per page.
-- Detect boilerplate and down-rank it.
-- Flag sites with too few meaningful pages.
-- Include per-site limitations (what could not be inferred and why).
-- Include confidence scoring and `needs_human_review` flags on weak signals.
-
-Optionally run `scripts/validate_outputs.py` after generating artefacts.
-
-## Worked example (minimal)
-Use the example shapes in `references/worked_example_minimal.md` as a guide. Keep it short and structural.
-
-## Acceptance tests
-Implement checks consistent with the list below:
-
-- Given 2 URLs, create three artefacts with the required file names.
-- `brand_guidelines.md` contains the exact required headings.
-- Quotes never exceed `quote_limit_words` per page excerpt.
-- If meaningful pages per site < `min_meaningful_pages_per_site`, raise a clear flag and include limitations.
-- `design_tokens.json` includes an `evidence_map` for each extracted signal category at least at the per-site level.
-- Blending respects provided weights and selected `blend_mode`.
-- `provenance_map` references valid site_ids and evidence anchors.
-- `dominant_source` picks the highest weight site as foundation consistently.
-- `theme_collage` outputs 2–4 themes, each with when-to-use guidance.
+- Do not invent CSS variables or computed styles.
+- Do not claim hover/focus behaviour exists unless state diffs were captured.
+- Do not overfit to cookie banner styling or third-party widgets.
+- Do not exceed the quote limit per page excerpt.
+- Do not output more than the three required artefacts.

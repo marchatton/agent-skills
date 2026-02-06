@@ -624,9 +624,9 @@
         ],
         "ownerModule": "brand-dna-extractor",
         "provenance": "local",
-        "purpose": "Extract brand signals from multiple sites and blend into composite brand guidelines, prompt library, and design tokens",
+        "purpose": "Extract brand signals from multiple sites (scrape + probe) and blend into composite brand guidelines, prompt library, and design tokens",
         "tier": "leaf",
-        "useWhen": "user wants to scrape multiple websites to extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction"
+        "useWhen": "need multi-site brand signal extraction (incl CSS variables/computed styles), per-site prompt packs, and blended composite direction"
       },
       {
         "location": ".agents/skills/02-shape/breadboarding/SKILL.md",
@@ -1240,6 +1240,16 @@
           "repo": "agent-scripts"
         },
         "useWhen": "running Oracle CLI workflows"
+      },
+      {
+        "location": ".agents/skills/00-utilities/parallel-web-tools/SKILL.md",
+        "name": "parallel-web-tools",
+        "outputs": [],
+        "ownerModule": "parallel-web-tools",
+        "provenance": "local",
+        "purpose": "Firecrawl-like web discovery and clean markdown extraction using Parallel Search and Parallel Extract",
+        "tier": "leaf",
+        "useWhen": "need objective-led web discovery and clean markdown extraction (including JS-heavy pages and PDFs) using Parallel"
       },
       {
         "location": ".agents/skills/05-review/pattern-recognition-specialist/SKILL.md",

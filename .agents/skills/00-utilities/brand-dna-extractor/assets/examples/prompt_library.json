@@ -1,0 +1,90 @@
+{
+  "run_metadata": {
+    "run_id": "run_example_001",
+    "timestamp_utc": "2026-02-06T12:00:00Z",
+    "config": {
+      "note": "example only"
+    }
+  },
+  "per_site_prompt_packs": [
+    {
+      "id": "pack_example_com",
+      "scope": "per_site",
+      "site_id": "example.com",
+      "brand_style_prompt": "Direct, calm, modern SaaS tone. Keep it concrete. [example.com:home:voice.core]",
+      "visual_direction_prompt": "Airy layout, modern sans, restrained accent. [example.com:home:layout.rhythm]",
+      "ui_direction_prompt": "Card-based sections, clear CTAs, medium radius, subtle elevation. [example.com:home:radius.button]",
+      "copywriting_prompt": "Benefit-led headings, short sentences, crisp CTAs. [example.com:home:voice.cta_style]",
+      "negative_prompt": "Avoid hype, avoid noisy gradients, avoid gimmicky motion.",
+      "token_set": {
+        "colour": [
+          "Primary CTA blue",
+          "Neutral white/ink base"
+        ],
+        "type": [
+          "Modern sans",
+          "Bold headings, readable body"
+        ],
+        "layout": [
+          "Airy sections",
+          "Clear hierarchy",
+          "Consistent rhythm"
+        ],
+        "imagery": [
+          "Product-forward screenshots"
+        ],
+        "voice": [
+          "Direct",
+          "Confident",
+          "Concrete"
+        ],
+        "motion": [
+          "Short hover transitions",
+          "Visible focus rings"
+        ]
+      }
+    }
+  ],
+  "composite_prompt_pack": {
+    "id": "pack_composite",
+    "scope": "composite",
+    "site_id": null,
+    "brand_style_prompt": "Write in a direct, calm, modern voice. Keep sentences short and outcome-driven.",
+    "visual_direction_prompt": "Minimal, modern UI with high-contrast typography, airy spacing, restrained colour accents.",
+    "ui_direction_prompt": "Use 8px spacing rhythm, medium radius, subtle elevation, consistent focus rings.",
+    "copywriting_prompt": "Plain English microcopy. Action verbs for CTAs. Calm and specific help/error text.",
+    "negative_prompt": "Avoid loud gradients, glassmorphism overload, excessive gimmick animations.",
+    "token_set": {
+      "colour": [
+        "Primary blue + one accent",
+        "Consistent neutrals"
+      ],
+      "type": [
+        "Modern sans",
+        "Clear hierarchy"
+      ],
+      "layout": [
+        "Airy rhythm",
+        "Responsive sections"
+      ],
+      "imagery": [
+        "Clean product imagery"
+      ],
+      "voice": [
+        "Calm confidence",
+        "Concrete outcomes"
+      ],
+      "motion": [
+        "Subtle hover shifts",
+        "Short easing",
+        "Visible focus"
+      ]
+    }
+  },
+  "provenance_map": {
+    "weights": {
+      "example.com": 0.5,
+      "example.org": 0.5
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "urls": [
+    "https://example.com",
+    "https://example.org"
+  ],
+  "include_paths": [],
+  "exclude_paths": [
+    "*/privacy*",
+    "*/terms*",
+    "*/cookie*",
+    "*/legal*"
+  ],
+  "max_depth": 2,
+  "max_pages": 25,
+  "render_js": true,
+  "locale": "en",
+  "focus_pages": [
+    "home",
+    "pricing",
+    "product",
+    "about",
+    "blog"
+  ],
+  "weights": {},
+  "blend_mode": "harmonise",
+  "output_style": "standard",
+  "quote_limit_words": 20,
+  "min_meaningful_pages_per_site": 3,
+  "download_images": false,
+  "take_screenshots": false,
+  "scraping": {
+    "provider": "hybrid",
+    "prefer_clean_markdown": true,
+    "firecrawl": {
+      "enabled": true,
+      "crawl_limit_per_site": 250,
+      "allow_subdomains": false,
+      "crawl_entire_domain": false,
+      "only_main_content": true,
+      "formats": [
+        "markdown",
+        "html"
+      ],
+      "dedupe": true
+    },
+    "parallel": {
+      "enabled": true,
+      "use_search_for_discovery": true,
+      "use_extract_for_content": true,
+      "objective_template": "Extract brand signals: voice/tone, typography cues, colour mentions, UI component descriptions, product positioning, CTA patterns.",
+      "excerpts_default": true,
+      "full_content_default": false,
+      "fetch_policy": "dynamic",
+      "prefer_mcp": true
+    },
+    "hybrid_policy": {
+      "discovery": [
+        "firecrawl_crawl",
+        "parallel_search_fallback"
+      ],
+      "content": [
+        "firecrawl_first",
+        "parallel_extract_on_failure_or_pdf",
+        "parallel_extract_on_low_quality"
+      ],
+      "max_parallel_discovery_pages": 25
+    }
+  },
+  "browser_probe": {
+    "enabled": true,
+    "tool": "agent-browser",
+    "pages_per_site": 5,
+    "prefer_pages": [
+      "home",
+      "pricing",
+      "product",
+      "docs",
+      "blog_article"
+    ],
+    "viewports": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "media_modes": [
+      "light",
+      "dark"
+    ],
+    "states": [
+      "base",
+      "hover",
+      "focus"
+    ],
+    "timeout_ms": 20000,
+    "wait_until": "networkidle",
+    "capture_stylesheets": true,
+    "capture_inline_styles": true,
+    "capture_css_variables": true,
+    "capture_computed_styles": true,
+    "capture_state_diffs": true,
+    "capture_motion": true,
+    "take_screenshots": false,
+    "screenshot_mode": "above_the_fold"
+  }
+}

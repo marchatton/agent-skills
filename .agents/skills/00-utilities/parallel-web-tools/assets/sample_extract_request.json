@@ -1,0 +1,8 @@
+{
+  "urls": [
+    "https://example.com/brand"
+  ],
+  "objective": "Extract brand signals: voice/tone, typography cues, colour mentions, UI component descriptions, CTA patterns.",
+  "excerpts": true,
+  "full_content": false
+}

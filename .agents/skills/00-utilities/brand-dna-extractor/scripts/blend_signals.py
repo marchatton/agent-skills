@@ -161,7 +161,8 @@ def blend_colours(
     candidates: Dict[str, List[Tuple[int, str, Tuple[float, float, float]]]] = {r: [] for r in ROLES}
     for i, site in enumerate(sites):
         tokens = extract_site_tokens(site)
-        colours = tokens.get("colours") or tokens.get("colors") or {}
+        # Support both schema variants: "colours"/"colors" (older) and "colour" (newer).
+        colours = tokens.get("colours") or tokens.get("colors") or tokens.get("colour") or {}
         if not isinstance(colours, dict):
             continue
         for role in ROLES:

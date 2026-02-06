@@ -1,0 +1,203 @@
+{
+  "run_metadata": {
+    "run_id": "run_example_001",
+    "timestamp_utc": "2026-02-06T12:00:00Z",
+    "config": {
+      "note": "example only"
+    }
+  },
+  "per_site_tokens": [
+    {
+      "site_id": "example.com",
+      "weight": 0.5,
+      "confidence": 0.72,
+      "needs_human_review": false,
+      "tokens": {
+        "colour": {
+          "primary": "#3B82F6",
+          "secondary": "#0F172A",
+          "accent": "#A855F7",
+          "background": "#FFFFFF",
+          "text": "#0F172A",
+          "themes": {
+            "dark": {
+              "background": "#0B1220",
+              "text": "#E5E7EB"
+            }
+          }
+        },
+        "typography": {
+          "body": {
+            "font_family": "Inter, system-ui, sans-serif",
+            "font_size_px": 16,
+            "line_height": 1.5
+          },
+          "headings": {
+            "font_family": "Inter, system-ui, sans-serif",
+            "weights": [
+              600,
+              700
+            ]
+          }
+        },
+        "spacing": {
+          "step": 8,
+          "scale": [
+            4,
+            8,
+            12,
+            16,
+            24,
+            32,
+            48,
+            64
+          ]
+        },
+        "radius": {
+          "scale": [
+            8,
+            10,
+            12
+          ]
+        },
+        "elevation": {
+          "shadows": [
+            "0 1px 2px rgba(0,0,0,0.08)"
+          ]
+        },
+        "motion": {
+          "transition_durations_ms": [
+            150,
+            200,
+            250
+          ],
+          "timing_functions": [
+            "ease",
+            "ease-in-out"
+          ],
+          "notes": [
+            "Subtle hover colour shifts on CTAs"
+          ]
+        }
+      },
+      "evidence_map": {
+        "colour.primary": [
+          {
+            "type": "computed_style",
+            "page_url": "https://example.com/",
+            "selector": "[data-brandprobe='primary-cta']",
+            "property": "background-color",
+            "value": "rgb(59, 130, 246)",
+            "viewport": "desktop",
+            "media_mode": "light"
+          }
+        ],
+        "motion.button_hover": [
+          {
+            "type": "computed_style_diff",
+            "page_url": "https://example.com/",
+            "selector": "[data-brandprobe='primary-cta']",
+            "state": "hover",
+            "property": "transition-duration",
+            "from": "0s",
+            "to": "0.2s",
+            "viewport": "desktop",
+            "media_mode": "light"
+          }
+        ]
+      }
+    }
+  ],
+  "composite_tokens": {
+    "colour": {
+      "primary": "#3B82F6",
+      "secondary": "#0F172A",
+      "accent": "#A855F7",
+      "background": "#FFFFFF",
+      "text": "#0F172A",
+      "themes": {
+        "dark": {
+          "background": "#0B1220",
+          "text": "#E5E7EB"
+        }
+      }
+    },
+    "typography": {
+      "body": {
+        "font_family": "Inter-like modern sans",
+        "font_size_px": 16,
+        "line_height": 1.5
+      },
+      "headings": {
+        "weights": [
+          600,
+          700
+        ]
+      }
+    },
+    "spacing": {
+      "step": 8,
+      "scale": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64
+      ]
+    },
+    "radius": {
+      "scale": [
+        8,
+        10,
+        12
+      ]
+    },
+    "elevation": {
+      "shadows": [
+        "subtle single-layer elevation"
+      ]
+    },
+    "motion": {
+      "transition_durations_ms": [
+        150,
+        200,
+        250
+      ],
+      "timing_functions": [
+        "ease",
+        "ease-in-out"
+      ],
+      "notes": [
+        "Crisp interactions, not bouncy"
+      ]
+    },
+    "voice_hints": {
+      "tone": [
+        "direct",
+        "calm",
+        "benefit-led"
+      ]
+    },
+    "provenance": {
+      "weights": {
+        "example.com": 0.5,
+        "example.org": 0.5
+      }
+    }
+  },
+  "conflicts": [
+    {
+      "type": "accent_variance",
+      "detail": "Different accent hues across sources"
+    }
+  ],
+  "resolutions": [
+    {
+      "type": "accent_constraint",
+      "detail": "Keep one accent, use sparingly; enforce neutral base"
+    }
+  ]
+}

@@ -91,7 +91,7 @@ ensure_gitignore() {
     cat > "$gitignore_path" <<'EOF'
 # Onboarding defaults
 /node_modules/
-/throwaway/
+*throwaway*/
 EOF
     return 0
   fi
@@ -101,8 +101,9 @@ EOF
     added=1
   fi
 
-  if ! grep -Fxq "/throwaway/" "$gitignore_path"; then
-    echo "/throwaway/" >> "$gitignore_path"
+  # Ignore any directory whose name contains "throwaway" anywhere in the repo.
+  if ! grep -Fxq "*throwaway*/" "$gitignore_path"; then
+    echo "*throwaway*/" >> "$gitignore_path"
     added=1
   fi
 

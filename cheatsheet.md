@@ -9,10 +9,10 @@
 - `agentation`: Add Agentation toolbar to Next.js. Use for install/config or dev-only <Agentation />.
 - `ask-questions-if-underspecified`: Clarify requirements before implementing. Do not use automatically, only when invoked explicitly.
 - `beautiful-mermaid`: Render Mermaid diagrams to SVG or ASCII/Unicode with beautiful-mermaid (Node/Bun/Deno/browser, no DOM). Use when you need Mermaid render without DOM.
-- `brand-dna-extractor`: This skill should be used when users want to scrape multiple websites (Firecrawl or equivalent), extract brand guidelines signals, generate per-site prompt packs, and blend sources into a composite brand direction with three outputs - brand_guidelines.md, prompt_library.json, design_tokens.json.
+- `brand-dna-extractor`: This skill should be used when users want to scrape multiple websites (Firecrawl, Parallel, or hybrid), extract brand guideline signals (including CSS variables + computed styles via browser probing), generate per-site prompt packs, and blend sources into a composite brand direction with exactly three outputs: brand_guidelines.md, prompt_library.json, design_tokens.json.
 - `create-cli`: >
 - `docs-list`: Run `scripts/docs-list.ts` to list `docs/` markdown + frontmatter summary/read_when. Use when auditing docs coverage.
-- `engineering-tutor`: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and Mermaid diagrams. Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
+- `engineering-tutor`: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and diagrams (render via beautiful-mermaid). Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
 - `every-style-editor`: This skill should be used when reviewing or editing copy to ensure adherence to Every's style guide. It provides a systematic line-by-line review process for grammar, punctuation, mechanics, and style guide compliance.
 - `file-todos`: Manage file-based todos stored alongside a dossier. Create, triage, and track dependencies. Use when work is tracked in docs/*/todos.
 - `firecrawl`: Web search/scrape/crawl via Firecrawl CLI (prefer for live internet lookups).
@@ -23,6 +23,7 @@
 - `nano-banana-pro`: Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image creation or modification incl logos, stickers, mockups, style transfer, multi-image composition, and multi-turn refinement.
 - `openai-image-gen`: Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery. Use when you need prompt variants or batches.
 - `oracle`: Use the @steipete/oracle CLI to bundle a prompt plus the right files and get a second-model review (API or browser) for debugging, refactors, design checks, or cross-validation.
+- `parallel-web-tools`: This skill should be used when users want a Firecrawl-like capability for web discovery and clean markdown extraction using Parallel Search and Parallel Extract (including objective-led excerpts and full content).
 - `pickup`: This skill should be used when preparing a pickup checklist when starting a task, rehydrating context from the latest local handoff note if available.
 - `video-transcript-downloader`: Download videos, audio, subtitles, and clean paragraph-style transcripts from YouTube and any other yt-dlp supported site. Use when asked to “download this video”, “save this clip”, “rip audio”, “get subtitles”, “get transcript”, or to troubleshoot yt-dlp/ffmpeg and formats/playlists.
 
@@ -67,7 +68,6 @@
 - `kieran-typescript-reviewer`: Use this agent when you need to review TypeScript code changes with an extremely high quality bar. This agent should be invoked after implementing features, modifying existing code, or creating new TypeScript components. The agent applies Kieran's strict TypeScript conventions and taste preferences to ensure code meets exceptional standards.\\n\\n.
 - `pattern-recognition-specialist`: Use this agent when you need to analyze code for design patterns, anti-patterns, naming conventions, and code duplication. This agent excels at identifying architectural patterns, detecting code smells, and ensuring consistency across the codebase.
 - `performance-oracle`: Use this agent when you need to analyze code for performance issues, optimize algorithms, identify bottlenecks, or ensure scalability. This includes reviewing database queries, memory usage, caching strategies, and overall system performance. The agent should be invoked after implementing features or when performance concerns arise.\\n\\n.
-- `security-sentinel`: Use this agent when you need to perform security audits, vulnerability assessments, or security reviews of code. This includes checking for common security vulnerabilities, validating input handling, reviewing authentication/authorization implementations, scanning for hardcoded secrets, and ensuring OWASP compliance.
 - `test-browser`: This skill should be used when running browser tests on pages affected by the current PR or branch.
 - `wf-review`: This skill should only be used when the user uses the word workflow and asks to review changes (select mode = light, light-plus, heavy) with verification and context handoff/pickup to avoid context rot.
 
