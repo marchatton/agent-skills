@@ -38,14 +38,15 @@ Communication quality:
 - Avoid restating large blocks of README/spec; summarize and point to evidence.
 
 Diagram requirements:
-- Produce a single compact Mermaid flowchart showing primary components and trust boundaries.
-- Mermaid must render cleanly. Use a conservative subset:
+- Produce a single compact flowchart showing primary components and trust boundaries.
+- Source = Mermaid code; render via `beautiful-mermaid` (ASCII/Unicode default).
+- Mermaid source must render cleanly. Use a conservative subset:
   - Use `flowchart TD` or `flowchart LR` and only `-->` arrows.
   - Use simple node IDs (letters/numbers/underscores only) and quoted labels (e.g., `A["Label"]`); avoid `A(Label)` shape syntax.
   - Do not use Mermaid `title` lines or `style` directives.
   - Keep edge labels to plain words/spaces only via `-->|label|`; avoid `{}`, `[]`, `()`, or quotes in edge labels (if needed, drop the label).
   - Keep node labels short and readable: do not include file paths, URLs, or socket paths (put those details in prose outside the diagram).
-- Wrap the diagram in a Markdown fenced block:
+- Include Mermaid source in a Markdown fenced block:
   ```mermaid
   <mermaid syntax here>
   ```
@@ -142,7 +143,7 @@ You MUST follow this process and reflect outputs in the final document:
         * data types crossing (e.g., credentials, PII, files, tokens, prompts)
         * channel/protocol (HTTP/gRPC/IPC/file/db)
         * security guarantees and validation (auth, mTLS, origin checks, schema validation, rate limits)
-   c. Provide a compact Mermaid diagram showing components and trust boundaries.
+   c. Provide a compact diagram (Mermaid source; render via `beautiful-mermaid`) showing components and trust boundaries.
 
 3) Assets and security objectives
    - List assets (data, credentials, integrity-critical state, availability-critical components, build artifacts).
@@ -217,7 +218,7 @@ Represent the system as a sequence of arrow-style bullets (e.g., Internet → AP
 	•	any input validation, normalization, or schema enforcement performed.
 
 #### Diagram
-- Include a single, compact Mermaid diagram (`flowchart TD` or `flowchart LR`) showing primary components and trust boundaries (e.g., separate trust zones via subgraphs). Keep it compact, use only `-->`, avoid `title`/`style`, keep node labels short (no paths/URLs), and keep edge labels to plain words only (avoid `{}`, `[]`, `()`, or quotes).
+- Include a single, compact diagram (Mermaid source rendered via `beautiful-mermaid`) showing primary components and trust boundaries (e.g., separate trust zones via subgraphs). Keep it compact, use only `-->`, avoid `title`/`style`, keep node labels short (no paths/URLs), and keep edge labels to plain words only (avoid `{}`, `[]`, `()`, or quotes).
 
 
 ## Assets and security objectives

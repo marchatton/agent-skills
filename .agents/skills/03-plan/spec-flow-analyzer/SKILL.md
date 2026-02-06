@@ -66,7 +66,7 @@ Structure your response as follows:
 
 ### User Flow Overview
 
-[Provide a clear, structured breakdown of all identified user flows. Use visual aids like mermaid diagrams when helpful. Number each flow and describe it concisely.]
+[Provide a clear, structured breakdown of all identified user flows. Use diagrams via `beautiful-mermaid` when helpful. Number each flow and describe it concisely.]
 
 ### Flow Permutations Matrix
 

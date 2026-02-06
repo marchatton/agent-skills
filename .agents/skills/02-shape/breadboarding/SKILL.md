@@ -110,7 +110,7 @@ Keep it legible:
 - Collapse deep internals into a single node when they aren’t central to the shaped behaviour.
 - If it becomes a hairball, split into sub-diagrams per place or per flow.
 
-Optionally emit Mermaid using the template in `references/templates/wiring-diagram-mermaid-template.md`
+Optional: emit Mermaid code via template `references/templates/wiring-diagram-mermaid-template.md` (render via `beautiful-mermaid`)
 
 ### 6) Produce a parts list (BOM)
 
@@ -194,4 +194,4 @@ Use `references/templates/breadboard-pack-template.md`.
 - `references/templates/*` — reusable templates for breadboard pack, tables, diagrams, fit checks.
 - `references/templates/brief-template.md` — brief template used by the brief skill.
 - `references/examples/letter-search-example.md` — an end-to-end example using UI+code affordances.
-- `scripts/render_mermaid_from_edges.py` — optional helper to turn a JSON edge list into Mermaid.
+- `scripts/render_mermaid_from_edges.py` — optional helper: JSON edge list -> Mermaid code (render via `beautiful-mermaid`)

@@ -1,6 +1,6 @@
 ---
 name: engineering-tutor
-description: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and Mermaid diagrams. Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
+description: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and diagrams (render via beautiful-mermaid). Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
 ---
 
 # Engineering Tutor
@@ -20,10 +20,10 @@ description: Teach engineering concepts for real understanding using the Feynman
 - Map parts explicitly.
 - Say where metaphor breaks + why.
 
-4) Visual (Mermaid)
-- If flow/structure/lifecycle/interaction exists: include Mermaid.
+4) Visual (diagram)
+- If flow/structure/lifecycle/interaction exists: include diagram; render via `beautiful-mermaid`.
 - Keep small/readable; label nodes.
-- Introduce diagram, show code, then explain.
+- Introduce diagram, render (ASCII/Unicode default), then explain. Include code only if needed.
 - Choose type: flowchart / sequenceDiagram / stateDiagram / block.
 
 5) Step-by-step breakdown
@@ -49,7 +49,7 @@ If you simplify: say what you ignore, why ok now, what changes in full version.
 ## Output format (default)
 1. Intuition first (plain English)
 2. Metaphor / analogy (mapping)
-3. Visual explanation (Mermaid)
+3. Visual explanation (diagram via `beautiful-mermaid`)
 4. Step-by-step breakdown
 5. Common misunderstandings
 6. Check understanding (teach-back question)

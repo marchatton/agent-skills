@@ -1,6 +1,6 @@
-# Wiring diagram template (Mermaid)
+# Wiring diagram template (Mermaid code; render via beautiful-mermaid)
 
-Use this when the output will be read in a Markdown renderer that supports Mermaid.
+Default: render via `beautiful-mermaid` (ASCII/Unicode). If your target Markdown supports Mermaid, paste fenced block as-is.
 
 Conventions:
 
@@ -47,4 +47,4 @@ flowchart LR
 
 - Start with the “happy path” flow.
 - Add pagination/scroll/back-button after the core search/load wiring is clear.
-- If the graph gets busy, split into multiple Mermaid diagrams per place.
+- If the graph gets busy, split into multiple diagrams per place.

@@ -58,7 +58,7 @@ List the handful of key elements that make the solution real.
   - **Solid** = calls / triggers / writes
   - **Dashed** = returns / store reads
 
-<insert diagram or mermaid>
+<insert diagram (render via beautiful-mermaid) or Mermaid code>
 
 ## Parts list (BOM)
 

@@ -64,7 +64,9 @@ This is a condensed example of the artefact this skill aims to produce.
 | N12 | search-detail | appendNextPageOfResults() | call | -> N4; -> N7; -> N8; -> N13 |
 | N13 | intercomService | sendMessage() | call | re-arms scroll detection |
 
-## Wiring diagram (Mermaid)
+## Wiring diagram (Mermaid code; render via beautiful-mermaid)
+
+If Mermaid won’t render here, render via `beautiful-mermaid`.
 
 ```mermaid
 flowchart LR

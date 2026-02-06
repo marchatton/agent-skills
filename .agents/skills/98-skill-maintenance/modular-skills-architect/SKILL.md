@@ -122,7 +122,7 @@ Also create or update the **Register** in the canonical repo:
 
 Dependency map output:
 - list of `a -> b` edges
-- render as mermaid diagram
+- render via `beautiful-mermaid` (SVG or ASCII/Unicode)
 
 ## Register (required)
 
@@ -195,7 +195,7 @@ Interpretation:
 4) Define dependency rules
 - allowed dependency direction (and forbidden)
 - shared conventions layer only if needed (tiny)
-- produce dependency map: `a -> b` edges + mermaid diagram
+- produce dependency map: `a -> b` edges + diagram rendered via `beautiful-mermaid`
 
 5) Refactor recommendations (concrete)
 For each: what to change, why, expected benefit.
