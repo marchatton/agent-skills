@@ -92,6 +92,7 @@ ensure_gitignore() {
 # Onboarding defaults
 /node_modules/
 *throwaway*/
+/.env
 EOF
     return 0
   fi
@@ -104,6 +105,12 @@ EOF
   # Ignore any directory whose name contains "throwaway" anywhere in the repo.
   if ! grep -Fxq "*throwaway*/" "$gitignore_path"; then
     echo "*throwaway*/" >> "$gitignore_path"
+    added=1
+  fi
+
+  # Common local secrets/config
+  if ! grep -Fxq "/.env" "$gitignore_path" && ! grep -Fxq ".env" "$gitignore_path"; then
+    echo "/.env" >> "$gitignore_path"
     added=1
   fi
 
