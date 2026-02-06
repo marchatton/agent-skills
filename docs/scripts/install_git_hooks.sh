@@ -2,7 +2,8 @@
 set -euo pipefail
 
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-hooks_src="${root_dir}/.agents/hooks/git"
+hooks_path=".agents/hooks/git"
+hooks_src="${root_dir}/${hooks_path}"
 
 if [ ! -d "${hooks_src}" ]; then
   echo "No hooks templates found at ${hooks_src}"
@@ -14,17 +15,11 @@ if [ ! -d "${root_dir}/.git" ]; then
   exit 0
 fi
 
-hooks_dst="${root_dir}/.git/hooks"
-mkdir -p "${hooks_dst}"
+git -C "${root_dir}" config core.hooksPath "${hooks_path}"
+chmod +x "${hooks_src}/"* 2>/dev/null || true
 
-installed=()
-for hook in "${hooks_src}"/*; do
-  name="$(basename "${hook}")"
-  dest="${hooks_dst}/${name}"
-  cp "${hook}" "${dest}"
-  chmod +x "${dest}"
-  installed+=("${name}")
-done
-
-echo "Installed hooks:"
-printf -- "- %s\n" "${installed[@]}"
+echo "Configured git hooks:"
+echo "- core.hooksPath = ${hooks_path}"
+echo "- hooks dir = ${hooks_src}"
+echo "Hooks:"
+ls -1 "${hooks_src}" | sed 's/^/- /'

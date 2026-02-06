@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -z "${ENFORCE_CONVENTIONAL_COMMITS:-}" ]; then
+if [ -n "${SKIP_GIT_HOOKS:-}" ]; then
   exit 0
 fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+config_path="${repo_root}/scripts/git-hooks.config.sh"
+if [ -f "${config_path}" ]; then
+  # shellcheck disable=SC1090
+  source "${config_path}"
+fi
+
+case "${ENFORCE_CONVENTIONAL_COMMITS:-0}" in
+  1|true|TRUE|yes|YES) ;;
+  *) exit 0 ;;
+esac
 
 msg_file="${1:-}"
 if [ -z "${msg_file}" ] || [ ! -f "${msg_file}" ]; then

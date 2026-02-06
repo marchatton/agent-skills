@@ -49,6 +49,7 @@ STRUCTURE_DOC="$ROOT_DIR/docs/REPO-STRUCTURE.md"
 TEMPLATES_DIR="$ROOT_DIR/docs/agentsmd"
 DOC_TEMPLATES_DIR="$ROOT_DIR/docs/doc-templates"
 DOC_SCRIPTS_DIR="$ROOT_DIR/docs/scripts"
+CI_WORKFLOW="$ROOT_DIR/.github/workflows/ci.yml"
 
 if [[ ! -f "$STRUCTURE_DOC" ]]; then
   echo "Missing structure doc: $STRUCTURE_DOC" >&2
@@ -290,6 +291,17 @@ copy_tree "$ROOT_DIR/.agents" "$TARGET_DIR/.agents"
 if [[ -d "$DOC_SCRIPTS_DIR" ]]; then
   copy_tree "$DOC_SCRIPTS_DIR" "$TARGET_DIR/scripts"
   chmod +x "$TARGET_DIR/scripts/"* 2>/dev/null || true
+fi
+
+# Copy GitHub Actions CI workflow (Node/pnpm default).
+if [[ -f "$CI_WORKFLOW" ]]; then
+  copy_file "$CI_WORKFLOW" "$TARGET_DIR/.github/workflows/ci.yml"
+fi
+
+# Enable tracked git hooks if this is a git repo.
+if git -C "$TARGET_DIR" rev-parse --git-dir >/dev/null 2>&1; then
+  git -C "$TARGET_DIR" config core.hooksPath ".agents/hooks/git"
+  chmod +x "$TARGET_DIR/.agents/hooks/git/"* 2>/dev/null || true
 fi
 
 # Copy templates for docs content.

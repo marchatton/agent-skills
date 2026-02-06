@@ -8,12 +8,23 @@ fi
 repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "${repo_root}"
 
-protected_ref_regex='^refs/heads/(main|master)$'
+config_path="${repo_root}/scripts/git-hooks.config.sh"
+if [ -f "${config_path}" ]; then
+  # shellcheck disable=SC1090
+  source "${config_path}"
+fi
+
+protected_branches="${GIT_HOOKS_PROTECTED_BRANCHES:-main master}"
 protected_ref=""
 
 while read -r local_ref local_sha remote_ref remote_sha; do
-  if [[ "${remote_ref}" =~ ${protected_ref_regex} ]]; then
-    protected_ref="${remote_ref#refs/heads/}"
+  if [[ "${remote_ref}" == refs/heads/* ]]; then
+    remote_branch="${remote_ref#refs/heads/}"
+    for branch in ${protected_branches}; do
+      if [[ "${remote_branch}" == "${branch}" ]]; then
+        protected_ref="${remote_branch}"
+      fi
+    done
   fi
 done
 
