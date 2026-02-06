@@ -954,6 +954,20 @@
         "useWhen": "managing the file-based todo tracking system in the todos/ directory. It provides workflows for creating todos, managing status and dependencies, conducting triage, and integrating with slash commands and code review processes"
       },
       {
+        "location": ".agents/skills/00-utilities/firecrawl/SKILL.md",
+        "name": "firecrawl",
+        "outputs": [],
+        "ownerModule": "firecrawl",
+        "provenance": "synced",
+        "purpose": "Web search/scrape/crawl via Firecrawl CLI",
+        "tier": "core",
+        "upstream": {
+          "path": "skills/firecrawl-cli/SKILL.md",
+          "repo": "firecrawl/cli"
+        },
+        "useWhen": "user asks for live internet lookup, URL reading, web scraping/crawling, or web/news/image search"
+      },
+      {
         "location": ".agents/skills/04-develop/01-ui-skills-dot-com/fixing-accessibility/SKILL.md",
         "name": "fixing-accessibility",
         "outputs": [
