@@ -19,6 +19,7 @@ Make skills concise + specific. Sacrifice grammar for concision.
 - For commands, skills, agent files etc; `AGENTS.md` is the source of truth. Agentic tool specific files (e.g. `CLAUDE.md`) should be symlinked via `iannuttal/dotagents` — don’t fork instructions per agentic tool (e.g. Claude, Amp).
 - Canonical workflows live under `.agents/skills` (`wf-*`); keep AGENTS references in sync
 - .agents/register.json contains all commands/skills/agents + upstream mapping
+- When you add/move/remove/rename a skill under `.agents/skills/`, also update `.agents/register.json` and regenerate `cheatsheet.md` via `node --experimental-strip-types scripts/generate_cheatsheet.ts`.
 - .agents/register.json is the canonical schema for register metadata fields; do not guess field names
 - skills_copy/skills_diff only handle upstreams in inspiration/ (repo without "/"); use scripts/npx_skills_refresh.sh for GitHub-style upstreams
 

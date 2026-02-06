@@ -12,6 +12,8 @@ const readFile = (filePath) => fs.readFileSync(filePath, 'utf8');
 
 const stripBullet = (line) => line.replace(/^[-*]\s+/, '');
 
+const normalizeWhitespace = (value) => value.replace(/\s+/g, ' ').trim();
+
 const extractSectionLine = (content, heading) => {
   const target = `## ${heading}`.toLowerCase();
   const lines = content.split(/\r?\n/);
@@ -30,19 +32,47 @@ const extractSectionLine = (content, heading) => {
 const parseFrontmatter = (content) => {
   const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*/);
   if (!match) return { name: '', description: '' };
+
   const lines = match[1].split(/\r?\n/);
-  let name = '';
-  let description = '';
-  for (const line of lines) {
-    const idx = line.indexOf(':');
-    if (idx === -1) continue;
-    const key = line.slice(0, idx).trim();
-    let value = line.slice(idx + 1).trim();
-    value = value.replace(/^['"]/, '').replace(/['"]$/, '').trim();
-    if (key === 'name') name = value;
-    if (key === 'description') description = value;
+  const data = {};
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const m = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+    if (!m) continue;
+
+    const key = m[1];
+    let value = (m[2] ?? '').trim();
+
+    // Handle YAML block scalars (e.g. `description: >` / `description: |`).
+    if (value === '>' || value === '>-' || value === '|' || value === '|-') {
+      const fold = value.startsWith('>');
+      const block = [];
+
+      for (let j = i + 1; j < lines.length; j += 1) {
+        const next = lines[j];
+        if (/^[A-Za-z0-9_-]+:\s*/.test(next)) {
+          // Outer loop should process this key.
+          i = j - 1;
+          break;
+        }
+        block.push(next.replace(/^\s+/, ''));
+        i = j;
+      }
+
+      const joined = fold ? block.join(' ') : block.join('\n');
+      data[key] = normalizeWhitespace(joined);
+      continue;
+    }
+
+    value = value.replace(/^['\"]/, '').replace(/['\"]$/, '').trim();
+    data[key] = value;
   }
-  return { name, description };
+
+  return {
+    name: data.name || '',
+    description: data.description || '',
+  };
 };
 
 const listFiles = (dir, filterFn) => {
@@ -76,7 +106,6 @@ const listHookFiles = (dir, baseDir) => {
   return results.sort();
 };
 
-const commands = [];
 const listCommandFiles = (dir) => {
   if (!fs.existsSync(dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -92,6 +121,23 @@ const listCommandFiles = (dir) => {
   return results.sort();
 };
 
+const listSkillFiles = (dir) => {
+  if (!fs.existsSync(dir)) return [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const results = [];
+  for (const entry of entries) {
+    if (entry.name.startsWith('.')) continue;
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...listSkillFiles(fullPath));
+    } else if (entry.isFile() && entry.name === 'SKILL.md') {
+      results.push(fullPath);
+    }
+  }
+  return results.sort();
+};
+
+const commands = [];
 if (fs.existsSync(commandsDir)) {
   const commandFiles = listCommandFiles(commandsDir);
   for (const filePath of commandFiles) {
@@ -109,17 +155,23 @@ if (fs.existsSync(skillsDir)) {
   const categories = listFiles(skillsDir, (filePath) => fs.statSync(filePath).isDirectory());
   for (const category of categories) {
     const categoryDir = path.join(skillsDir, category);
-    const skillDirs = listFiles(categoryDir, (filePath) => fs.statSync(filePath).isDirectory());
+    const skillFiles = listSkillFiles(categoryDir);
+
     const skills = [];
-    for (const skill of skillDirs) {
-      const skillFile = path.join(categoryDir, skill, 'SKILL.md');
-      if (!fs.existsSync(skillFile)) continue;
+    const seen = new Set();
+
+    for (const skillFile of skillFiles) {
       const content = readFile(skillFile);
       const frontmatter = parseFrontmatter(content);
-      const name = frontmatter.name || skill;
+      const name = frontmatter.name || path.basename(path.dirname(skillFile));
+      if (seen.has(name)) continue;
+      seen.add(name);
+
       const description = frontmatter.description || 'Description not documented.';
       skills.push({ name, description });
     }
+
+    skills.sort((a, b) => a.name.localeCompare(b.name));
     skillsByCategory[category] = skills;
   }
 }
@@ -176,3 +228,4 @@ output += '- See `docs/AGENTS.md` in target repos for doc locations and naming.\
 
 fs.writeFileSync(path.join(rootDir, 'cheatsheet.md'), output);
 console.log('cheatsheet.md updated.');
+
