@@ -7,6 +7,20 @@
 - Follow `brand-tone.md`, `brand-guidelines.md`, `product-principles.md` (if present).
 - Don't invent a new voice or UI conventions.
 
+## Brand DNA (Tailwind config outputs)
+Source of truth for Tailwind-ready tokens/config derived from Brand DNA lives under:
+- `docs/02-guidelines/inspiration/brand_guidelines.md`
+- `docs/02-guidelines/inspiration/design_tokens.json`
+- `docs/02-guidelines/inspiration/prompt_library.json`
+
+Expected generated outputs for app + marketing Tailwind setups:
+- `docs/02-guidelines/inspiration/tailwind/tokens.css`
+- `docs/02-guidelines/inspiration/tailwind/tailwind.preset.ts`
+- `docs/02-guidelines/inspiration/tailwind/component-recipes.md`
+- `docs/02-guidelines/inspiration/tailwind/integration.md` (optional; snippets may live in `component-recipes.md` instead)
+
+Use the `generating-tailwind-brand-config` skill to regenerate these consistently.
+
 ## Accessibility baseline (minimum)
 - Keyboard support + visible focus.
 - Targets >= 24px (>= 44px on mobile).

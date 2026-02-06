@@ -35,6 +35,20 @@ Single place for workflow artefacts + docs outputs.
   - All change types require **both** `prd.md` and `prd.json` (even if tiny).
   - Reviews for a project live inside its dossier (e.g. `reviews/`).
 
+## Storing oracle bundles and handoff notes
+- Oracle bundles (`oracle --render`) are committed under:
+  - Dossier work: `<dossier>/tmp-oracle/` (inside `docs/04-projects/...`)
+  - Non-dossier work: `docs/98-tmp/oracle/`
+- Handoff notes (`handoff` skill) are committed under:
+  - Dossier work: `<dossier>/tmp-handoffs/` (inside `docs/04-projects/...`)
+  - Non-dossier or cross-dossier: `docs/98-tmp/handoffs/`
+- Filenames:
+  - Oracle bundles: `oracle-bundle_<slug>.md` (or `oracle-bundle_<id>_<slug>.md` inside dossiers)
+  - Handoff notes: `handoff_YYYY-MM-DD_HH-MM-SS_<slug>.md`
+- Store local-only scratch in root `throwaway/` (gitignored; not synced to GitHub)
+- Store other random tmp files in root `tmp/` folder (synced to GitHub)
+- When working on a project, follow the conventions outlined in `docs/04-projects/AGENTS.md`
+
 ## Archiving rule
 - Completed work and old context is manually moved into `docs/99-archive/` which mirrors the live structure.
 

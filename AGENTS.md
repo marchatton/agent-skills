@@ -1,39 +1,50 @@
 # AGENTS.md
-Make skills concise + specific. Sacrifice grammar for concision.
-
-## Scope and guidelines
-- This repo is the canonical source for agent skills/commands/hooks and repo scaffolds consumed by downstream projects.
-
-## Guidelines
-- Changes here propagate into many repos. Prefer small changes, avoid breaking downstream scaffolds, and call out any intentional breakage in the PR.
-- If a workflow is repeatable, prefer adding/updating a skill/command rather than growing AGENTS.
-- Avoid brittle file-path assertions in prose. Describe stable concepts and search if unsure.
-- For creating new skills, default to `@create-agent-skills`.
-
-## Template structure
-- Canonical repo of skills/commands/hooks lives under .agents
-- Canonical docs folder structure `docs/REPO-STRUCTURE.md`
-- Canonical document templates `docs/doc-templates`
-- Project script templates `docs/scripts` (copied to target repo root `scripts/`)
-- Target-repo AGENTS.md templates live in `docs/agentsmd/`.
-- For commands, skills, agent files etc; `AGENTS.md` is the source of truth. Agentic tool specific files (e.g. `CLAUDE.md`) should be symlinked via `iannuttal/dotagents` — don’t fork instructions per agentic tool (e.g. Claude, Amp).
-- Canonical workflows live under `.agents/skills` (`wf-*`); keep AGENTS references in sync
-- .agents/register.json contains all commands/skills/agents + upstream mapping
-- When you add/move/remove/rename a skill under `.agents/skills/`, also update `.agents/register.json` and regenerate `cheatsheet.md` via `node --experimental-strip-types scripts/generate_cheatsheet.ts`.
-- .agents/register.json is the canonical schema for register metadata fields; do not guess field names
-- skills_copy/skills_diff only handle upstreams in inspiration/ (repo without "/"); use scripts/npx_skills_refresh.sh for GitHub-style upstreams
 
 ## Tooling
-- Package manager: default pnpm
-- When you invoke a skill, print echo: `:: the <skill name> skill must FLOW ::` (only mention here; don't repeat elsewhere)
+- Package manager: pnpm (workspaces)
+- Prefer TypeScript for new code unless the repo already uses something else
 
+## Principles
+We follow core ideas from *The Pragmatic Programmer* (Andy Hunt, Dave Thomas):
 
-## Codex web search
-- Live web: start with `--yolo` or set `web_search = "live"` in `~/.agents/config.toml`.
-- Web search strong lately; avoids outdated framework data from LLM cutoff.
+- **Take ownership.** If something’s broken/unclear/risky or “not your job”, act anyway: flag it, fix it, or shape a better path.
+- **Keep learning.** Maintain a “knowledge portfolio”. Store learnings in `docs/LEARNINGS.md`.
+- **Avoid duplication (DRY).** Duplicate knowledge is as bad as duplicate code. Keep one source of truth and reuse it.
+- **Build orthogonally.** Reduce coupling, keep dependencies explicit, and interfaces small.
+- **Use tight feedback loops.** Small steps, fast validation. Use tracer bullets (thin end-to-end slices). One concern per commit/PR. Prefer the simplest thing that meets the requirement.
+- **Prototype to learn, then bin it (when needed).** Don’t let prototypes silently become production.
+- **Make behaviour explicit.** Clear contracts, assert assumptions, fail loudly when they break.
+- **Automate boring/error-prone work.** Builds, tests, formatting, releases, setup, checks. If you do it twice, consider scripting it.
+- **Keep code easy to change.** Refactor continuously, rename aggressively, optimise for readability.
+- **Debug systematically.** Reproduce, isolate, change one thing at a time. Use tools properly.
+- **Fix broken windows.** Small messes spread — tidy early.
+- **Communicate trade-offs.** Requirements/estimates are conversations. Explain options, risks, and costs plainly.
 
-## When unclear
-Use `ask-questions-if-underspecified` before making template changes that affect multiple repos.
+Vibe: be practical, stay curious, optimise for long-term leverage over short-term heroics.
 
-## Onboarding new repos
-- Use onboarding script to copy templates into target repo structure.
+## Error handling + safety (high level)
+- Validate external inputs at boundaries (Zod) and return safe user-facing errors
+- Don’t leak internal errors/details to clients
+- Unexpected issues: fail loudly (log/throw). Only show user-facing errors when needed
+
+## Compatibility
+- Backwards compatibility usually not required
+
+## Agent files
+- `AGENTS.md`: Repo‑wide engineering standards, tooling, and verification rules.
+- `apps/web/AGENTS.md`: Stack and guardrails for the Next.js web app.
+- `docs/AGENTS.md`: Structure and rules for the docs/knowledge hub, uncluding where to save oracle bundles and handoff notes.
+- `docs/02-guidelines/AGENTS.md`: Brand/tone/a11y guidance + Brand DNA outputs (including Tailwind-ready token/preset artefacts).
+- `docs/03-architecture/AGENTS.md`: Architecture boundaries and security posture rules.
+- `docs/04-projects/AGENTS.md`: Dossier conventions and delivery workflow for project work.
+- `docs/06-release/AGENTS.md`: Release process and changelog/postmortem expectations
+
+## Core skills to use
+- `ask-questions-if-underspecified` skill when unclear
+- `oracle` skill for deep research
+- `verify` skill for checking code changes
+
+## Canonical instructions + local agent setup
+- Canonical skills/commands/hooks live in `marchatton/agent-skills` — fix/add missing/wrong skills there NOT in this repo
+- `.agents/` contains all skills etc in this repo (e.g. `codex`). For other tools, use `iannuttall/dotagents` to symlink `.agents` into tool-specific locations
+- `AGENTS.md` is the source of truth; other agent files should be symlinks (don’t fork instructions per tool)
