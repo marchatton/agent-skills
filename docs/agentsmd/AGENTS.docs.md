@@ -12,7 +12,8 @@ Single place for workflow artefacts + docs outputs.
     - `03-architecture/`: up-to-date system and data architecture 
     - `05-reviews-audits/`: periodic reviews, audits, and systems compliance 
     - `06-release/`: global `CHANGELOG.md` and postmortems etc
-    - `10-tmp/`: scratch space (should be moved or deleted). Synced to Github
+    - `08-example-data/`: worked examples w/ synthetic (but realistic) data
+    - `10-tmp/`: scratch space (move or delete). Synced to GitHub
   - Resources:
     - `01-insights/`: reports, summaries and raw transcripts covering customers, competitors, capabilities (internal) and tech-market trends.
     - `02-guidelines/`: brand-tone (storytelling and visual) incl inspiration.
