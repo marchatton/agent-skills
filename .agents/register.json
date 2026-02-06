@@ -1393,7 +1393,21 @@
         "useWhen": "This skill should be used when reproducing and investigating a bug using logs, console inspection, and browser screenshots."
       },
       {
-        "location": ".agents/skills/05-review/security-sentinel/SKILL.md",
+        "location": ".agents/skills/05-review/security/security-best-practices/SKILL.md",
+        "name": "security-best-practices",
+        "originGroup": "review",
+        "outputs": [
+          "Findings",
+          "Recommendations"
+        ],
+        "ownerModule": "security-best-practices",
+        "provenance": "local",
+        "purpose": "secure-by-default guidance and best-practice review",
+        "tier": "leaf",
+        "useWhen": "user explicitly asks for security best practices guidance or secure-by-default coding help"
+      },
+      {
+        "location": ".agents/skills/05-review/security/security-sentinel/SKILL.md",
         "name": "security-sentinel",
         "originGroup": "review",
         "outputs": [
@@ -1410,6 +1424,21 @@
           "repo": "compound-engineering-plugin"
         },
         "useWhen": "security review needed for changes"
+      },
+      {
+        "location": ".agents/skills/05-review/security/security-threat-model/SKILL.md",
+        "name": "security-threat-model",
+        "originGroup": "review",
+        "outputs": [
+          "Threat model",
+          "Abuse paths",
+          "Mitigations"
+        ],
+        "ownerModule": "security-threat-model",
+        "provenance": "local",
+        "purpose": "repo-grounded threat modeling and abuse-path analysis",
+        "tier": "leaf",
+        "useWhen": "user explicitly asks to threat model a codebase/path or enumerate threats/abuse paths"
       },
       {
         "location": ".agents/skills/98-skill-maintenance/skill-creator/SKILL.md",
