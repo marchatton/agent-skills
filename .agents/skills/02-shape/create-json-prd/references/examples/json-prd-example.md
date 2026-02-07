@@ -1,4 +1,4 @@
-# Example JSON PRD (Ralph schema)
+# Example PRD JSON (Ralph)
 
 ```json
 {
@@ -19,8 +19,10 @@
     "Should priority affect ordering within a column?"
   ],
   "stack": {
-    "framework": "Next.js",
-    "database": "Postgres"
+    "framework": "React",
+    "hosting": "Cloudflare Pages",
+    "database": "D1",
+    "auth": "single shared login"
   },
   "routes": [
     { "path": "/tasks", "name": "Task List", "purpose": "View and filter tasks" },
@@ -39,39 +41,20 @@
   "rules": [
     "Priority defaults to medium when not set"
   ],
-  "qualityGates": ["pnpm lint", "pnpm test", "pnpm build"],
+  "qualityGates": ["pnpm test", "pnpm run lint", "pnpm run typecheck"],
   "stories": [
     {
       "id": "US-001",
-      "title": "Persist priority for tasks",
+      "title": "Add priority field to database",
       "status": "open",
       "dependsOn": [],
-      "description": "As a user, I want tasks to store priority so it persists across sessions.",
+      "description": "As a developer, I want to store task priority so it persists across sessions.",
       "acceptanceCriteria": [
-        "Add priority field with allowed values: high | medium | low (default: medium)",
-        "Example: create a task without specifying priority -> priority is medium",
-        "Negative case: set priority to 'urgent' -> validation error",
-        "Quality gates pass"
-      ],
-      "passes": false,
-      "notes": ""
-    },
-    {
-      "id": "US-002",
-      "title": "Show priority badge in task list UI",
-      "status": "open",
-      "dependsOn": ["US-001"],
-      "description": "As a user, I want to see task priority at a glance in the list.",
-      "acceptanceCriteria": [
-        "Each task card shows a priority badge: high/medium/low",
-        "Example: a high-priority task renders a red badge",
-        "Negative case: tasks with missing priority still render (badge shows medium/default)",
-        "Verify in browser using $dev-browser: confirm badge is visible without hover and readable",
-        "Capture screenshot evidence at <dossier>/artifacts/e2e/priority-badge.png",
-        "Quality gates pass"
-      ],
-      "passes": false,
-      "notes": ""
+        "Add priority column with default 'medium'",
+        "Example: creating a task without priority -> defaults to 'medium'",
+        "Negative case: invalid priority 'urgent' -> validation error",
+        "Migration runs successfully"
+      ]
     }
   ]
 }
