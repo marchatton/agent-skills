@@ -13,6 +13,7 @@ Next.js App Router web application.
 - Never import server-only into client components (use `server-only` / `client-only` boundaries).
 - Validate external inputs with Zod and map errors to safe user-facing messages.
 - AI SDK flows: use Workflow DevKit (`workflow`) and add `"use workflow"` in async TS fns for durability, reliability, observability.
+  - Conventions for `"use workflow"` / steps are defined in `docs/03-architecture/06_frameworks_agents_rag_evals.md`.
 
 ## Frontend skills
 - `frontend-design`: build distinctive UI.

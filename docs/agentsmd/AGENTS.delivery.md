@@ -19,3 +19,7 @@ This folder tracks work items once implementation begins.
 - Bugs / behaviour changes: add a failing test (or repro) first, then fix to green.
 - KISS / YAGNI: ship what the requirement needs, no speculative scaffolding.
 - DRY only when it’s real reuse: shared logic belongs in `packages/*` (or shared components).
+
+## Templates
+- Treat `docs/04-projects/_templates/` as legacy reference.
+- Prefer scaffolding/templates embedded in skills and workflows over copying from `_templates`.
