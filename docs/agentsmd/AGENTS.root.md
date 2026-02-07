@@ -58,6 +58,8 @@ Vibe: be practical, stay curious, optimise for long-term leverage over short-ter
 - `oracle` skill for deep research
 - `verify` skill for checking code changes
 
+When you invoke a skill, print echo: `:: the <skill name> skill must FLOW ::`
+
 ## Canonical instructions + local agent setup
 - Canonical skills/commands/hooks live in `marchatton/agent-skills` — fix/add missing/wrong skills there NOT in this repo
 - `.agents/` contains all skills etc in this repo (e.g. `codex`). For other tools, use `iannuttall/dotagents` to symlink `.agents` into tool-specific locations
