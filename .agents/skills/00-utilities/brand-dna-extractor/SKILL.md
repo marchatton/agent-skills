@@ -49,12 +49,28 @@ live together.
 
 Use Firecrawl for breadth and structured web scraping, especially within a domain:
 - **Best for:** mapping/crawling a site, getting broad page coverage, and pulling “main content” markdown.
-- **Nice bonus:** Firecrawl `branding` format can yield structured hints for colours/fonts/buttons (treat as hints, not truth).
+- **Branding Format v2:** Retrieve via `POST https://api.firecrawl.dev/v2/scrape` with `formats: ["branding"]`. This can yield structured hints for colours, typography, logo/icon, layout, and personality (treat as hints, not truth).
 - **Evidence produced:** `excerpt` (from scraped markdown), plus provider metadata (`scrapeId`, status, etc.).
 - **Common failure modes:** JS-heavy pages, auth walls, noisy nav/footer content, rate limits.
 
 Recommended receipts:
 - Store Firecrawl outputs under `<run_folder>/.firecrawl/<run_id>/...` and reference them in evidence objects via `path_or_url`.
+
+#### Firecrawl Branding Format v2 receipts
+
+- Branding is a per-site identity hint: run it on the base URL (home) per site (not every crawled page).
+- For JS-heavy/no-code sites, prefer using `waitFor` since the v2 scrape endpoint supports it.
+- Receipt naming convention: `<site_slug>.json` (stored under `<run_folder>/.firecrawl/<run_id>/branding/`).
+
+```bash
+# Fetch Firecrawl Branding Format v2 receipts for each site URL in config
+node --experimental-strip-types \
+  .agents/skills/00-utilities/brand-dna-extractor/scripts/firecrawl_branding_v2.ts \
+  --config path/to/config.json \
+  --run-folder docs/02-guidelines/inspiration/<run_id> \
+  --wait-for 10000 \
+  --concurrency 4
+```
 
 ### Prong 2: Parallel (Search + Extract)
 
@@ -218,7 +234,9 @@ Evidence rules:
 - Never exceed `quote_limit_words` for any single excerpt.
 - Prefer selectors, CSS variable names, and computed-style properties over long quotes.
 - Attach evidence as one of:
-  - excerpt, selector, css_variable, computed_style, computed_style_diff, screenshot
+  - excerpt, selector, css_variable, computed_style, computed_style_diff, screenshot, branding_profile
+- `branding_profile` evidence objects should include `path_or_url` pointing at the stored receipt JSON.
+- Confidence: if only `branding_profile` supports a token, set `needs_human_review=true` and keep confidence low. Prefer confirming via `css_variable` / `computed_style` from the probe lane for high confidence.
 
 ### 7) Generate per-site prompt pack
 

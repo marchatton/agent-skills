@@ -1,3 +1,6 @@
 /inspiration/
 /archive/tmp/
 .DS_Store
+.firecrawl/
+.parallel/
+.probe/

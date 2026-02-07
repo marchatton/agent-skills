@@ -230,6 +230,26 @@ firecrawl scrape https://example.com --format markdown -o .firecrawl/page.md
 firecrawl scrape https://example.com --format markdown,links -o .firecrawl/page.json
 ```
 
+### Branding Format v2 (API)
+
+Branding is obtained from the v2 scrape endpoint with `formats: ["branding"]`.
+
+```bash
+curl -sS -X POST "https://api.firecrawl.dev/v2/scrape" \
+  -H "Authorization: Bearer $FIRECRAWL_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://example.com","formats":["branding"],"waitFor":10000}' \
+  -o ".firecrawl/example-branding.json"
+```
+
+```bash
+jq -r '.data.colors.primary' .firecrawl/example-branding.json
+jq -r '.data.typography.headings[]?' .firecrawl/example-branding.json
+jq -r '.data.logo' .firecrawl/example-branding.json
+```
+
+If your `firecrawl` CLI version supports branding as a format, you can use it; otherwise use the API approach above (don't assume CLI support unconditionally).
+
 ## Combining with Other Tools
 
 ```bash

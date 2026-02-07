@@ -9,16 +9,16 @@ description: This skill should only be used when the user uses the word workflow
 
 Implement changes with a verification-first loop, keeping context clean between workflow steps.
 
-`prd.json` is the acceptance-criteria spine (agent-friendly).
+`prd.json` (single-PRD dossier or slice PRD).
 `plan.md` may exist for higher-risk work, but it’s optional.
 
-Prefer plan-driven work when plan.md exists, but allow PRD-driven work (especially with `prd.json`).
+Prefer plan-driven work when plan.md exists, but allow PRD-driven work (especially with PRD JSON: `prd.json`).
 
 ## Inputs
 
 Preferred:
-- Dossier path (contains `prd.json`, and maybe `plan.md`)
-- Or explicit `prd.json` path
+- Dossier path (contains one or more`prd.json` ) - implement one `prd.json` at a time.
+- Or explicit PRD JSON path (`prd.json` / `prds/<slice_id>_<slug>/prd.json`)
 
 Optional:
 - `plan.md` path (only when created by wf-plan)
@@ -31,7 +31,7 @@ Also:
 
 - Code changes
 - Verification evidence (what ran, result, screenshots/logs when relevant)
-- Update `prd.json` story `passes` and `notes` to reflect reality
+- Update the relevant PRD JSON story `passes` and `notes` to reflect reality (`prd.json` or a slice `prds/.../prd.json`)
 - Dev log artefact saved per repo conventions (summary + verification evidence + GO/NO-GO) (optional but nice)
 
 ## Steps
@@ -43,9 +43,9 @@ Also:
   - repo/branch uncertain
 
 1) Confirm work input
-- If `prd.json` missing: run `create-json-prd` first (NO-GO if schema invalid).
-- If `plan.md` exists: treat it as the build recipe and verification map.
-- If no plan.md: proceed from `prd.json` directly (this is normal for small work).
+- If PRD JSON missing (`prd.json`): check if `prd.md` exists. If yes, run `create-json-prd` first (NO-GO if schema invalid). If not, ask user to create `prd.md`.
+- If `plan.md` exists: use it in conjunction with `prd.json` to guide development.
+- If no plan.md: proceed from the `prd.json` directly (this is normal for small work).
 
 2) Baseline verification (before touching code)
 - Run verify skill and record result.
@@ -59,7 +59,7 @@ Loop:
 - implement minimal change
 - run targeted check then verify skill
 - record evidence (what ran, result, any screenshots/logs)
-- update `prd.json`:
+- update the relevant PRD JSON:
   - set `passes=true` for stories fully meeting criteria
   - use `notes` for partials, tradeoffs, follow-ups
 
@@ -88,9 +88,9 @@ If a non-trivial issue was solved or a gotcha discovered:
 ## Verification
 
 - Verify skill run at least once after changes.
-- `prd.json` updated to reflect what passes.
+- PRD JSON updated to reflect what passes (`prd.json` or slice `prds/.../prd.json`).
 
 ## Go/No-Go
 
-- GO if verify is green and acceptance criteria met (per `prd.json`).
+- GO if verify is green and acceptance criteria met (per the PRD JSON).
 - NO-GO if verify fails or behaviour cannot be demonstrated.

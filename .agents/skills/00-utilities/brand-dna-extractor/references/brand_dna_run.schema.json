@@ -185,7 +185,8 @@
             "css_variable",
             "computed_style",
             "computed_style_diff",
-            "screenshot"
+            "screenshot",
+            "branding_profile"
           ]
         },
         "page_url": {

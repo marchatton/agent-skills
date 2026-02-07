@@ -25,7 +25,13 @@
       "crawl_entire_domain": false,
       "only_main_content": true,
       "formats": ["markdown", "html"],
-      "dedupe": true
+      "dedupe": true,
+      "branding": {
+        "enabled": true,
+        "wait_for_ms": 10000,
+        "pages_per_site": 1,
+        "strategy": "base_url"
+      }
     },
     "parallel": {
       "enabled": true,
