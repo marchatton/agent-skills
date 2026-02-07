@@ -1,6 +1,6 @@
 ---
 name: browser-use
-description: Fast, persistent browser automation via `browser-use` CLI (sessions persist across commands). Use for multi-step web workflows: open -> state -> click/input -> verify -> repeat. Supports chromium/headed, real Chrome (logged-in), and remote browser.
+description: Fast, persistent browser automation via `browser-use` CLI (sessions persist across commands). Use for multi-step web workflows (open -> state -> click/input -> verify -> repeat). Supports chromium/headed, real Chrome (logged-in), and remote browser.
 ---
 
 # browser-use
