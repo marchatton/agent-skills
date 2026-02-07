@@ -735,6 +735,20 @@
         "useWhen": "final pass for simplicity/minimalism"
       },
       {
+        "location": ".agents/skills/00-utilities/commit/SKILL.md",
+        "name": "commit",
+        "outputs": [],
+        "ownerModule": "commit",
+        "provenance": "forked",
+        "purpose": "Write conventional commit messages and create git commits",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/commit/SKILL.md",
+          "repo": "iannuttall/ralph"
+        },
+        "useWhen": "users want to commit changes or save work"
+      },
+      {
         "location": ".agents/skills/04-develop/00-frontend-general/composition-patterns/SKILL.md",
         "name": "composition-patterns",
         "outputs": [
@@ -802,17 +816,17 @@
         "location": ".agents/skills/02-shape/create-json-prd/SKILL.md",
         "name": "create-json-prd",
         "outputs": [
-          "JSON PRD"
+          "Ralph PRD JSON"
         ],
         "ownerModule": "create-json-prd",
         "provenance": "forked",
-        "purpose": "Convert a PRD into JSON PRD format for tooling",
+        "purpose": "Convert `prd.md` / `prd-<slug>.md` into a Ralph-compatible PRD JSON for `ralph build`",
         "tier": "core",
         "upstream": {
-          "path": "skills/ralph/SKILL.md",
-          "repo": "snarktank/ralph"
+          "path": "skills/prd/SKILL.md",
+          "repo": "iannuttall/ralph"
         },
-        "useWhen": "a JSON PRD is required for tooling or automation"
+        "useWhen": "a Ralph PRD JSON is required for deterministic loop execution"
       },
       {
         "location": ".agents/skills/02-shape/create-prd/SKILL.md",
@@ -912,6 +926,20 @@
         "purpose": "Run design interviews and generate multiple UI variants",
         "tier": "leaf",
         "useWhen": "exploring UI options or redesigning components with comparisons"
+      },
+      {
+        "location": ".agents/skills/00-utilities/dev-browser/SKILL.md",
+        "name": "dev-browser",
+        "outputs": [],
+        "ownerModule": "dev-browser",
+        "provenance": "forked",
+        "purpose": "Browser automation with persistent page state",
+        "tier": "core",
+        "upstream": {
+          "path": "skills/dev-browser/SKILL.md",
+          "repo": "iannuttall/ralph"
+        },
+        "useWhen": "browser automation with persistent state (navigation, forms, screenshots, scraping, testing)"
       },
       {
         "location": ".agents/skills/00-utilities/docs-list/SKILL.md",
@@ -1357,6 +1385,22 @@
         "useWhen": "PR comments need resolution"
       },
       {
+        "location": ".agents/skills/02-shape/prd/SKILL.md",
+        "name": "prd",
+        "outputs": [
+          "Ralph PRD JSON"
+        ],
+        "ownerModule": "prd",
+        "provenance": "forked",
+        "purpose": "Generate a Product Requirements Document (PRD) as JSON for Ralph",
+        "tier": "core",
+        "upstream": {
+          "path": "skills/prd/SKILL.md",
+          "repo": "iannuttall/ralph"
+        },
+        "useWhen": "generating a Ralph PRD JSON for loop execution"
+      },
+      {
         "location": ".agents/skills/04-develop/00-frontend-general/rams/SKILL.md",
         "name": "rams",
         "outputs": [
@@ -1675,13 +1719,13 @@
         "location": ".agents/skills/04-develop/wf-ralph/SKILL.md",
         "name": "wf-ralph",
         "outputs": [
-          "Updated prd.json (passes true per story).",
+          "Updated PRD JSON story statuses (`status` + timestamps).",
           "`.ralph/` state + logs.",
           "Optional: dossier log per docs/AGENTS.md."
         ],
         "ownerModule": "wf-ralph",
         "provenance": "local",
-        "purpose": "Continuous Ralph loop for dev, code review, e2e testing, research and more.",
+        "purpose": "Run the Ralph CLI loop (one story per iteration) for dev, review, research, and e2e.",
         "tier": "core",
         "useWhen": "This skill should only be used when the user uses the word workflow and asks to run the Ralph workflow loop (dev/review/research/e2e)."
       },

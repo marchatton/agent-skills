@@ -10,8 +10,10 @@
 - `ask-questions-if-underspecified`: Clarify requirements before implementing. Do not use automatically, only when invoked explicitly.
 - `beautiful-mermaid`: Render Mermaid diagrams to SVG or ASCII/Unicode with beautiful-mermaid (Node/Bun/Deno/browser, no DOM). Use when you need Mermaid render without DOM.
 - `brand-dna-extractor`: This skill should be used when users want to scrape multiple websites (Firecrawl, Parallel, or hybrid), extract brand guideline signals (including CSS variables + computed styles via browser probing), generate per-site prompt packs, and blend sources into a composite brand direction with exactly three outputs: brand_guidelines.md, prompt_library.json, design_tokens.json.
-- `browser-use`: Fast, persistent browser automation via `browser-use` CLI (sessions persist across commands). Use for multi-step web workflows: open -> state -> click/input -> verify -> repeat. Supports chromium/headed, real Chrome (logged-in), and remote browser.
+- `browser-use`: Fast, persistent browser automation via `browser-use` CLI (sessions persist across commands). Use for multi-step web workflows (open -> state -> click/input -> verify -> repeat). Supports chromium/headed, real Chrome (logged-in), and remote browser.
+- `commit`: Write conventional commit messages with type, scope, and subject when the user wants to commit changes or save work.
 - `create-cli`: Design command-line interface parameters and UX: arguments, flags, subcommands, help text, output formats, error messages, exit codes, prompts, config/env precedence, and safe/dry-run behavior. Use when you’re designing a CLI spec (before implementation) or refactoring an existing CLI’s surface area for consistency, composability, and discoverability.
+- `dev-browser`: Browser automation with persistent page state. Use when users ask to navigate websites, fill forms, take screenshots, extract web data, test web apps, or automate browser workflows. Trigger phrases include "go to [url]", "click on", "fill out the form", "take a screenshot", "scrape", "automate", "test the website", "log into", or any browser interaction request.
 - `docs-list`: Run `scripts/docs-list.ts` to list `docs/` markdown + frontmatter summary/read_when. Use when auditing docs coverage.
 - `engineering-tutor`: Teach engineering concepts for real understanding using the Feynman technique, strong metaphors, and diagrams (render via beautiful-mermaid). Use when users ask to explain/teach/break down engineering concepts, build intuition/mental models, understand trade-offs/failure modes/design choices, or want a visual diagram.
 - `every-style-editor`: This skill should be used when reviewing or editing copy to ensure adherence to Every's style guide. It provides a systematic line-by-line review process for grammar, punctuation, mechanics, and style guide compliance.
@@ -34,8 +36,9 @@
 ### 02-shape
 - `breadboarding`: This skill should be used when shaping a software change and needing to breadboard the solution at the right level of abstraction (places, affordances, connections), including mapping an existing system via UI + code affordances, producing a wiring diagram, a parts/BOM plan, a fit check, and (when relevant) an extract-vs-duplicate analysis.
 - `brief`: Write or update `brief.md` for shaping. Use when asked to create a project or feature brief, a 1-2 pager, or to turn rough inputs into goals, non-goals, scope, risks, and open questions.
-- `create-json-prd`: Convert PRD to JSON PRD for tooling. Use when tools require json-prd.
+- `create-json-prd`: Convert `prd.md` or `prd-<slug>.md` into a Ralph-compatible PRD JSON (`qualityGates[]`, `stories[]`) for deterministic loops.
 - `create-prd`: Draft PRD with scope, stories, acceptance criteria, verification. Use when shaping a new feature or spec.
+- `prd`: Generate a Product Requirements Document (PRD) as JSON for Ralph. Triggers on: create a prd, write prd for, plan this feature, requirements for, spec out.
 - `spike-investigation`: This skill should be used when shaping work and needing to de-risk rabbit holes (technical unknowns, design gaps, interdependencies) by running timeboxed spikes, documenting proof, and updating the shaped concept with patches, cuts, and out-of-bounds so the work stays thin-tailed within the appetite.
 - `wf-shape`: This skill should only be used when the user uses the word workflow and asks to shape a project from messy inputs into a de-risked, de-scoped shaped packet (brief, breadboard, risks, spikes) ready for wf-plan, with handoff/pickup boundaries to avoid context rot.
 
@@ -74,7 +77,7 @@
 - `wcag-audit-patterns`: Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.
 - `web-design-guidelines`: Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices".
 - `wf-develop`: This skill should only be used when the user uses the word workflow and asks to develop or implement changes with a verification-first loop and clean handoff/pickup boundaries.
-- `wf-ralph`: This skill should be used when running a Ralph-style, one-task-per-iteration loop using Ralphy under the hood, with simple modes (dev, research, e2e, review), Codex-by-default, and dossier-local prd.json discovery.
+- `wf-ralph`: Run a Ralph-style, one-story-per-iteration loop using the Ralph CLI (dev, research, e2e, review), Codex-by-default, and dossier-local PRD JSON discovery.
 
 ### 05-review
 - `agent-native-architecture`: Build applications where agents are first-class citizens. Use this skill when designing autonomous agents, creating MCP tools, implementing self-modifying systems, or building apps where features are outcomes achieved by agents operating in a loop.
