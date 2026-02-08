@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{POC_NAME}} Demo Runbook</title>
+
+  <!--
+    Single-file runbook template.
+    Replace {{...}} placeholders when generating a runbook.
+    Keep it visual-first.
+  -->
+
+  <style>
+    :root{
+      /* Brand tokens (edit these) */
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --faint: rgba(255,255,255,0.55);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 16px 50px rgba(0,0,0,0.55);
+      --accent: #7c5cff;
+      --accent2: #2fe4ab;
+      --warn: #ffcc66;
+      --danger: #ff5c7a;
+
+      --radius: 18px;
+      --radius2: 26px;
+      --maxw: 1120px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,0.23), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(47,228,171,0.16), transparent 55%),
+        radial-gradient(700px 500px at 40% 110%, rgba(255,92,122,0.10), transparent 60%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 60px; }
+
+    .topbar{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(11,18,32,0.86), rgba(11,18,32,0.35));
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      letter-spacing: 0.2px;
+    }
+    .logo{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(47,228,171,1));
+      box-shadow: 0 10px 25px rgba(124,92,255,0.25);
+    }
+    .brand h1{ font-size: 14px; margin: 0; font-weight: 700; }
+    .brand .sub{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .nav{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pill{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor: pointer;
+      user-select: none;
+      display:inline-flex; gap: 8px; align-items:center;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      text-decoration: none;
+    }
+    .pill .dot{
+      width:8px; height:8px; border-radius:999px; background: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(47,228,171,0.15);
+    }
+    .pill.secondary .dot{ background: var(--accent); box-shadow: 0 0 0 3px rgba(124,92,255,0.16); }
+    .pill.warn .dot{ background: var(--warn); box-shadow: 0 0 0 3px rgba(255,204,102,0.16); }
+
+    .hero{
+      margin-top: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      overflow:hidden;
+      position: relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 260px at 15% 12%, rgba(124,92,255,0.20), transparent 60%),
+        radial-gradient(540px 240px at 75% 24%, rgba(47,228,171,0.16), transparent 60%);
+      pointer-events:none;
+      opacity:0.9;
+    }
+    .hero > *{ position: relative; z-index: 1; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+    }
+    .card p{ margin: 10px 0; color: var(--muted); line-height: 1.45; font-size: 13px; }
+
+    .section-title{
+      display:flex; align-items:center; justify-content: space-between; gap: 10px;
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+    .section-title h2{ margin:0; font-size: 15px; }
+
+    .btn{
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      display:inline-flex; gap: 8px; align-items:center;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,0.22), rgba(47,228,171,0.14));
+      border-color: rgba(124,92,255,0.25);
+      color: var(--text);
+    }
+
+    .list{ display:flex; flex-direction: column; gap: 10px; }
+    .row{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 12px;
+      display:flex;
+      gap: 12px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .row strong{ font-size: 13px; }
+    .row .meta{ font-size: 12px; color: var(--muted); line-height:1.4; }
+    .row .actions{ display:flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .badge{
+      font-size: 11px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      display:inline-flex; align-items:center; gap: 8px;
+    }
+    .badge .b{ width: 7px; height: 7px; border-radius: 999px; background: var(--accent2); }
+    .badge.warn .b{ background: var(--warn); }
+    .badge.danger .b{ background: var(--danger); }
+    .badge.primary .b{ background: var(--accent); }
+
+    .page{ display:none; animation: fadeIn .18s ease; }
+    .page.active{ display:block; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(3px); } to { opacity:1; transform: translateY(0); } }
+
+    .diagram{
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.18);
+      border-radius: var(--radius);
+      padding: 14px;
+      overflow:auto;
+    }
+
+    .callout{
+      border: 1px solid rgba(255,204,102,0.25);
+      background: rgba(255,204,102,0.06);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .hr{ height: 1px; background: var(--border); margin: 14px 0; }
+    .muted{ color: var(--muted); }
+    .mono{ font-family: var(--mono); }
+    .foot{ margin-top: 18px; color: var(--faint); font-size: 12px; }
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 920px){ .split{ grid-template-columns: 1fr; } }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" role="banner">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>{{POC_NAME}} <span class="sub">Demo runbook, demo first then why, what, how</span></h1>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Runbook navigation">
+        <a class="pill secondary" href="#/" data-route="/"><span class="dot"></span> Home</a>
+        <a class="pill" href="#/demo" data-route="/demo"><span class="dot"></span> Demo Flow</a>
+        <a class="pill" href="#/competitive" data-route="/competitive"><span class="dot"></span> Competitive</a>
+        <a class="pill" href="#/stack" data-route="/stack"><span class="dot"></span> Tech Stack</a>
+        <a class="pill" href="#/architecture" data-route="/architecture"><span class="dot"></span> Architecture</a>
+        <a class="pill warn" href="#/caveats" data-route="/caveats"><span class="dot"></span> Caveats</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HOME -->
+    <section class="page active" id="page-home" data-page="/">
+      <div class="hero">
+        <div class="section-title">
+          <h2>Tonight’s story (what the user is trying to do and how they feel)</h2>
+          <button class="btn primary" onclick="go('/demo')">Start demo run</button>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h2>User narrative</h2>
+            <p><strong>Organisation:</strong> <span class="muted">{{SEGMENT_ORGANISATION}}</span></p>
+            <p><strong>Buyer:</strong> <span class="muted">{{SEGMENT_BUYER}}</span></p>
+            <p><strong>End user:</strong> <span class="muted">{{SEGMENT_END_USER}}</span></p>
+            <p><strong>Job to be done:</strong> <span class="muted">{{JOB_TO_BE_DONE}}</span></p>
+            <p><strong>Starting feelings:</strong> <span class="muted">{{STARTING_FEELINGS}}</span></p>
+            <p><strong>What better feels like:</strong> <span class="muted">{{DESIRED_FEELINGS}}</span></p>
+            <p><strong>Scenario:</strong> <span class="muted">{{SCENARIO}}</span></p>
+            <p><strong>User success outcome:</strong> <span class="muted">{{SUCCESS_OUTCOME}}</span></p>
+            <p><strong>Business success outcome:</strong> <span class="muted">{{BUSINESS_SUCCESS_OUTCOME}}</span></p>
+          </div>
+
+          <div class="card">
+            <h2>Quick links</h2>
+            <div class="list">
+              <div class="row">
+                <div>
+                  <strong>Run the demo</strong>
+                  <div class="meta">Happy path first, then one edge case</div>
+                </div>
+                <div class="actions"><button class="btn" onclick="go('/demo')">Open</button></div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <strong>Competitive landscape</strong>
+                  <div class="meta">Respectful comparison, trade-offs and constraints</div>
+                </div>
+                <div class="actions"><button class="btn" onclick="go('/competitive')">Open</button></div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <strong>Tech stack</strong>
+                  <div class="meta">What is in the PoC build</div>
+                </div>
+                <div class="actions"><button class="btn" onclick="go('/stack')">Open</button></div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <strong>Architecture</strong>
+                  <div class="meta">RAG, evals, observability, options and trade-offs</div>
+                </div>
+                <div class="actions"><button class="btn" onclick="go('/architecture')">Open</button></div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <strong>Caveats</strong>
+                  <div class="meta">Say early, repeat at the end</div>
+                </div>
+                <div class="actions"><button class="btn" onclick="go('/caveats')">Open</button></div>
+              </div>
+            </div>
+
+            <p class="foot">Tip: keep this runbook open while demoing. Use the nav pills to jump between sections.</p>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>Visual overview</h2>
+          <button class="btn" onclick="go('/architecture')">Go to architecture</button>
+        </div>
+
+        <div class="diagram">
+          <pre class="mermaid">
+flowchart LR
+  U[User<br/>{{STARTING_FEELINGS}}] -->|asks| UI[Copilot UI]
+  UI --> OR[Orchestrator]
+  OR --> R[RAG Retrieve]
+  R --> V[(Vector DB)]
+  OR --> L[LLM]
+  L --> G[Guardrails<br/>clarify, refuse, uncertainty]
+  L --> A[Answer + provenance]
+  A --> U
+  OR --> OBS[Observability<br/>traces, cost, latency]
+  OR --> EV[Evals<br/>offline + regression]
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO FLOW -->
+    <section class="page" id="page-demo" data-page="/demo">
+      <div class="section-title">
+        <h2>Demo Flow</h2>
+        <button class="btn" onclick="go('/')">Back to Home</button>
+      </div>
+
+      <div class="callout">
+        <strong>Say this first (10 seconds)</strong>
+        <div class="muted" style="margin-top:8px; line-height:1.5;">
+          {{CAVEATS_EARLY}}
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="split">
+        <div class="card">
+          <h2>What to click</h2>
+          <div class="list" id="appLinksList">
+            <!-- Filled by JS from APP_LINKS -->
+          </div>
+          <p class="foot">If links are missing, keep placeholders and add TODO URLs.</p>
+        </div>
+
+        <div class="card">
+          <h2>What to say</h2>
+          <p class="muted">
+            “This is for {{SEGMENT_ORGANISATION}}. The buyer is {{SEGMENT_BUYER}} and the end user is {{SEGMENT_END_USER}}.”
+          </p>
+          <p class="muted">
+            “They’re trying to {{JOB_TO_BE_DONE}}. They feel {{STARTING_FEELINGS}} because they’re stitching info across tools and they cannot afford to be wrong.”
+          </p>
+          <p class="muted">
+            “Watch the flow: question, grounded answer, then action. The shift is towards {{DESIRED_FEELINGS}}.”
+          </p>
+          <p class="muted">
+            “If this works, success for the business looks like: {{BUSINESS_SUCCESS_OUTCOME}}.”
+          </p>
+          <p class="muted">
+            “Here’s the special feature {{FEATURE_X_NAME}}. {{FEATURE_X_EVIDENCE_LINE}}”
+          </p>
+          <div class="hr"></div>
+          <p class="muted">
+            Close reminder: {{CAVEATS_END}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETITIVE -->
+    <section class="page" id="page-competitive" data-page="/competitive">
+      <div class="section-title">
+        <h2>Competitive landscape</h2>
+        <button class="btn" onclick="go('/')">Back to Home</button>
+      </div>
+
+      <div class="card">
+        <h2>Respectful comparison (approaches and constraints)</h2>
+        <p class="muted">{{COMPETITIVE_TALK_TRACK}}</p>
+
+        <div class="hr"></div>
+
+        <div class="diagram">
+          <pre class="mermaid">
+flowchart TB
+  subgraph Market[Common market approaches]
+    A[Speed and breadth] --> B[Fast value<br/>more variance]
+    C[Workflow automation] --> D[Determinism<br/>less flexible]
+    E[Deep provenance] --> F[More trust<br/>more complexity]
+  end
+
+  subgraph Us[Our PoC approach]
+    G[{{OUR_APPROACH}}] --> H[Optimise for<br/>{{OUR_PRIORITY}}]
+  end
+
+  Market --> Us
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="page" id="page-stack" data-page="/stack">
+      <div class="section-title">
+        <h2>Tech stack</h2>
+        <button class="btn" onclick="go('/')">Back to Home</button>
+      </div>
+
+      <div class="card">
+        <p class="muted"><strong>Frontend:</strong> <span class="mono">{{STACK_FRONTEND}}</span></p>
+        <p class="muted"><strong>Backend:</strong> <span class="mono">{{STACK_BACKEND}}</span></p>
+        <p class="muted"><strong>LLM:</strong> <span class="mono">{{STACK_LLM}}</span></p>
+        <p class="muted"><strong>Orchestration:</strong> <span class="mono">{{STACK_ORCHESTRATION}}</span></p>
+        <p class="muted"><strong>Retrieval:</strong> <span class="mono">{{STACK_RETRIEVAL}}</span></p>
+        <p class="muted"><strong>Storage:</strong> <span class="mono">{{STACK_STORAGE}}</span></p>
+        <p class="muted"><strong>Observability:</strong> <span class="mono">{{STACK_OBSERVABILITY}}</span></p>
+        <p class="muted"><strong>Evals:</strong> <span class="mono">{{STACK_EVALS}}</span></p>
+        <p class="muted"><strong>Hosting:</strong> <span class="mono">{{STACK_HOSTING}}</span></p>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="page" id="page-architecture" data-page="/architecture">
+      <div class="section-title">
+        <h2>Architecture</h2>
+        <button class="btn" onclick="go('/')">Back to Home</button>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h2>Options considered</h2>
+          <p class="muted">{{ARCH_OPTIONS}}</p>
+          <div class="hr"></div>
+          <h2>Chosen option</h2>
+          <p class="muted">{{ARCH_CHOSEN}}</p>
+          <p class="muted"><strong>Trade-offs:</strong> {{ARCH_TRADEOFFS}}</p>
+        </div>
+
+        <div class="card">
+          <h2>LLM specifics</h2>
+          <p class="muted"><strong>RAG:</strong> {{ARCH_RAG}}</p>
+          <p class="muted"><strong>Citations policy:</strong> {{ARCH_CITATIONS}}</p>
+          <p class="muted"><strong>Evals:</strong> {{ARCH_EVALS}}</p>
+          <p class="muted"><strong>Observability:</strong> {{ARCH_OBS}}</p>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h2>Request flow</h2>
+        <button class="btn" onclick="go('/demo')">Back to Demo Flow</button>
+      </div>
+
+      <div class="diagram">
+        <pre class="mermaid">
+sequenceDiagram
+  autonumber
+  participant U as User
+  participant UI as UI
+  participant OR as Orchestrator
+  participant R as Retriever (RAG)
+  participant V as Vector DB
+  participant L as LLM
+  participant O as Observability
+  participant E as Evals
+
+  U->>UI: Ask ({{STARTING_FEELINGS}})
+  UI->>OR: Request + context
+  OR->>R: Retrieve relevant context
+  R->>V: Vector search
+  V-->>R: Top-K chunks + metadata
+  R-->>OR: Grounding context
+  OR->>L: Prompt + guardrails + context
+  L-->>OR: Answer + citations or uncertainty
+  OR->>O: Trace, latency, cost, retrieval stats
+  OR->>E: Log eval signals
+  OR-->>UI: Render answer + provenance
+        </pre>
+      </div>
+    </section>
+
+    <!-- CAVEATS -->
+    <section class="page" id="page-caveats" data-page="/caveats">
+      <div class="section-title">
+        <h2>Caveats</h2>
+        <button class="btn" onclick="go('/')">Back to Home</button>
+      </div>
+
+      <div class="card">
+        <h2>Say early</h2>
+        <p class="muted">{{CAVEATS_EARLY}}</p>
+        <div class="hr"></div>
+        <h2>Repeat at the end</h2>
+        <p class="muted">{{CAVEATS_END}}</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Replace this object when generating a runbook.
+    const APP_LINKS = {{APP_LINKS_JSON}};
+
+    function renderAppLinks(){
+      const el = document.getElementById("appLinksList");
+      if (!el) return;
+
+      el.innerHTML = "";
+      (APP_LINKS || []).forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "row";
+
+        const left = document.createElement("div");
+        left.innerHTML = `
+          <strong>${item.label || "TODO link label"}</strong>
+          <div class="meta">${item.note || ""}</div>
+        `;
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const a = document.createElement("a");
+        a.className = "btn";
+        a.href = item.url || "#";
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.textContent = item.url ? "Open in app" : "TODO URL";
+
+        actions.appendChild(a);
+        row.appendChild(left);
+        row.appendChild(actions);
+        el.appendChild(row);
+      });
+    }
+
+    // Simple hash router
+    const pages = Array.from(document.querySelectorAll(".page"));
+
+    function show(route){
+      pages.forEach(p => p.classList.toggle("active", p.dataset.page === route));
+      const active = pages.find(p => p.classList.contains("active"));
+      if (!active) pages.forEach(p => p.classList.toggle("active", p.dataset.page === "/"));
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    function go(route){
+      location.hash = "#" + route;
+    }
+
+    function currentRoute(){
+      const h = location.hash || "#/";
+      return h.replace("#", "") || "/";
+    }
+
+    mermaid.initialize({ startOnLoad: true, theme: "dark", securityLevel: "loose" });
+
+    window.addEventListener("hashchange", () => show(currentRoute()));
+
+    renderAppLinks();
+    show(currentRoute());
+  </script>
+</body>
+</html>

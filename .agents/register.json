@@ -900,6 +900,19 @@
         "useWhen": "This skill should be used when deepening a plan with parallel research agents for each section."
       },
       {
+        "location": ".agents/skills/02-shape/demo-runbook/SKILL.md",
+        "name": "demo-runbook",
+        "outputs": [
+          "demo-script.md",
+          "demo-runbook.html"
+        ],
+        "ownerModule": "demo-runbook",
+        "provenance": "local",
+        "purpose": "Create a demo script and single-file HTML runbook",
+        "tier": "leaf",
+        "useWhen": "need a demo-first runbook package (script + single-file HTML runbook) including caveats, respectful competitive framing, and LLM architecture notes"
+      },
+      {
         "location": ".agents/skills/06-release/deployment-verification-agent/SKILL.md",
         "name": "deployment-verification-agent",
         "originGroup": "review",
