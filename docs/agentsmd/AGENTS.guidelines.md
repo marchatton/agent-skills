@@ -10,14 +10,8 @@
   - `docs/00-strategy/product-principles.md` (if present)
 - Don't invent a new voice or UI conventions.
 
-## Brand DNA (Tailwind config outputs)
-Source of truth for Tailwind-ready tokens/config derived from Brand DNA lives under:
-- `docs/02-guidelines/inspiration/brand_guidelines.md`
-- `docs/02-guidelines/inspiration/design_tokens.json`
-- `docs/02-guidelines/inspiration/prompt_library.json`
-
 These are generated artefacts. Prefer regenerating via the Brand DNA skills over hand-editing.
-Archived run snapshots live under `docs/02-guidelines/inspiration/brand-dna-YYYY-MM-DD/`.
+Inspiration run snapshots live under `docs/02-guidelines/inspiration`.
 
 Expected generated outputs for app + marketing Tailwind setups:
 - `docs/02-guidelines/inspiration/tailwind/tokens.css`
@@ -44,6 +38,10 @@ node --experimental-strip-types .agents/skills/04-develop/00-frontend-general/ge
 - Never block paste, rely on color-only, or disable zoom.
 
 If missing, search within `docs/02-guidelines/`.
+
+## Key Skills
+- `generating-tailwind-brand-config` for brand tokens/config
+- `baseline-ui`, `interface-design`, `frontend-design` and `web-design-guidelines` for UI
 
 ## Helpers
 - Use `docs-list` to locate guidance fast.

@@ -16,13 +16,8 @@ Next.js App Router web application.
   - Conventions for `"use workflow"` / steps are defined in `docs/03-architecture/06_frameworks_agents_rag_evals.md`.
 
 ## Frontend skills
-- `frontend-design`: build distinctive UI.
-- `web-design-guidelines`: audit UI against web interface guidelines.
-- `baseline-ui`: enforce UI baseline; prevent design slop.
-- `fixing-accessibility`: a11y fixes and audits.
-- `fixing-metadata`: SEO/social metadata fixes.
-- `fixing-motion-performance`: animation perf fixes.
-- `react-best-practices`: React/Next.js performance best practices.
-- `composition-patterns`: React composition patterns for scalable component APIs.
-- `test-browser`: browser smoke for changed UI paths.
-- `rams`: backup UI critique via the `rams` skill (prefer ui-skills first).
+- `generating-tailwind-brand-config` for brand tokens/config
+- `baseline-ui`, `interface-design`, `frontend-design` and `web-design-guidelines` for UI
+- `interaction-design`, `12-principles-of-animation` and `fixing-motion-performance` for motion
+- `fixing-accessibility` and `wcag-audit-patterns` for a11y/UX
+- `tailwind-css-patterns`, `composition-patterns` and `react-best-practices` for styling/structure/perf/critique. Additionally, you can also use `rams`
