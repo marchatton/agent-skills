@@ -14,13 +14,13 @@ Single place for workflow artefacts + docs outputs.
     - `06-release/`: global `CHANGELOG.md` and postmortems etc
     - `96-engineering-tutor-learnings` a collection of learnings from `engineering-tutor` skill. 
     - `97-throwaway/`: local-only scratch space (NOT synced to GitHub)
-    - `98-tmp/`: scratch space (should be moved or deleted). Synced to GitHub
+    - `98-tmp/`: scratch space. Synced to GitHub. Avoid .gitignore for files in this folder, instead move them to `97-throwaway/` if they are not needed anymore.
       - `/oracle/`: oracle `--render` bundles for non-dossier work
       - `/handoffs/`: handoff notes for non-dossier or cross-dossier work
   - Resources:
     - `01-insights/`: reports, summaries and raw transcripts covering customers, competitors, capabilities (internal) and tech-market trends.
     - `08-example-data/` contains worked examples with synthetic yet realistic data.
-    - `02-guidelines/`: brand-tone (storytelling and visual) incl inspiration.
+    - `02-guidelines/`: brand ui guidelines and design system guidelines.
   - Archive: 
     - `99-archive/` mirrors the live structure for closed work + old context
 
@@ -32,7 +32,9 @@ Single place for workflow artefacts + docs outputs.
     - `0001` is lane-local (features count separately from fixes, etc)
     - `<slug>` is kebab-case
     - Every work item has a slug for easy `@slug` tagging in PRDs and discussions.
-  - All change types require **both** `prd.md` and `prd.json` (even if tiny).
+  - All change types require PRD markdown + JSON (even if tiny). Naming depends on whether the dossier has 1 PRD or multiple PRDs:
+    - Single-PRD dossier: `prd.md` + `prd.json`
+    - Multi-PRD dossier: `prd-overall.md` + `prd-overall.json` plus slice PRDs under `prds/<slice_id>_<slug>/prd.md` + `prd.json`
   - Reviews for a project live inside its dossier (e.g. `reviews/`).
 
 ## Storing oracle bundles and handoff notes
