@@ -1,6 +1,13 @@
-# Wiring diagram template (Mermaid code; render via beautiful-mermaid)
+# Wiring diagram template (Mermaid source + static render via beautiful-mermaid)
 
-Default: render via `beautiful-mermaid` (ASCII/Unicode). If your target Markdown supports Mermaid, paste fenced block as-is.
+Default output includes both:
+
+1) Mermaid source block in Markdown.
+2) Static rendered asset (`.svg`) linked in Markdown.
+3) Optional ASCII/Unicode fallback (`.txt`) for terminal/plain viewers.
+
+Compatibility:
+- Prefer static SVGs with literal color values (hex) over CSS-variable/color-mix styling when broad IDE compatibility is needed.
 
 Conventions:
 
@@ -48,3 +55,5 @@ flowchart LR
 - Start with the “happy path” flow.
 - Add pagination/scroll/back-button after the core search/load wiring is clear.
 - If the graph gets busy, split into multiple diagrams per place.
+- Keep `<doc-base>-wiring.svg` adjacent to the document for portable links.
+- Keep Mermaid code and static render in sync; Mermaid source is canonical.

@@ -116,6 +116,10 @@ Required output format (both, not either/or):
 2) **Static render**: generate and save a rendered diagram asset (SVG preferred) via `beautiful-mermaid`, and embed it in the Markdown artefact.
 3) **Fallback**: also generate a terminal-safe ASCII/Unicode render (`.txt`) when practical.
 
+Compatibility note:
+- Some Markdown/SVG renderers (for example Zed) do not fully support CSS variables or `color-mix()` inside SVG.
+- If the render appears as black blocks, post-process the SVG to use literal color values (hex) for fill/stroke/text.
+
 Naming convention (recommended):
 
 - `<doc-base>-wiring.svg`
