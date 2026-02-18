@@ -28,7 +28,8 @@ Vibe: be practical, stay curious, optimise for long-term leverage over short-ter
 - Unexpected issues: fail loudly (log/throw). Only show user-facing errors when needed
 
 ## Compatibility
-- Backwards compatibility usually not required
+- Backwards compatibility is usually not required.
+- Avoid adding shims/legacy paths for older major versions unless explicitly requested (assume a fresh codebase).
 
 ## Agent files
 - `AGENTS.md`: Repo‑wide engineering standards, tooling, and verification rules.
