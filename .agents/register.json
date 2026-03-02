@@ -1884,6 +1884,23 @@
         "purpose": "Shape messy inputs into a de-risked, de-scoped packet (brief, breadboard, risks, spikes) ready for wf-plan.",
         "tier": "core",
         "useWhen": "This skill should only be used when the user uses the word workflow and asks to shape a project from messy inputs into a de-risked, de-scoped shaped packet (brief, breadboard, risks, spikes) ready for wf-plan."
+      },
+      {
+        "location": ".agents/skills/00-utilities/visual-explainer/SKILL.md",
+        "name": "visual-explainer",
+        "outputs": [],
+        "ownerModule": "visual-explainer",
+        "provenance": "forked",
+        "purpose": "Generate beautiful, self-contained HTML pages that visually explain systems, code changes, plans, and data",
+        "tier": "leaf",
+        "upstream": {
+          "path": ".",
+          "repo": "nicobailon/visual-explainer"
+        },
+        "useWhen": "you need a diagram, architecture overview, diff review, plan review, project recap, comparison table, or visual explanation",
+        "tags": [
+          "onboarding-core"
+        ]
       }
     ]
   },
