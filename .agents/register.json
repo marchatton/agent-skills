@@ -1901,6 +1901,118 @@
         "tags": [
           "onboarding-core"
         ]
+      },
+      {
+        "location": ".agents/skills/02-shape/testing-bus-ideas/SKILL.md",
+        "name": "precoil-emt",
+        "outputs": [],
+        "ownerModule": "precoil-emt",
+        "provenance": "forked",
+        "purpose": "Pressure-test business ideas with the Extract -> Map -> Test workflow",
+        "tier": "leaf",
+        "upstream": {
+          "path": "SKILL.md",
+          "repo": "David-Precoil/testing-business-ideas-with-claude"
+        },
+        "useWhen": "you want to pressure-test a business idea, strategy, or initiative by extracting assumptions, mapping risk, and designing tests"
+      },
+      {
+        "location": ".agents/skills/08-evals/build-review-interface/SKILL.md",
+        "name": "build-review-interface",
+        "outputs": [],
+        "ownerModule": "build-review-interface",
+        "provenance": "forked",
+        "purpose": "Build browser-based annotation interfaces for LLM trace review",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/build-review-interface/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "you need a custom annotation tool to review traces and collect structured human labels"
+      },
+      {
+        "location": ".agents/skills/08-evals/error-analysis/SKILL.md",
+        "name": "error-analysis",
+        "outputs": [],
+        "ownerModule": "error-analysis",
+        "provenance": "forked",
+        "purpose": "Identify and categorize LLM pipeline failure modes from traces",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/error-analysis/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "starting or revisiting eval work after major pipeline changes, metric drops, or incidents"
+      },
+      {
+        "location": ".agents/skills/08-evals/eval-audit/SKILL.md",
+        "name": "eval-audit",
+        "outputs": [],
+        "ownerModule": "eval-audit",
+        "provenance": "forked",
+        "purpose": "Audit eval pipelines for trustworthiness gaps and vanity metrics",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/eval-audit/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "you need a prioritized diagnosis of issues in an existing LLM eval system"
+      },
+      {
+        "location": ".agents/skills/08-evals/evaluate-rag/SKILL.md",
+        "name": "evaluate-rag",
+        "outputs": [],
+        "ownerModule": "evaluate-rag",
+        "provenance": "forked",
+        "purpose": "Evaluate retrieval and generation quality in RAG pipelines",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/evaluate-rag/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "evaluating RAG retrieval quality, generation faithfulness, relevance, or chunking strategy"
+      },
+      {
+        "location": ".agents/skills/08-evals/generate-synthetic-data/SKILL.md",
+        "name": "generate-synthetic-data",
+        "outputs": [],
+        "ownerModule": "generate-synthetic-data",
+        "provenance": "forked",
+        "purpose": "Generate synthetic eval inputs via dimension-based tuple generation",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/generate-synthetic-data/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "bootstrapping eval datasets, stress-testing hypotheses, or when real trace volume is low"
+      },
+      {
+        "location": ".agents/skills/08-evals/validate-evaluator/SKILL.md",
+        "name": "validate-evaluator",
+        "outputs": [],
+        "ownerModule": "validate-evaluator",
+        "provenance": "forked",
+        "purpose": "Calibrate LLM judges against human labels with split-based metrics",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/validate-evaluator/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "validating judge alignment and bias before trusting LLM-as-judge outputs"
+      },
+      {
+        "location": ".agents/skills/08-evals/write-judge-prompt/SKILL.md",
+        "name": "write-judge-prompt",
+        "outputs": [],
+        "ownerModule": "write-judge-prompt",
+        "provenance": "forked",
+        "purpose": "Design binary LLM-as-judge prompts for subjective failure modes",
+        "tier": "leaf",
+        "upstream": {
+          "path": "skills/write-judge-prompt/SKILL.md",
+          "repo": "hamelsmu/evals-skills"
+        },
+        "useWhen": "creating judge prompts for subjective criteria not reliably checkable with code"
       }
     ]
   },
